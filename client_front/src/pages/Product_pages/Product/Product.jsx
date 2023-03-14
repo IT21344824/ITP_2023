@@ -73,6 +73,7 @@ const Product = () => {
 
   return (
     <div className='product'>
+    <div className='top'>
       <div className="left">
         <div className="images">
           {product && product.img && product.img.length > 0 && (
@@ -124,15 +125,23 @@ const Product = () => {
 
         <hr className='hr' />
 
+
+
+      </div>
+      
+    </div>
+    <div className="bot">
+
         <div className="details">
-          <span> DESCRIPTION </span>
-          <hr />
-          <span> ADDITIONAL INFO </span>
-          <hr />
-          <span> FAQ </span>
+          <p> DESCRIPTION </p>
+          
+          <p> ADDITIONAL INFO </p>
+          
+          <p> FAQ </p>
         </div>
 
       </div>
+      
     </div>
   );
 }

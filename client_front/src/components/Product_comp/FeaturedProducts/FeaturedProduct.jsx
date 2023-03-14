@@ -69,7 +69,7 @@ const FeaturedProduct = ({ type }) => {
                 <div className="f_scroll">
                     <div className="featured_map" style={{ transform: `translateX(-${currentSlide * 30}vw)` }}>
                         {newproducts.map(item => (
-                          <span className="img"> <Card item={item} key={item.id}  /></span> 
+                          <span className="img"> <Card item={item} key={item.id}  productId={item.id}/></span> 
                         ))}
                     </div>
                 </div>

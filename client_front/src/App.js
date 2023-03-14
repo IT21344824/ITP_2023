@@ -28,12 +28,13 @@ import Cart from './pages/Cart_pages/Cart_page';
 
 
 const Layout = () => {
+
   return(
     <div className='app'>
-      <Navbar/>
+      <Navbar />
       
       <Outlet/>
-      <Footer/>
+      <Footer />
     </div>
   )
 }

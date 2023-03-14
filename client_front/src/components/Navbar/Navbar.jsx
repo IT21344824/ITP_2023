@@ -9,7 +9,13 @@ import Cart from '../Cart/Cart';
 
 const Navbar = () => {
 
-  const [open ,setOpen] = useState(false)
+  const [open ,setOpen] = useState(false);
+  const [selectedLink, setSelectedLink] = useState('');
+
+  const handleLinkClick = (link) => {
+    setSelectedLink(link);
+    
+  }
 
   return (
     <div className='navbar'>
@@ -47,18 +53,18 @@ const Navbar = () => {
 
         </div>
         <div className="bot_section">
-          <div className="item">
-            <Link className='link' to="/"> Home Page </Link>
+          <div className={`item ${selectedLink === 'home' ? 'selected' : ''}`}>
+            <Link className='link' to="/" onClick={() => handleLinkClick('home')}> Home Page </Link>
           </div>
-          <div className="item">
-            <Link className='link' to="/Products"> Inventory </Link>
+          <div className={`item ${selectedLink === 'inventory' ? 'selected' : ''}`}>
+            <Link className='link' to="/Products" onClick={() => handleLinkClick('inventory')}> Inventory </Link>
           </div>
           
-          <div className="item">
-            <Link className='link' to="/Coach"> Coaching </Link>
+          <div className={`item ${selectedLink === 'coaching' ? 'selected' : ''}`}>
+            <Link className='link' to="/Coach" onClick={() => handleLinkClick('coaching')}> Coaching </Link>
           </div>
-          <div className="item">
-            <Link className='link' to="/Articals"> Articals </Link>
+          <div className={`item ${selectedLink === 'articles' ? 'selected' : ''}`}>
+            <Link className='link' to="/Articals" onClick={() => handleLinkClick('articles')}> Articals </Link>
           </div>
 
         </div>

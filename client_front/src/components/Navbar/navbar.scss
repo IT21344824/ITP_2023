@@ -130,7 +130,12 @@
 
             //justify-content: space-between;
 
-
+            .selected{
+                padding:  3px 50px 5px 50px; //trbf
+                background-color: aqua;
+                border-radius: 20px;
+                font-weight: bold;
+            }
 
         }
     }
