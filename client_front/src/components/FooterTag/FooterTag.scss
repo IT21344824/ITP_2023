@@ -1,0 +1,21 @@
+.footertag{
+
+    background-color: rgba(14, 2, 250, 0.789);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+
+    .wrapper{
+        width: 50%;        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .icons{
+            
+            display: flex;
+            gap: 10px;
+        }
+    }
+}

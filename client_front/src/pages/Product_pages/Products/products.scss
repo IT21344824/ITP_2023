@@ -1,0 +1,49 @@
+.products {
+    padding: 30px 50px;
+    display: flex;
+    gap: 20px;
+  
+    .left {
+      flex: 1;
+      position: sticky;
+      top: 50px;
+      height: calc(100vh - 50px);
+      overflow-y: scroll;
+      margin-bottom: 100px;
+  
+      /* Add some padding to prevent content from being hidden behind scrollbar */
+      padding-right: 10px;
+      padding-top: 50px;
+      padding-bottom: 80px;
+
+  
+      .filterItems {
+        margin-bottom: 30px;
+  
+        h2 {
+          font-weight: 400;
+          margin-bottom: 20px;
+        }
+  
+        .inputItem {
+          margin-bottom: 10px;
+  
+          label {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  
+    .right {
+      flex: 3;
+  
+      .catImg {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 50px;
+      }
+    }
+  }
+  

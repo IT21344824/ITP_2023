@@ -1,0 +1,70 @@
+.featuredproduct {
+    margin: 100px 200px;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+
+        h1 {
+            flex: 2;
+            text-transform: capitalize;
+
+        }
+
+        p {
+            flex: 2;
+            color: gray;
+        }
+    }
+
+
+    .bottom {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        align-items: center;
+        //background-color: rgb(17, 0, 255);
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.4);
+            -webkit-backdrop-filter: blur(0px);
+            backdrop-filter: blur(0px);
+            border-radius: 50%;
+            margin-top: -90px;
+
+        }
+
+        .f_scroll {
+            //background-color: aqua;
+            align-items: center;
+            //height: calc(100vh - 80px);
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+           // margin-bottom: -100px;
+            
+            .featured_map {
+              display: flex;
+            
+              height: 100%;
+              transition: all 1s ease;
+              gap: 30px; 
+              width: 300vw;
+             
+            
+              
+            }
+          }
+          
+          
+    }
+}
