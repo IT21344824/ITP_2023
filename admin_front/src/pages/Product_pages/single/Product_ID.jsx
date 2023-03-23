@@ -103,7 +103,7 @@ const Product_ID = ({ id }) => {
 
 
     return (
-        <div className="single">
+        <div className="pro_single">
             <Sidebar />
             <div className="singleContainer">
                 <Navbar />

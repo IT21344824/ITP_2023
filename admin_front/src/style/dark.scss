@@ -1,73 +1,102 @@
 .app.dark {
-    input{
+
+    background-color: #222;
+   
+    color: rgb(156, 156, 156);
+
+    input {
         color: white;
     }
 
-    .widget,
-    .chart,
-    .featured,
-    .listContainer {
-        -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-        -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-        box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-    }
+    //-----------------------------------------------------------------------start of dashboard-------------------------------------------------------------------------------------------------
+    .home {
 
-
-    background-color: #222;
-    color: rgb(156, 156, 156);
-
-    .chartGrid {
-        stroke: rgba(228, 228, 228, 0.219);
-
-    }
-
-    .table {
-        background-color: #111;
-
-        .tableCell {
-            color: gray;
+        .widget,
+        .chart,
+        .featured,
+        .listContainer {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
         }
-    }
 
-    .navbar {
-        color: #999;
-        border-color: #333;
 
-        .search {
-            border-color: gray;
+
+        .chartGrid {
+            stroke: rgba(228, 228, 228, 0.219);
+
         }
-    }
 
-    .sidebar {
-        background-color: #111;
-        border-color: #333;
+        //table dashboard
+        .latest {
 
-        .top {
-            .logo {
-                color: #999;
+            .listContainer,
+            .Product_listContainer {
+                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            }
+
+            .Product_listTitle {
+                color: rgb(251, 255, 0);
+            }
+
+        }
+
+        .table {
+            background-color: #111;
+
+            .tableCell,
+            .cellWrapper {
+                color: gray;
             }
         }
 
-        hr {
+        .navbar {
+            color: #999;
             border-color: #333;
 
+            .search {
+                border-color: gray;
+            }
         }
 
-        ul {
-            li {
-                &:hover {
+        .sidebar {
+            background-color: #111;
+            border-color: #333;
 
-                    background-color: #333;
-
-                }
-
-                .icon {
+            .top {
+                .logo {
                     color: #999;
                 }
             }
+
+            hr {
+                border-color: #333;
+
+            }
+
+            ul {
+                li {
+                    &:hover {
+
+                        background-color: #333;
+
+                    }
+
+                    .icon {
+                        color: #999;
+                    }
+                }
+            }
         }
     }
 
+    //--------------------------------------------------------end of dashboard------------------------------------------------------------------------------
+
+
+
+    //---------------------------------------------------------start of other new parts------------------------------------------------------------------------------------------------------------------------
     .datatable {
         .datagrid {
             color: gray;
@@ -88,10 +117,11 @@
         background-color: transparent;
     }
 
+    //-----------------------------------------------------------end of other new parts---------------------------------------------------------------------------
 
 
-    //--------------------------------------------------------------product---------------------------------------------------------------------------
-    //all---
+    //--------------------------------------------------------------Start of product---------------------------------------------------------------------------
+    //all categories---
     .categories {
         .datatable {
 
@@ -99,14 +129,9 @@
             .Category_add {
                 color: rgb(114, 203, 227);
 
-                .all{
-
-
-                    
-                }
+                .all {}
             }
 
-            
             .Cat_datagrid,
             .cat_add_from {
                 color: rgb(128, 128, 128);
@@ -129,13 +154,9 @@
                     color: rgb(172, 169, 169);
                     background-color: rgba(154, 12, 41, 0.659);
                 }
-
-
-
-
             }
-            
-            
+
+
             .Category_all_title,
             .Cat_datagrid,
             .Category_add,
@@ -143,10 +164,6 @@
                 -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
                 -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
                 box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-
-
-
-
             }
 
             .cat_btn {
@@ -154,27 +171,17 @@
                 border: none;
                 background-color: rgba(8, 8, 192, 0.395);
             }
-
         }
     }
 
-
-
-
-
-
-
-
-
-
-    //products----------------------------------------------------------------------------------------------------
+    //all products-----------------------------
     .pro_table {
+        background-color: #222;
+
         .datatable {
             .datatableTitle {
                 color: rgb(0, 200, 255);
             }
-
-           
 
             .datagrid {
                 color: rgb(128, 128, 128);
@@ -197,30 +204,16 @@
                     color: rgb(172, 169, 169);
                     background-color: rgba(154, 12, 41, 0.659);
                 }
-
-
-
-
             }
 
+
             .datatableTitle,
-            .datagrid{
+            .datagrid {
                 -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
                 -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
                 box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-
-
-
-
             }
-
-            
-
-
         }
-
-      
-
     }
 
 
@@ -246,4 +239,26 @@
             }
         }
     }
+
+    //single products--------
+    .pro_single {
+        background-color: #222;
+        width: 100vw;
+
+        .top_pre {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+            .pre_title {
+                color: rgb(0, 200, 255);
+
+                button {
+                    background: #ffc800;
+                }
+            }
+        }
+    }
+
+    //-----------------------------------------------------------------end of product-------------------------------------------------------------
 }

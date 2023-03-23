@@ -3,40 +3,54 @@ import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/Featured";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Table from "../../components/User_comp/table/Table";
+import Table from "../../components/table/Table";
+import ProductsTable from "../../components/table/Latest_Products";
 import Widget from "../../components/widget/Widget";
 import "./home.scss";
 
 const Home = () => {
   return (
     <div className="home">
-      <Sidebar/>
-      <div className="homeContainer"> 
+      <Sidebar />
+      <div className="homeContainer">
 
-        <Navbar/>
+        <Navbar />
         <hr />
-       
-       <div className="widgets">
-          <Widget type="user" />
-          <Widget type="product" />
-          <Widget type="coaches" />
-          <Widget type="members" />
-
-       </div>
-
-       <div className="charts">
-          <Featured/>
-          <Chart title="Last 6 Months ( Members Attendence )" aspect={2/1}/>
+        <div className="homeback_color_start">
+          <div className="homeback_color_end">
 
 
-       </div>
 
-       <div className="listContainer">
-        <div className="listTitle"> Latest Members </div>
-        {/* This is  dashboard table */}<Table/>
-       </div>
+          <div className="widgets">
+            <Widget type="user" />
+            <Widget type="product" />
+            <Widget type="coaches" />
+            <Widget type="members" />
+
+          </div>
+
+          <div className="charts">
+            <Featured />
+            <Chart title="Last 6 Months ( Members Attendence )" aspect={2 / 1} />
 
 
+          </div>
+
+          <div className="latest" >
+
+            <div className="listContainer" style={{ marginLeft: "50px", marginRight: "25px" }}>
+              <div className="listTitle"> Latest Members </div>
+              {/* This is  dashboard table */}<Table />
+            </div>
+
+            <div className="Product_listContainer" style={{ marginLeft: "25px", marginRight: "50px" }}>
+              <div className="Product_listTitle"> Latest Products </div>
+              {/* This is  dashboard table */}<ProductsTable />
+            </div>
+
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   )

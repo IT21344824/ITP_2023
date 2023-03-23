@@ -1,0 +1,63 @@
+.table {
+    //justify-content: space-between;
+
+
+    .cellWrapper {
+        display: flex;
+        align-items: center;
+
+        .image {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+    }
+
+    .status {
+
+        padding: 5px;
+        border-radius: 5px;
+        display: inline-block;
+
+
+        &.InStock {
+            color: green;
+            background-color: rgba(2, 255, 2, 0.1);
+
+
+        }
+
+        &.OutOfStock {
+            color: crimson;
+            background-color: rgba(255, 0, 0, 0.05);
+
+        }
+    }
+
+    .viewButton {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 2px 5px;
+        border-radius: 5px;
+        color: darkblue;
+        background-color: rgba(0, 242, 255, 0.459);
+        border: 1px dotted rgba(0, 0, 139, 0.579);
+        cursor: pointer;
+    }
+
+    .no_data {
+        .tableCell {
+            
+            text-align: center;
+            //margin: auto;
+            justify-content: center;
+            color: rgb(4, 136, 70);
+            font-weight: 700;
+            font-size: 24px;
+            //background-color: #461919;
+        }
+    }
+}

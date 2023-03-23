@@ -13,6 +13,7 @@ const FeaturedProduct = ({ type }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [newproducts, setNewProducts] = useState([])
 
+    //get products after prevous month
     useEffect(() => {
         const fetchData = async () => {
             const today = new Date();
