@@ -3,7 +3,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { userColums, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs , deleteDoc , doc , onSnapshot  } from "firebase/firestore";
+import { collection, getDocs , deleteDoc , doc , onSnapshot ,where ,query} from "firebase/firestore";
 import { db } from "../../../firebase";
 
 {/* This is all users table  */ }
@@ -13,28 +13,30 @@ const Datatable = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-
     const unsub = onSnapshot(
-      collection(db, "Admins"),
+      query(collection(db, "Users"), where("role", "==", "user")),
       (snapshot) => {
-      let list =[]
-      snapshot.docs.forEach(doc=>{
-        list.push({ id:doc.id , ...doc.data()})
-      });
-      setData(list);
-  }, (error)=>{
-    console.log(error);
-  });
-  return ()=>{
-    unsub();
-  }
-  }, [])
+        let list = [];
+        snapshot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setData(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    return () => {
+      unsub();
+    };
+  }, []);
+  
 
   console.log(data);
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "Admins", id));
+      await deleteDoc(doc(db, "Users", id));
      setData(data.filter((item) => item.id !== id));
     } catch (error) {
       console.log(error);
@@ -64,8 +66,8 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New Admins
-        <Link to="/Admins/new" className="link" >
+        Add New Users
+        <Link to="/Users/new" className="link" >
           Add New
         </Link>
       </div>

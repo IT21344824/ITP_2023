@@ -9,8 +9,8 @@ const Products = () => {
 
   //const catId = parseInt(useParams().id);
 
-  const [catId, setCatId] = useState([]);
-  const [maxPrice, setMaxPrice] = useState(100);
+
+  const [maxPrice, setMaxPrice] = useState(100000);
   const [sort, setSort] = useState(null);
   const [catData, setCatData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +26,7 @@ const Products = () => {
           list.push({ id: doc.id, ...doc.data() })
         });
         setCatData(list);
-        
+
       }, (error) => {
         console.log(error);
       });
@@ -35,12 +35,9 @@ const Products = () => {
     }
   }, []);
 
-  // Render filter items based on category data
-
-
-  //console.log(catId) - wada 
-  //console.log(selectedCategories) - wada
-
+  const clearSort = () => {
+    setSort(null);
+  }
 
   return (
     <div className='products'>
@@ -51,46 +48,61 @@ const Products = () => {
           {catData.map((cat) => (
             <div className="inputItem" key={cat.id}>
               <input
-                type="checkbox"
+                type="radio"
                 id={cat.id}
                 value={cat.id}
                 checked={selectedCategories.includes(cat.id)}
                 onChange={(e) => {
                   if (e.target.checked) {
-                    setSelectedCategories([...selectedCategories, cat.id]);
-                  } else {
-                    setSelectedCategories(
-                      selectedCategories.filter((id) => id !== cat.id)
-                    );
+                    setSelectedCategories([cat.id]);
                   }
                 }}
               />
               <label htmlFor={cat.id}>{cat.Cat_name}</label>
             </div>
           ))}
-
+          <button onClick={() => setSelectedCategories([])}>Clear</button>
         </div>
+
+
 
         <div className="filterItems">
           <h2> Filter by price </h2>
           <div className="inputItem">
             <span>0</span>
-            <input type="range" min={0} max={5000} onChange={(e) => setMaxPrice(e.target.value)} />
+            <input type="range" min={0} max={100000} onChange={(e) => setMaxPrice(e.target.value)} />
             <span> {maxPrice} </span>
+            {/* <button onClick={() => setMaxPrice([])}>Clear</button> */}
           </div>
 
         </div>
         <div className="filterItems">
-          <h2> Sort by </h2>
-          <div className="inputItem">
-            <input type="radio" id='asc' value="asc" name="price" onChange={e => setSort("asc")} />
-            <label htmlFor="asc"> Price (Lowest first )</label>
-          </div>
-          <div className="inputItem">
-            <input type="radio" id='desc' value="desc" name="price" onChange={e => setSort("desc")} />
-            <label htmlFor="desc"> Price (Highest first )</label>
-          </div>
+        <h2> Sort by </h2>
+        <div className="inputItem">
+          <input
+            type="radio"
+            id="asc"
+            value="asc"
+            name="price"
+            onChange={(e) => setSort(e.target.value)}
+            checked={sort === "asc"}
+          />
+          <label htmlFor="asc"> Price (Lowest first )</label>
         </div>
+        <div className="inputItem">
+          <input
+            type="radio"
+            id="desc"
+            value="desc"
+            name="price"
+            onChange={(e) => setSort(e.target.value)}
+            checked={sort === "desc"}
+          />
+          <label htmlFor="desc"> Price (Highest first )</label>
+        </div>
+        <button onClick={clearSort}>Clear</button>
+      </div>
+      
       </div>
 
       <div className="right">
@@ -100,7 +112,7 @@ const Products = () => {
           alt="" />
 
         <List
-          catId={catId}
+
           maxPrice={maxPrice}
           sort={sort}
           selectedCategories={selectedCategories}

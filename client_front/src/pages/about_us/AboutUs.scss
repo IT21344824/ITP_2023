@@ -1,0 +1,129 @@
+.AboutUs {
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        color: aqua;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-top: 50px;
+    }
+
+    h1::after {
+        content: "";
+        height: 5px;
+        width: 200px;
+        background-color: aqua;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+    }
+
+    .wrapper {
+        padding: 0px 60px;
+        margin: 60px auto;
+        display: flex;
+
+        .content{
+            .top{
+            display: flex;
+
+            .left{
+                flex: 2;
+                width: 60%;
+                //float: left;
+                text-align: left;
+                padding: 0px 30px;
+            }
+            .right {
+                flex: 1;
+                background-color: antiquewhite;
+    
+                .img {
+                    width: 100%;
+                    // float: right;
+                    //height: 100%;
+    
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+
+
+
+            .follow {
+                margin-top: 50px;
+                margin-bottom: 20px;
+                text-align: left;
+                padding: 0px 30px;
+
+                a {
+
+                    color: aliceblue;
+                    background-color: aqua;
+                    border: 1px solid aqua;
+                    padding: 5px 15px;
+                    border: none;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: aqua;
+                    }
+                }
+            }
+
+            .social {
+                margin-top: 50px;
+                margin-bottom: 20px;
+                text-align: left;
+                padding: 0px 30px;
+
+
+                a {
+                  
+                    border: none;
+                    text-decoration: none;
+                    color: #222;
+                    font-size: 25px;
+
+                    img {
+                       
+                        text-align: center;
+                        border-radius: 50px;
+                        border: none;
+                    }
+                }
+
+                .icons {
+                    width: 30px;
+                    height: 30px;
+                    
+                    border: none;
+
+                }
+            }
+
+            .contactInfo{
+                display: flex;
+                justify-content: space-around;
+                //align-items: center;
+                margin-top: 40px;
+
+                .phone{
+                    margin-left: -150px;
+                }
+                p {
+                    margin-top: -15px;
+                    margin-bottom: 30px;
+                    width: 70%;
+                }
+            }
+        }
+
+       
+    }
+   
+}

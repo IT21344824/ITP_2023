@@ -1,0 +1,170 @@
+.contents {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+    // margin-bottom: 100px;
+
+    // background-image: url("https://wallpapers.com/images/featured-full/gym-og6h4kg6ciwvrj5i.jpg");
+    background-image: url("https://htmlcolorcodes.com/assets/images/colors/red-color-solid-background-1920x1080.png");
+    background-size: cover;
+    background-position: center;
+
+    .top {
+        max-width: 800px;
+        text-align: center;
+
+        h1 {
+            font-size: 36px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        p {
+
+            font-weight: 500;
+            color: #fff;
+        }
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+
+        .contactInfo {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            //margin-left: 100px;
+            //padding-left: 400px;
+
+            .box {
+                position: relative;
+                padding: 20px 0px;
+                display: flex;
+
+                .icon {
+                    min-width: 40px;
+                    height: 40px;
+                    background-color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                }
+
+                .text {
+
+                    display: flex;
+                    margin-left: 20px;
+                    font-size: 16px;
+                    color: #fff;
+                    flex-direction: column;
+                    font-weight: 300;
+                }
+
+                h3 {
+                    font-weight: 500;
+                    color: #00bcd4;
+                    margin-top: -4px;
+                    padding-bottom: 5px;
+                }
+
+                p {
+                    margin-top: -15px;
+                    margin-bottom: 30px;
+                    width: 70%;
+                }
+            }
+        }
+
+        .contactForm {
+            width: 30%;
+            padding: 40px;
+            background-color: #fff;
+            margin-bottom: 100px;
+
+            h2 {
+                font-size: 30px;
+                font-weight: 600;
+                color: #333;
+
+            }
+
+            .inputbox {
+                position: relative;
+                width: 100%;
+                margin-top: 10px;
+              
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                  width: 100%;
+                  padding: 5px 0px;
+                  font-size: 16px;
+                  margin: 10px 0px;
+                  border: none;
+                  border-bottom: 2px solid #333;
+                  outline: none;
+                  resize: none;
+                }
+              
+                span {
+                  position: absolute;
+                  left: 0px;
+                  padding: 5px 0px;
+                  font-size: 16px;
+                  margin: 10px 0px;
+                  pointer-events: none;
+                  transition: 0.5s;
+                  color: #666;
+                }
+              
+                input[type="text"]:focus ~ span,
+                input[type="text"]:valid ~ span,
+                input[type="email"]:focus ~ span,
+                input[type="email"]:valid ~ span,
+                textarea:focus ~ span,
+                textarea:valid ~ span {
+                  color: #e91e63;
+                  font-size: 12px;
+                  transform: translateY(-20px);
+                }
+              
+                button {
+                  width: 100px;
+                  background: #00bcd4;
+                  color: #fff;
+                  border: none;
+                  cursor: pointer;
+                  padding: 10px;
+                  font-size: 18px;
+                  transition-duration: 0.3s;
+                  border-radius: 10px;
+                  -webkit-transition-duration: 0.3s;
+                  justify-content: center;
+                  align-items: center;
+                  text-align: center;
+                  -webkit-transition-property: box-shadow, transform;
+                  transition-property: box-shadow, transform;
+              
+                  &:hover {
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                  }
+                }
+              }
+              
+        }
+    }
+
+}

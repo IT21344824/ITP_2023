@@ -31,10 +31,10 @@ const Widget = ({ type }) => {
     switch (type) {
         case "user":
             data = {
-                title: "Admins",
-                navigate: "/Admins",
+                title: "Users",
+                navigate: "/Users",
                 link: "see all users",
-                query: "users",
+                query: "Users",
                 icon: <AccountBoxOutlinedIcon className="icon"
                     style={{ color: "crimson", backgroundColor: " rgba(255, 0, 0, 0.2)", }} />,
             };
@@ -150,7 +150,7 @@ const Widget = ({ type }) => {
         };
     }, []);
 
-//-------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------
 
 
 

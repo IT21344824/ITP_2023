@@ -4,8 +4,8 @@
 export const userColums = [
     { field: 'id', headerName: 'ID', width: 200 },
     {
-        field : "Admins" ,
-        headerName : "Admins" ,
+        field : "Users" ,
+        headerName : "Users" ,
         width :210 ,
         renderCell :(params) => {
             return(
@@ -34,20 +34,72 @@ export const userColums = [
         width :80 ,
 
     },
+     {
+        field : "phone" ,
+        headerName : "Phone" ,
+        width :80 ,
+
+    },
+
     
+
+    
+] ;
+
+// admin
+export const adminColums = [
+    { field: 'id', headerName: 'ID', width: 200 },
     {
-        field : "status" ,
-        headerName : "Status" ,
-        width :140 ,
+        field : "Users" ,
+        headerName : "Admins" ,
+        width :210 ,
         renderCell :(params) => {
             return(
-                <div className={`cellWithStatus ${params.row.status}`}>
-                    {params.row.status}
+                <div className="cellWithImg">
+                    <img className="cellImg" src={params.row.img} alt="" />
+                    {params.row.username}
                 </div>
             );
         },
+    },
+    {
+        field : "name" ,
+        headerName : "Name" ,
+        width :200 ,
 
     },
+    {
+        field : "email" ,
+        headerName : "Email" ,
+        width :200 ,
+
+    },
+    {
+        field : "phone" ,
+        headerName : "Phone" ,
+        width :200 ,
+
+    },
+    {
+        field : "gender" ,
+        headerName : "Gender" ,
+        width :200 ,
+
+    },
+    
+    // {
+    //     field : "status" ,
+    //     headerName : "Status" ,
+    //     width :140 ,
+    //     renderCell :(params) => {
+    //         return(
+    //             <div className={`cellWithStatus ${params.row.status}`}>
+    //                 {params.row.status}
+    //             </div>
+    //         );
+    //     },
+
+    // },
     
 
     

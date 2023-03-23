@@ -43,10 +43,10 @@ const Sidebar = () => {
                     </Link>
                     <p className="title"> LIST </p>
         
-                    <Link to="/Admins" style={{ textDecoration: "none" }} >
+                    <Link to="/Users" style={{ textDecoration: "none" }} >
                             <li>
                                 <GroupIcon className="iocn" />
-                                <span> Admins </span>
+                                <span> Users </span>
                             </li>
                     </Link>
 
@@ -57,7 +57,7 @@ const Sidebar = () => {
                     </li>
                     </Link>
 
-                    <Link to="/admins" style={{ textDecoration: "none" }} >
+                    <Link to="/Employees" style={{ textDecoration: "none" }} >
                     <li>
                         <EngineeringIcon className="iocn" />
                         <span> Employees </span>

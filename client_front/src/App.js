@@ -6,9 +6,12 @@ import {
   Outlet,
   Route,
 } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import ContactUs from './pages/contact_us/ContactUs';
+import AboutUs from './pages/about_us/AboutUs';
 import './App.scss';
 
 //user managements
@@ -28,13 +31,25 @@ import Cart from './pages/Cart_pages/Cart_page';
 
 
 const Layout = () => {
+  const [selectedLink, setSelectedLink] = useState(localStorage.getItem('selectedLink') || '');
+
+  const handleLinkClick = (link) => {
+    setSelectedLink(link);
+    localStorage.setItem('selectedLink', link);
+  };
+
+  useEffect(() => {
+    const storedSelectedLink = localStorage.getItem('selectedLink');
+    if (storedSelectedLink) {
+      setSelectedLink(storedSelectedLink);
+    }
+  }, []);
 
   return(
     <div className='app'>
-      <Navbar />
-      
+      <Navbar selectedLink={selectedLink} handleLinkClick={handleLinkClick} />
       <Outlet/>
-      <Footer />
+      <Footer selectedLink={selectedLink} handleLinkClick={handleLinkClick} />
     </div>
   )
 }
@@ -65,6 +80,14 @@ const router = createBrowserRouter([
       {
         path: "/newCart",
         element: <Cart/>,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs/>,
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs/>,
       },
       
     ]

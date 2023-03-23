@@ -1,4 +1,4 @@
-//import "./new.scss";
+import "./User_New.scss";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
@@ -10,11 +10,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
 
-
-
-
-const New = ({ inputs, title }) => {
-
+const User_new = ({ inputs, title }) => {
     const [file, setFile] = useState("");
     const [data, setData] = useState({});
     const [per , setPer ] = useState(null);
@@ -78,11 +74,13 @@ const New = ({ inputs, title }) => {
             );
 
             // Add a new document in collection "users"
-            await setDoc(doc(db, "Admins", res.user.uid), {
+            await setDoc(doc(db, "Users", res.user.uid), {
                 ...data,
+                role: "user",
                 timeStamp: serverTimestamp()
             });
-            navigate(-1)
+            
+            //navigate(-1)
             console.log("Document written with ID: ", res.user.uid);
         } catch (error) {
             console.log(error)
@@ -147,4 +145,4 @@ const New = ({ inputs, title }) => {
     );
 };
 
-export default New;
+export default User_new;

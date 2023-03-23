@@ -10,8 +10,11 @@ import New from "./pages/User_pages/new/New";
 //user_magagement
 import Login from "./pages/User_pages/login/Login";
 import User_List from "./pages/User_pages/list/List";
-import User_new from "./pages/User_pages/new/New";
+import User_new from "./pages/User_pages/new/User_New";
 import User_Single from "./pages/User_pages/single/Single";
+
+import AdminList from "./pages/User_pages/list/AdminList";
+import Admin_new from "./pages/User_pages/new/Admin_new";
 
 
 // product_magagement
@@ -33,7 +36,7 @@ import {
 
 } from "react-router-dom";
 
-import { productInputs, userInput } from "./formSource";
+import { productInputs, userInput ,adminInput} from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -69,7 +72,7 @@ function App() {
               </RequireAuth>} />
 
 
-            <Route path="Admins" >
+            <Route path="Users" >
                 <Route index element={
                   <RequireAuth>
                     <User_List />
@@ -81,7 +84,7 @@ function App() {
                   </RequireAuth>} />
 
                 <Route path="new" element={<RequireAuth>
-                  <User_new inputs={userInput} title="Add New Admins" />
+                  <User_new inputs={userInput} title="Add New Users" />
                 </RequireAuth>} />
 
 
@@ -104,10 +107,10 @@ function App() {
 
 {/* --------------------------------------------products -------------------------------------------------*/}
 
-            <Route path="admins" >
+            <Route path="Employees" >
                 <Route index element={
                   <RequireAuth>
-                    <List />
+                    <AdminList />
                   </RequireAuth>} />
                   
                 <Route path=":adminsId" element={<RequireAuth>
@@ -115,7 +118,7 @@ function App() {
                 </RequireAuth>} />
 
                 <Route path="new" element={<RequireAuth>
-                  <New inputs={userInput} title="Add New User" />
+                  <Admin_new inputs={adminInput} title="Add New Employees" />
                 </RequireAuth>} />
 
             </Route>

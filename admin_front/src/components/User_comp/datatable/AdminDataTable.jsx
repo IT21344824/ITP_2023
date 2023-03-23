@@ -1,0 +1,83 @@
+import "./AdminDataTable.scss";
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { adminColums, userRows } from "../../../datatablesource";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { collection, getDocs , deleteDoc , doc , onSnapshot ,where ,query} from "firebase/firestore";
+import { db } from "../../../firebase";
+
+const AdminDataTable = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const unsub = onSnapshot(
+        query(collection(db, "Users"), where("role", "==", "Admins")),
+        (snapshot) => {
+          let list = [];
+          snapshot.docs.forEach((doc) => {
+            list.push({ id: doc.id, ...doc.data() });
+          });
+          setData(list);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      return () => {
+        unsub();
+      };
+    }, []);
+    
+  
+    console.log(data);
+  
+    const handleDelete = async (id) => {
+        try {
+          await deleteDoc(doc(db, "Users", id));
+         setData(data.filter((item) => item.id !== id));
+        } catch (error) {
+          console.log(error);
+        }
+       
+      };
+  
+    const actionColum = [
+      {
+        field: "action",
+        headerName: "Action",
+        width: 160,
+        renderCell: (params) => {
+          return (
+            <div className="cellAction">
+              <Link to="/users/test" style={{ textDecoration: "none" }} >
+                <div className="viewButton"> View </div>
+              </Link>
+              <div className="deleteButton" onClick={() => handleDelete(params.row.id)}  > Delete </div>
+            </div>
+          );
+        },
+      }
+    ]
+  
+  
+    return (
+      <div className="datatable">
+        <div className="datatableTitle">
+          Add New Admins
+          <Link to="/Employees/new" className="link" >
+            Add New
+          </Link>
+        </div>
+        <DataGrid
+          className="datagrid"
+          rows={data}
+          columns={adminColums.concat(actionColum)}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+        />
+      </div>
+    )
+  }
+
+export default AdminDataTable

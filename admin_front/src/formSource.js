@@ -36,6 +36,13 @@ export const userInput =[
 
 },
 {
+    id: "age",
+    lable : "Age",
+    type :"text",
+    placeholder :"Age" ,
+
+},
+{
     id: "dob",
     lable : "Date of Birth",
     type :"text",
@@ -60,6 +67,63 @@ export const userInput =[
 
 
 ];
+
+export const adminInput =[
+    {
+        id:"username" ,
+        lable : "Username",
+        type :"text",
+        placeholder :"juhon" ,
+    
+    },
+    {
+        id: "password",
+        lable : "Password",
+        type :"password",
+        placeholder :"juhon" ,
+    
+    },
+    
+    {
+        id: "name",
+        lable : "Name",
+        type :"akidu",
+        placeholder :"juhon" ,
+    
+    },
+    {
+        id: "email",
+        lable : "Email",
+        type :"text",
+        placeholder :"akidu@gmail.com" ,
+    
+    },
+    {
+        id: "phone",
+        lable : "Phone",
+        type :"text",
+        placeholder :"+345354" ,
+    
+    },
+    
+    {
+        id: "address",
+        lable : "Address",
+        type :"text",
+        placeholder :"kandy. pilimathalawa .asdasd" ,
+    
+    },
+    {
+        id: "gender",
+        lable : "Gender",
+        type :"text",
+        placeholder :" male / femal" ,
+    
+    },
+    
+    
+    
+    ];
 
 
 

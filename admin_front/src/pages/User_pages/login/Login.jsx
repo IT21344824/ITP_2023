@@ -17,20 +17,25 @@ const Login = () => {
 
   const handleLogin = (e)=>{
     e.preventDefault();
-
+  
     signInWithEmailAndPassword (auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    dispatch({type:"LOGIN" , payload:user})
-    navigate("/")
-    // ...
-  })
-  .catch((error) => {
-    setError(true)
-  });
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      // Check if the user's role is "Admins"
+      const userRole = user?.metadata?.customClaims?.role;
+      if (userRole === "Admins") {
+        dispatch({type:"LOGIN" , payload:user})
+        navigate("/")
+      } else {
+        setError(true)
+      }
+    })
+    .catch((error) => {
+      setError(true)
+    });
   };
-
+  
   return (
     <div className="login">
       <form action=""onSubmit={handleLogin}>

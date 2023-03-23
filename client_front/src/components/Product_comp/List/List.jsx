@@ -8,35 +8,42 @@ const List = ({ catId, maxPrice, sort, selectedCategories }) => {
 
   const [products, setProducts] = useState([]);
 
+ 
+
   useEffect(() => {
     const unsub = onSnapshot(collection(db, 'products'),
       (snapshot) => {
         let list = [];
         snapshot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
+          const data = doc.data();
+          if (selectedCategories.length === 0 || selectedCategories.includes(data.item_type.id)) {
+            if (!maxPrice || parseInt(data.price) <= parseInt(maxPrice)) {
+              list.push({ id: doc.id, ...data });
+            }
+          }
         });
+  
+        // Apply sorting based on the sort prop
+        if (sort === 'asc') {
+          list = list.sort((a, b) => a.price - b.price);
+        } else if (sort === 'desc') {
+          list = list.sort((a, b) => b.price - a.price);
+        }
+  
         setProducts(list);
-
       }, (error) => {
         console.log(error);
       });
+  
     return () => {
       unsub();
     };
-  }, []);
-
-
-  const filteredProducts = products
-  .filter((product) =>
-    (selectedCategories.length === 0 || product.Product_category?.some((categoryId) => selectedCategories.includes(categoryId))) &&
-    (catId.length === 0 || product.Product_category?.some((categoryId) => catId.includes(categoryId)))
-  )
+  }, [selectedCategories, maxPrice, sort]);
   
-  // console.log(products.img)
-
+  
   return (
     <div className='List'>
-      {filteredProducts.map((product) => (
+      {products.map((product) => (
         <Card
           key={product.id}
           item={{
