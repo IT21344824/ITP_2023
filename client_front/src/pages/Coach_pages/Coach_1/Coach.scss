@@ -1,27 +1,203 @@
-.coach{
-    margin-left: 100px ;
-    padding-left: 100px ;
-    .nav{
-        padding-left: 100px ;
+.coach {
+    background-color: #f4f0f0;
+    padding: 30px;
+  }
+  .header-container {
+      background-color: black;
+      padding: 20px;
       
     }
-
-    .coach_slide{
-        padding-left: 100px ;
-    }
-
-    .package{
-        padding-left: 100px ;
-    }
-
-    .comment{
-        padding-left: 100px ;
-    }
-
-    .bottom{
-        padding-left: 100px ;
-    }
-
     
-
-}
+    .header-container h1 {
+      color: rgb(255, 247, 247);
+      margin: 0;
+      font-size: 36px;
+    }
+    
+  .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .join_btn,
+    .learn_more_btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #7d7b7bb0;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .join_btn:hover,
+    .learn_more_btn:hover {
+      background-color: #000000;
+      
+    }
+  /* Add a CSS reset 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Add some basic styles for the page 
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }*/
+  
+  .coach {
+    /*max-width: 960px;*/
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header-container h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #f0eaea;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  .join_btn,
+  .learn_more_btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #060606;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .join_btn:hover,
+  .learn_more_btn:hover {
+    background-color: #d9302d;
+  }
+  
+  .subsCribtionImg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .subsCribtionImg img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .bundled-packages-container {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .bundled-packages-container h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .bundled-packages-container h5 {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .bundled-packages-container p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  .why-select-bundle-container {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .why-select-bundle-container h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .why-select-bundle-container h3 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .why-select-bundle-container p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  
+    

@@ -16,6 +16,11 @@ import UserSingle from "./pages/User_pages/single/Single";
 import AdminList from "./pages/User_pages/list/AdminList";
 import AdminNew from "./pages/User_pages/new/Admin_new";
 
+// Coach - magagement
+
+import PackageNew from "./pages/Coach_pages/Packages/PackageNew";
+import CoachTable from "./pages/Coach_pages/list/CoachTable";
+
 
 // product_magagement
 import ProductList from "./pages/Product_pages/list/Product";
@@ -157,19 +162,23 @@ function App() {
 
             </Route>
 
+            {/* ------------------------packages----------------------------------- */}
+
             <Route path="packages" >
               <Route index element={
                 <RequireAuth>
-                  <List />
+                  <CoachTable />
                 </RequireAuth>} />
               <Route path=":packagesId" element={<RequireAuth>
                 <Single />
               </RequireAuth>} />
               <Route path="new" element={<RequireAuth>
-                <New inputs={userInput} title="Add New User" />
+                <PackageNew  />
               </RequireAuth>} />
 
             </Route>
+
+             {/* ----------------------------------------------------------- */}
 
             <Route path="patment_INFO" >
               <Route index element={
