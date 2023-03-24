@@ -9,18 +9,18 @@ import New from "./pages/User_pages/new/New";
 
 //user_magagement
 import Login from "./pages/User_pages/login/Login";
-import User_List from "./pages/User_pages/list/List";
-import User_new from "./pages/User_pages/new/User_New";
-import User_Single from "./pages/User_pages/single/Single";
+import UserList from "./pages/User_pages/list/List";
+import UserNew from "./pages/User_pages/new/User_New";
+import UserSingle from "./pages/User_pages/single/Single";
 
 import AdminList from "./pages/User_pages/list/AdminList";
-import Admin_new from "./pages/User_pages/new/Admin_new";
+import AdminNew from "./pages/User_pages/new/Admin_new";
 
 
 // product_magagement
 import ProductList from "./pages/Product_pages/list/Product";
-import Product_ID from "./pages/Product_pages/single/Product_ID";
-import Product_new from "./pages/Product_pages/new/Product_New";
+import ProductID from "./pages/Product_pages/single/Product_ID";
+import ProductNew from "./pages/Product_pages/new/Product_New";
 
 // import CategoryList from "./pages/Product_pages/list/Category";
 // import Category_ID from "./pages/Product_pages/single/Category_ID";
@@ -36,7 +36,7 @@ import {
 
 } from "react-router-dom";
 
-import { productInputs, userInput ,adminInput} from "./formSource";
+import {  userInput ,adminInput} from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -75,16 +75,16 @@ function App() {
             <Route path="Users" >
                 <Route index element={
                   <RequireAuth>
-                    <User_List />
+                    <UserList />
                   </RequireAuth>} />
 
                 <Route path=":userId" element={
                   <RequireAuth>
-                    <User_Single />
+                    <UserSingle />
                   </RequireAuth>} />
 
                 <Route path="new" element={<RequireAuth>
-                  <User_new inputs={userInput} title="Add New Users" />
+                  <UserNew inputs={userInput} title="Add New Users" />
                 </RequireAuth>} />
 
 
@@ -93,8 +93,8 @@ function App() {
 
             <Route path="products" >
               <Route index element={<RequireAuth> <ProductList /> </RequireAuth>} />
-              <Route path=":productId" element={<RequireAuth> <Product_ID /> </RequireAuth>} />
-              <Route path="new" element={<RequireAuth> <Product_new /> </RequireAuth>} />
+              <Route path=":productId" element={<RequireAuth> <ProductID /> </RequireAuth>} />
+              <Route path="new" element={<RequireAuth> <ProductNew /> </RequireAuth>} />
 
             </Route>
 
@@ -118,7 +118,7 @@ function App() {
                 </RequireAuth>} />
 
                 <Route path="new" element={<RequireAuth>
-                  <Admin_new inputs={adminInput} title="Add New Employees" />
+                  <AdminNew inputs={adminInput} title="Add New Employees" />
                 </RequireAuth>} />
 
             </Route>
