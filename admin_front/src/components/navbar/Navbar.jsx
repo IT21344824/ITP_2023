@@ -6,7 +6,7 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ListIcon from '@mui/icons-material/List';
 import CropFreeOutlinedIcon from '@mui/icons-material/CropFreeOutlined';
-import { useContext, useState } from "react";
+import { useContext, useState , useRef, useEffect} from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import Results from "../SearchBar/Results";
 
@@ -15,12 +15,27 @@ const Navbar = () => {
 
   const { dispatch } = useContext(DarkModeContext);
 
+  //--------------search bar--------------------------
   const [searchQuery, setSearchQuery] = useState("");
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearchQuery("");
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
 
   const handleSearchInput = (event) => {
     setSearchQuery(event.target.value);
-  }
+  };
 
+  //-----------------------------------------------------
 
   return (
     <div className='navbar'>
@@ -29,12 +44,18 @@ const Navbar = () => {
         <div className="search_box">
 
           <div className="search_container">
-            <input type="text" placeholder="search.." className="search_input" onChange={handleSearchInput} />
+            <input
+              type="text"
+              placeholder="search.."
+              className="search_input"
+              onChange={handleSearchInput}
+              value={searchQuery}
+            />
             <SearchIcon className="icon" />
           </div>
-
-          {searchQuery !== "" && <Results searchQuery={searchQuery} className="search_result" />}
-
+          {searchQuery !== "" && (
+            <Results searchQuery={searchQuery} className="search_result" />
+          )}
         </div>
 
         <div className="items">
