@@ -1,15 +1,18 @@
-import { useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import './navbar.scss';
 import { Link } from 'react-router-dom';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { DarkModeContext } from "../../context/darkModeContext";
 import Cart from '../Cart/Cart';
 import Results from './Search/Results';
 
 const Navbar = ({ selectedLink, handleLinkClick }) => {
   const [open, setOpen] = useState(false);
+  const { dispatch } = useContext(DarkModeContext);
 
   //--------------search bar--------------------------
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +50,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
             </Link>
             <div className="search_box">
               <div className="search_container" ref={searchRef}>
-              <input
+                <input
                   type="text"
                   placeholder="search.."
                   className="search_input"
@@ -75,7 +78,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
             </div>
 
             <div className="icons">
-           
+              <DarkModeOutlinedIcon className="icon" onClick={() => dispatch({ type: "TOGGLE" })} />
               <PersonIcon />
               <FavoriteBorderIcon />
               <div className="cartIocn" onClick={() => setOpen(!open)}>
@@ -87,7 +90,8 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
           </div>
 
         </div>
-
+        
+        <hr />
 
         <div className="bot_section">
 

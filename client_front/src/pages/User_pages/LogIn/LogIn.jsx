@@ -1,9 +1,9 @@
 import React from 'react'
 import './LogIn.scss'
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase"
+//import { auth } from "../../../firebase"
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../../context/AuthContext";
+//import { AuthContext } from "../../../context/AuthContext";
 import { useContext, useState } from "react";
 
 const LogIn = () => {
@@ -14,22 +14,22 @@ const LogIn = () => {
 
   const navigate = useNavigate();
 
-  const { dispatch } = useContext(AuthContext)
+  //const { dispatch } = useContext(AuthContext)
 
   const handleLogin = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        dispatch({ type: "LOGIN", payload: user })
-        navigate("/")
-        // ...
-      })
-      .catch((error) => {
-        setError(true)
-      });
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in 
+    //     const user = userCredential.user;
+    //     dispatch({ type: "LOGIN", payload: user })
+    //     navigate("/")
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     setError(true)
+    //   });
   };
 
   return (

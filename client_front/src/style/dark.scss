@@ -1,0 +1,97 @@
+.app.dark {
+
+    background-color: #222;
+    color: white;
+
+    input {
+        color: white;
+    }
+
+    .navbar {
+        .bot_section {
+            .link {
+                color: white;
+            }
+
+            .selected {
+                background-color: rgba(0, 255, 255, 0.625);
+            }
+        }
+    }
+
+    .slider {
+        border: 5px solid #5f5e5ebd;
+    }
+
+    .back_color {
+        .footer {
+            h1 {
+                color: #d0d0d0;
+            }
+        }
+    }
+
+
+    //-----------------------------------------------start of products ---------------------------------------------------------------------------
+
+    .card {
+        .h2_id {
+            font-weight: bold;
+            color: rgb(141, 141, 141);
+        }
+
+        color: white;
+    }
+
+    .products {
+        .left {
+            .filterItems {
+                h2 {
+                    color: rgb(255, 251, 0);
+                }
+
+                .inputItem {
+                    font-weight: normal;
+                    font-size: normal;
+                }
+            }
+        }
+    }
+
+    .product{
+        .right{
+            .price{
+                color: rgb(162, 255, 0);
+            }
+            .links{
+                .item{
+                    color: rgba(191, 4, 4, 0.759);
+                }
+            }
+            .info{
+                .type{
+                    color: rgb(177, 177, 177);
+                }
+            }
+        }
+
+       
+
+    }
+    .list_container{
+        .search_table{
+            .from_search{
+                input {
+                    background-color: #868686;
+                    color: rgb(0, 0, 0);
+
+                    &::placeholder{
+                        color: rgb(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+    //-----------------------------------------------end of products ---------------------------------------------------------------------------
+
+}

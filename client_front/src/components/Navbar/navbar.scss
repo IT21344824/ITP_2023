@@ -1,6 +1,6 @@
 .navbar {
     height: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 
     .wrapper {
 
@@ -8,7 +8,7 @@
             //padding: 10px 30px;
             display: flex;
             justify-content: space-between;
-            margin-right: 20px;
+            padding-right: 20px;
 
 
 
@@ -147,6 +147,11 @@
             }
 
 
+        }
+
+        hr{
+            margin-top: -4px;
+            margin-bottom: 16px;
         }
 
         .bot_section {

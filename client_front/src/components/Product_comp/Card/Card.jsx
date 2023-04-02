@@ -8,7 +8,7 @@ const Card = ({ item, productId }) => {
     return (
         <Link className='link' to={`/Products/${productId}`} state={{ productId}}>
             <div className='card'>
-                <h2>{item.Product_id}</h2>
+                <h2 className='h2_id'>{item.Product_id}</h2>
 
                 <div className="image">
                     {item.attributes && item.attributes.isNew && <span>New Season</span>}

@@ -6,12 +6,14 @@ import {
   Outlet,
   Route,
 } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import React, { useContext , useState, useEffect } from 'react';
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ContactUs from './pages/contact_us/ContactUs';
 import AboutUs from './pages/about_us/AboutUs';
+import { DarkModeContext } from "./context/darkModeContext";
+import "./style/dark.scss";
 import './App.scss';
 
 //user managements
@@ -31,6 +33,8 @@ import Cart from './pages/Cart_pages/Cart_page';
 
 
 const Layout = () => {
+  const { darkMode } = useContext(DarkModeContext);
+  
   const [selectedLink, setSelectedLink] = useState(localStorage.getItem('selectedLink') || '');
 
   const handleLinkClick = (link) => {
@@ -46,7 +50,7 @@ const Layout = () => {
   }, []);
 
   return(
-    <div className='app'>
+    <div className={darkMode ? "app dark" : "app"}>
       <Navbar selectedLink={selectedLink} handleLinkClick={handleLinkClick} />
       <Outlet/>
       <Footer selectedLink={selectedLink} handleLinkClick={handleLinkClick} />
@@ -104,6 +108,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
     <div className="App">
         <RouterProvider router={router} />

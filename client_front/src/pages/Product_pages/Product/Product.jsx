@@ -73,75 +73,75 @@ const Product = () => {
 
   return (
     <div className='product'>
-    <div className='top'>
-      <div className="left">
-        <div className="images">
-          {product && product.img && product.img.length > 0 && (
-            <>
-              {product.img.map((imgUrl, index) => (
-                <img key={index} src={imgUrl} alt="" onClick={e => setSelectedImg(index)} />
-              ))}
-            </>
-          )}
-        </div>
+      <div className='top'>
+        <div className="left">
+          <div className="images">
+            {product && product.img && product.img.length > 0 && (
+              <>
+                {product.img.map((imgUrl, index) => (
+                  <img key={index} src={imgUrl} alt="" onClick={e => setSelectedImg(index)} />
+                ))}
+              </>
+            )}
+          </div>
 
-        <div className="mainImg">
-          {product && product.img && product.img[selectedImg] && <img src={product.img[selectedImg]} alt="" />}
+          <div className="mainImg">
+            {product && product.img && product.img[selectedImg] && <img src={product.img[selectedImg]} alt="" />}
+          </div>
+
+        </div>
+        <div className="right">
+
+          <h1>{product.item_name}</h1>
+          <span className='price'> Rs : {product.price}</span>
+          <p>{product.description}</p>
+
+          <div className="quantity">
+            <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}> - </button>
+            {quantity}
+            <button onClick={() => setQuantity(prev => prev + 1)}> + </button>
+          </div>
+
+          <button className="add" disabled={product.status === "Out Of Stock"}>
+            <AddShoppingCartIcon /> ADD TO CART
+          </button>
+
+
+          <div className="links">
+            <div className="item">
+              <FavoriteBorderIcon /> ADD TO WISH LIST
+            </div>
+
+            <div className="item">
+              <BalanceIcon /> ADD TO COMPARE
+            </div>
+          </div>
+
+          <div className="info">
+            {/* <span> Vendor : {product.vendor}</span> */}
+            <span> Product type : <span className='type'> {itemTypeData.categoryDoc}</span></span>
+            <span > Available : <span className={`status ${product.status === 'In Stock' ? 'in-stock' : 'not-in-stock'}`}> {product.status}</span></span>
+          </div>
+
+          <hr className='hr' />
+
+
+
         </div>
 
       </div>
-      <div className="right">
-
-        <h1>{product.item_name}</h1>
-        <span className='price'> Rs : {product.price}</span>
-        <p>{product.description}</p>
-
-        <div className="quantity">
-          <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}> - </button>
-          {quantity}
-          <button onClick={() => setQuantity(prev => prev + 1)}> + </button>
-        </div>
-
-        <button className="add" disabled={product.status === "Out Of Stock"}>
-          <AddShoppingCartIcon /> ADD TO CART
-        </button>
-
-
-        <div className="links">
-          <div className="item">
-            <FavoriteBorderIcon /> ADD TO WISH LIST
-          </div>
-
-          <div className="item">
-            <BalanceIcon /> ADD TO COMPARE
-          </div>
-        </div>
-
-        <div className="info">
-          {/* <span> Vendor : {product.vendor}</span> */}
-          <span> Product type : <span className='type'> {itemTypeData.categoryDoc}</span></span>
-          <span > Available : <span className={`status ${product.status === 'In Stock' ? 'in-stock' : 'not-in-stock'}`}> {product.status}</span></span>
-        </div>
-
-        <hr className='hr' />
-
-
-
-      </div>
-      
-    </div>
-    <div className="bot">
+      <div className="bot">
 
         <div className="details">
           <p> DESCRIPTION </p>
-          
+
           <p> ADDITIONAL INFO </p>
-          
+
           <p> FAQ </p>
         </div>
 
       </div>
-      
+
     </div>
   );
 }
