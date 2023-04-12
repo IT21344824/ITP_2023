@@ -17,7 +17,7 @@ const Product_ID = ({ id }) => {
     //geting id from http
     const location = useLocation();
     const _id = location.state.id;
-   
+
 
     //geting selected data
     const [data, setData] = useState({});
@@ -51,11 +51,11 @@ const Product_ID = ({ id }) => {
         const unsubscribe = onSnapshot(docRef, async (doc) => {
             if (doc.exists()) {
                 const data = doc.data();
-                setData(data); 
+                setData(data);
 
                 // update the state with retrieved data
                 const categoryDoc = await getDoc(data.item_type);
-               
+
                 const item_type_ref = data.item_type;
 
                 getItemTypeData(item_type_ref).then((data) => {
@@ -143,8 +143,53 @@ const Product_ID = ({ id }) => {
                         )}
 
 
+                        <div className="animation_p_id">
+                            <span className="borderline"></span>
+                            <div className="p_details">
+                                <div className="delail">
+                                    <div className="p_inputbox">
+                                        <p>{data?.Product_id ?? ''}</p>
+                                        <span> Product Id </span>
+                                    </div>
 
-                        <div>
+                                    <div className="p_inputbox">
+                                        <p>{data?.item_name ?? ''}</p>
+                                        <span> Item Name </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{data?.price ?? ''}</p>
+                                        <span> Price (RS) </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{data?.qty ?? ''}</p>
+                                        <span> Quantity </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{itemTypeData?.categoryDoc ?? ''}</p>
+                                        <span> Item Type </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{data?.status ?? ''}</p>
+                                        <span>  status </span>
+                                    </div>
+
+                                    <div className="p_inputbox">
+                                        <p>{data?.description ?? ''}</p>
+                                        <span>  Description </span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        {/* <div>
                             <table className="table_predata">
                                 <tbody>
                                     <tr>
@@ -153,7 +198,7 @@ const Product_ID = ({ id }) => {
                                         <td><span className="previous_data">{data?.Product_id ?? ''}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>Item Name </td>
+                                        <td> Item Name </td>
                                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                                         <td><span className="previous_data">{data?.item_name ?? ''}</span></td>
                                     </tr>
@@ -187,7 +232,7 @@ const Product_ID = ({ id }) => {
                             </table>
                         </div>
 
-
+ */}
 
 
 

@@ -7,9 +7,27 @@ import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
 import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//delete
+import { onConfirm } from 'react-confirm-pro';
+
+//--
 
 
 const ProductTable = ({ id }) => {
+  //nofify--
+  const notifyStyle = {
+    whiteSpace: 'pre-line'
+  }
+  const progressStyle = {
+    background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+  }
+
+  //---
 
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,12 +49,21 @@ const ProductTable = ({ id }) => {
       const item_type_data = snapshot.data();
       if (!item_type_data) {
         return "";
-      } 
+      }
       //console.log(item_type_data.Cat_name);
       return item_type_data.Cat_name.toString();
-      
+
     } catch (error) {
       console.error(error);
+      toast.error(`Error : ${error} `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return "";
     }
   };
@@ -63,24 +90,24 @@ const ProductTable = ({ id }) => {
     { field: "qty", headerName: "Quantity", width: 110 },
     { field: "status", headerName: "Status", width: 150 },
     {
-    field: "item_type",
-    headerName: "Item Type",
-    width: 150,
-    valueGetter: (params) => {
-      const item_type_ref = params.row.item_type;
-      if (!item_type_ref) {
-        return "";
-      }
-      if (itemTypeData[params.row.id]) {
-        return itemTypeData[params.row.id];
-      }
-      getItemTypeData(item_type_ref).then((data) => {
-        setItemTypeData((prevData) => ({ ...prevData, [params.row.id]: data }));
-      });
-      return "[Loading]";
+      field: "item_type",
+      headerName: "Item Type",
+      width: 150,
+      valueGetter: (params) => {
+        const item_type_ref = params.row.item_type;
+        if (!item_type_ref) {
+          return "";
+        }
+        if (itemTypeData[params.row.id]) {
+          return itemTypeData[params.row.id];
+        }
+        getItemTypeData(item_type_ref).then((data) => {
+          setItemTypeData((prevData) => ({ ...prevData, [params.row.id]: data }));
+        });
+        return "[Loading]";
+      },
     },
-  },
-    
+
   ];
 
 
@@ -106,7 +133,7 @@ const ProductTable = ({ id }) => {
 
 
   // show all data
-  
+
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, "products"),
@@ -127,13 +154,82 @@ const ProductTable = ({ id }) => {
 
   //table delete data function
   const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "products", id));
-      setData(data.filter((item) => item.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-
+    const defaultOptions = {
+      title: (
+          <h3>
+              Are you sure?
+          </h3>
+      ),
+      description: (
+          <p>Do you really want to delete this records? This process cannot be undone.</p>
+      ),
+      onSubmit: async() => {
+        try {
+          await deleteDoc(doc(db, "products", id));
+          setData(data.filter((item) => item.id !== id));
+    
+          toast.success(`Successfully Deleted \nID: ${id}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            icon: (
+              <span
+                style={{
+    
+                  background: "#CC0D00",
+                  borderRadius: "50%",
+                  width: "25px",
+                  height: "25px",
+                  textAlign: "center",
+                  verticalAlign: "middle",
+                  lineHeight: "27px",
+                  color: "white",
+                  fontSize: "14px",
+                }}
+              >
+                &#10003;
+              </span>
+            ),
+            style: {
+              background: "gray",
+              color: "white",
+            },
+          });
+        } catch (error) {
+          console.log(error);
+    
+          toast.error(`Error deleting `, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+    
+      },
+      onCancel: () => {
+         // alert("Cancel")
+      },
+  };
+  onConfirm({
+      ...defaultOptions,
+      type: "dark",
+      btnSubmit: "confirm ",
+      btnCancel: "Cancle ",
+      keyboardEvents: {
+          escape: true,
+          submit: true
+      }
+  })
+  
   };
 
   //table action header /function
@@ -198,6 +294,23 @@ const ProductTable = ({ id }) => {
 
 
       </div>
+
+      {/* <ToastContainer
+       position="top-right"
+       autoClose={5000}
+       limit={6} //-
+       hideProgressBar={false}
+       newestOnTop={false} //-
+       closeOnClick
+       rtl={false} //--
+       pauseOnFocusLoss //--
+       draggable
+       pauseOnHover
+       theme="light"
+
+        style={notifyStyle}
+      // progressStyle={progressStyle}
+      /> */}
     </div>
   )
 }

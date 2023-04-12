@@ -9,12 +9,13 @@
 
     .navbar {
         .bot_section {
+            background-color: #b5b5b5;
             .link {
-                color: white;
+                color: rgb(0, 0, 0)
             }
 
             .selected {
-                background-color: rgba(0, 255, 255, 0.625);
+                background-color: crimson;
             }
         }
     }

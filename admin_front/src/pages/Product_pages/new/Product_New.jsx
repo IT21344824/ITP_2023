@@ -3,12 +3,28 @@ import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import { useEffect, useState } from "react";
-import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onSnapshot ,doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onSnapshot, doc } from "firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//--
+
 
 const Product_New = () => {
+
+    //nofify--
+    const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+    }
+
+    //---
 
     //image upload
     const [files, setFiles] = useState([]);
@@ -81,6 +97,7 @@ const Product_New = () => {
     //---------------------------Products-----------------------------------------------
 
     const handleInputChange = (event) => {
+        setShowHint(false);
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
 
@@ -98,37 +115,133 @@ const Product_New = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        let hasError = false;
+
         if (!formData.Product_id) {
-            alert("Please enter the Product_id");
+            //alert("Please enter the Product_id");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter the Product_id!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         }
         if (!formData.item_name) {
-            alert("Please enter the item_name");
+            // alert("Please enter the item_name");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter the item_name!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+
+            });
+            return;
+        }
+
+        if (!formData.price || isNaN(formData.price)) {
+            // alert("Please enter a number for the item price ");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please a number for the item price!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        if (!formData.qty || isNaN(formData.qty)) {
+            //alert("Please enter a number for the quantity");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter a number for the quantity!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        if (!formData.item_type) {
+            //alert("Please select a category");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter a category!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        if (!formData.status) {
+            //alert("Please select a status type");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter the status type!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         }
 
         if (!formData.description) {
-            alert("Please enter the description");
+            //alert("Please enter the description");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter the description!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         }
-        if (!formData.price || isNaN(formData.price)) {
-            alert("Please enter a number for the item price ");
-            return;
-        }
-        if (!formData.qty || isNaN(formData.qty)) {
-            alert("Please enter a number for the quantity");
-            return;
-        }
-        if (!formData.item_type) {
-            alert("Please select a category");
-            return;
-        }
-        if (!formData.status) {
-            alert("Please select a status type");
-            return;
-        }
+
         if (files.length === 0) {
-            alert("Please select an image");
+            //alert("Please select an image");
+            setShowHint(true);
+            hasError = true;
+            toast.warn('Please enter the image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        if (hasError) {
             return;
         }
 
@@ -142,7 +255,16 @@ const Product_New = () => {
 
             const querySnapshot = await getDocs(queryRef);
             if (querySnapshot.size > 0) {
-                alert("Product_id already exists in the database");
+                //alert("Product_id already exists in the database");
+                toast.error('Product_id already exists in the database!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 return;
             }
 
@@ -150,7 +272,17 @@ const Product_New = () => {
             const itemQueryRef = query(productsRef, where("item_name", "==", formData.item_name));
             const itemQuerySnapshot = await getDocs(itemQueryRef);
             if (itemQuerySnapshot.size > 0) {
-                alert("item_name already exists in the database");
+                //alert("item_name already exists in the database");
+                toast.error('item_name already exists in the database!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 return;
             }
 
@@ -185,7 +317,20 @@ const Product_New = () => {
                 timeStamp: serverTimestamp(),
             });
             console.log("Document written with ID: ", newProductRef.id);
-            alert(`New Product have added and ID: ${newProductRef.id}`);
+            // alert(`New Product have added and ID: ${newProductRef.id}`);
+
+            //nofity
+
+            toast.success(`Successful \nID: ${newProductRef.id}`, {
+                background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)',
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
 
             setFormData(initialFormData);
             setFiles([]);
@@ -213,10 +358,10 @@ const Product_New = () => {
         const item_type_ref = selectedOption ? doc(db, "Product_Category", selectedOption.id) : null;
         setFormData({ ...formData, item_type: item_type_ref });
         console.log(item_type_ref);
-      };
-      
+    };
 
-    // ----------------------------------------------------------------
+
+    // ------------Product_Category----------------------------------------------------
 
     const fetchData = () => {
         const unsub = onSnapshot(
@@ -265,6 +410,11 @@ const Product_New = () => {
     const handleMiniImageClick = (event) => {
         setSelectedImage(event.target.dataset.src);
     };
+    //-------error massage------
+    const [ShowHint, setShowHint] = useState(false);
+
+
+
 
 
 
@@ -323,101 +473,145 @@ const Product_New = () => {
                             {/*------------------------------------------------------------------*/}
 
                             <div className="formInput img_tag">
-                                <label htmlFor="file">
-                                    Image : <DriveFolderUploadIcon className="icon" />
-                                </label>
-                                <input
-                                    type="file"
-                                    id="file"
-                                    onChange={(e) => setFiles(Array.from(e.target.files))}
-                                    multiple
-                                    style={{ display: "none" }}
-                                />
-                                <button onClick={(event) => {
-                                    event.preventDefault();
-                                    setFormData({
-                                        ...formData,
-                                        img: []
-                                    });
-                                    setFiles([]);
-                                    setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
-                                    setSelectedImage(null); // set the selectedImage to null
-                                }} className="clear_img"> clear </button>
+                                <div>
+                                    <label htmlFor="file">
+                                        Image : <DriveFolderUploadIcon className="icon" />
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        onChange={(e) => setFiles(Array.from(e.target.files))}
+                                        multiple
+                                        style={{ display: "none" }}
+                                        className={ShowHint && (files.length === 0) ? 'error' : ''}
+                                    />
+                                     {ShowHint && (files.length === 0) && (
+                                        <div className="p_new_hint img_hint" >
+                                            Please enter the Product Id!
+                                        </div>
+                                    )}
 
+                                    <button onClick={(event) => {
+                                        event.preventDefault();
+                                        setFormData({
+                                            ...formData,
+                                            img: []
+                                        });
+                                        setFiles([]);
+                                        setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
+                                        setSelectedImage(null); // set the selectedImage to null
+                                    }} className="clear_img"> clear </button>
+                                </div>
+                               
                             </div>
                             {/*------------------------------------------------------------------*/}
 
 
 
-                            <div className="formInput">
-                                <label> Product Id </label>
+                            <div className={`formInput ${ShowHint ? 'error' : ''}`}>
+                                <label> Product Id : </label>
                                 <input
                                     type="text"
                                     name="Product_id"
                                     value={formData.Product_id}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Id...."
+                                    //required
+                                    // add a class to the input when ShowHint is true
+                                    className={ShowHint && !formData.Product_id ? 'error' : ''}
                                 />
+                                {ShowHint && !formData.Product_id && (
+                                    <div className="p_new_hint" >
+                                        Please enter the Product Id!
+                                    </div>
+                                )}
                             </div>
 
                             <div className="formInput">
-                                <label>Item Name</label>
+                                <label>Item Name :</label>
                                 <input
                                     type="text"
                                     name="item_name"
                                     value={formData.item_name}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Name...."
+                                    //required
+                                    className={ShowHint && !formData.item_name ? 'error' : ''}
                                 />
+                                {ShowHint && !formData.item_name && (
+                                    <div className="p_new_hint" >
+                                        Please enter the Item Name!
+                                    </div>
+                                )}
                             </div>
 
 
 
                             <div className="formInput">
-                                <label>Price (RS)</label>
+                                <label>Price (RS) :</label>
                                 <input
                                     type="text"
                                     name="price"
                                     value={formData.price}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Price...."
+                                    className={ShowHint && (!formData.price || isNaN(formData.price)) ? 'error' : ''}
                                 />
+                                {ShowHint && (!formData.price || isNaN(formData.price)) && (
+                                    <div className="p_new_hint" >
+                                        Please enter a number for Price !
+                                    </div>
+                                )}
                             </div>
 
                             <div className="formInput">
-                                <label>Quantity</label>
+                                <label>Quantity :</label>
                                 <input
                                     type="text"
                                     name="qty"
                                     value={formData.qty}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Quantity...."
+                                    className={ShowHint && (!formData.qty || isNaN(formData.qty)) ? 'error' : ''}
                                 />
+                                {ShowHint && (!formData.qty || isNaN(formData.qty)) && (
+                                    <div className="p_new_hint" >
+                                        Please enter a number for Quantity !
+                                    </div>
+                                )}
                             </div>
+
                             <div className="formInput">
                                 {/* ---------------------------------------------------------------------------------------------------------------------------------------- */}
 
                                 <div className="Item_Type">
                                     <div>
-                                        <label htmlFor="item_type">Category:</label>
-                                        <select id="category" name="category" className="P_cat" onChange={handleCategoryChange}>
+                                        <label htmlFor="item_type">Category :</label>
+                                        <select id="category" name="category" className={`P_cat ${ShowHint && !formData.item_type ? 'error' : ''}`}
+                                            onChange={handleCategoryChange}>
                                             <option value=""> </option>
                                             {/* <option value={formData.item_type}> </option> */}
                                             {data.map((item) => (
                                                 <option key={item.Cat_name} value={item.Cat_name} >
-                                                   
+
                                                     {item.Cat_name}
                                                 </option>
                                             ))}
                                         </select>
+                                        {ShowHint && !formData.item_type && (
+                                            <div className="p_new_hint" >
+                                                Please select a Category !
+                                            </div>
+                                        )}
 
                                     </div>
                                 </div>
                                 {/* ---------------------------------------------------------------------------------------------------------------------------------------- */}
 
                                 <div className="status" >
-                                    <label> status </label>
-                                    <div className="line_height" style={{ display: "flex", alignItems: "center" }}>
+                                    <label> status : </label>
+                                    <div className={`line_height ${ShowHint && !formData.status ? 'error' : ''}`}
+                                        style={{ display: "flex", alignItems: "center" }}>
                                         <label style={{ marginRight: "20px" }}>
                                             <input
                                                 type="radio"
@@ -439,19 +633,29 @@ const Product_New = () => {
                                             Out&nbsp;Of&nbsp;Stock
                                         </label>
                                     </div>
+                                    {ShowHint && !formData.status && (
+                                        <div className="p_new_hint" >
+                                            Please select the status!
+                                        </div>
+                                    )}
                                 </div>
 
                             </div>
 
                             <div className="formInput">
-                                <label>Description</label>
+                                <label>Description :</label>
                                 <textarea
-                                    className="Description"
+                                    className={`Description ${ShowHint && !formData.description ? 'error' : ''}`}
                                     name="description"
                                     value={formData.description}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Description...."
                                 ></textarea>
+                                {ShowHint && !formData.description && (
+                                    <div className="p_new_hint" >
+                                        Please enter the Description !
+                                    </div>
+                                )}
                             </div>
 
                             <div className="formButton">
@@ -462,6 +666,25 @@ const Product_New = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                limit={6} //-
+                hideProgressBar={false}
+                newestOnTop={false} //-
+                closeOnClick
+                rtl={false} //--
+                pauseOnFocusLoss //--
+                draggable
+                pauseOnHover
+                theme="colored"
+
+                style={notifyStyle}
+
+            // progressStyle={progressStyle}
+
+            />
+
         </div>
     );
 }

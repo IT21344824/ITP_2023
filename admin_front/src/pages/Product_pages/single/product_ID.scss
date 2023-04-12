@@ -20,52 +20,52 @@
                 border-radius: 10px;
                 position: relative;
 
-                .pre_title{
-                        display: flex;
-                        justify-content: space-between;
-                        margin-bottom: 70px;
+                .pre_title {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 70px;
 
-                        button{
-                            font-family: "Roboto" , sans-serif;
-                            font-size: 18px;
-                            font-weight: bold;
-                            background: #1E90FF;
-                            width: 90px;
-                            padding: 10px;
-                            text-align: center;
-                            text-decoration: none;
-                            text-transform: uppercase;
-                            color: #fff;
-                            border-radius: 5px;
-                            cursor: pointer;
-                            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                            border: none;
-                            -webkit-transition-duration: 0.3s;
-                            transition-duration: 0.3s;
-                            -webkit-transition-property: box-shadow , transform;
-                            transition-property: box-shadow , transform;
-                            // color: #ffffff;
-                            // background-color: #1100ffc5;
-                            // border: none;
-                            // border-radius: 10px;
-                            // width: 90px;
-                            // cursor: pointer;
+                    button {
+                        font-family: "Roboto", sans-serif;
+                        font-size: 18px;
+                        font-weight: bold;
+                        background: #1E90FF;
+                        width: 90px;
+                        padding: 10px;
+                        text-align: center;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        color: #fff;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        border: none;
+                        -webkit-transition-duration: 0.3s;
+                        transition-duration: 0.3s;
+                        -webkit-transition-property: box-shadow, transform;
+                        transition-property: box-shadow, transform;
+                        // color: #ffffff;
+                        // background-color: #1100ffc5;
+                        // border: none;
+                        // border-radius: 10px;
+                        // width: 90px;
+                        // cursor: pointer;
 
-                            &:hover{
-                                box-shadow: 0 0 20px rgba(0,0,0,0.5);
-                                -webkit-transform: scale(1.1);
-                                transform: scale(1.1);
+                        &:hover {
+                            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                            -webkit-transform: scale(1.1);
+                            transform: scale(1.1);
 
 
-                            }
                         }
+                    }
                 }
 
                 .pre_Img {
                     display: flex;
                     flex-wrap: wrap;
                     gap: 50px;
-                   
+                    margin-bottom: 70px;
 
                     justify-content: center;
                     align-items: center;
@@ -76,9 +76,9 @@
                         overflow: hidden;
                         cursor: pointer;
                         border: 2px solid rgb(251, 0, 0);
-                    
+
                         border-radius: 20px;
-    
+
 
                         img {
                             width: 100%;
@@ -91,26 +91,177 @@
                     }
                 }
 
-                .table_predata {
-                    margin-top: 50px;
-                    //width: 60%;
-                    margin-left: 40px;
-                    font-size: 20px;
-                    border: 1px solid gray;
-                    padding: 40px;
-                    border-radius: 20px;
-
-                    td {
+                .animation_p_id {
+                    //background: #fff;
+                    position: relative;
+                    overflow: hidden;
+                    //background: #df2100;
+                    border-radius: 22px;
+                    //--
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 36%;
+                        left: -10%;
+                        width: 700px;
+                        height: 120px;
                         
-                        padding-top: 5px;
-                        padding-bottom: 5px;
+                        background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
+                        z-index: 1;
+                        transform-origin: bottom right;
+                        animation: animate 10s linear infinite;
+                      
                     }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 36%;
+                        left: -10%;
+                        width: 700px;
+                        height: 120px;
+                        
+                        background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
+                        z-index: 1;
+                        transform-origin: bottom right;
+                        animation: animate 10s linear infinite;
+                        animation-delay: -5s;
+                      
+                    }
+
+
+                    // .borderline{
+                    //     position: relative;
+                    //     top: 0;
+                    //     inset: 0;
+
+                    //     &::before {
+                    //         content: '';
+                    //         position: absolute;
+                    //         top: 20%;
+                    //         left: -10%;
+                    //         width: 700px;
+                    //         height: 120px;
+                            
+                    //         background: linear-gradient(0deg, transparent, transparent, #4303f4, #4303f4, #4303f4);
+                    //         z-index: 1;
+                    //         transform-origin: bottom right;
+                    //         //animation: animate 10s linear infinite;
+                          
+                    //     }
+                    //     // &::after {
+                    //     //     content: '';
+                    //     //     position: absolute;
+                    //     //     top: 20%;
+                    //     //     left: -10%;
+                    //     //     width: 700px;
+                    //     //     height: 120px;
+                            
+                    //     //     background: linear-gradient(0deg, transparent, transparent, #4303f4, #4303f4, #4303f4);
+                    //     //     z-index: 1;
+                    //     //     transform-origin: bottom right;
+                    //     //    // animation: animate 10s linear infinite;
+                    //     //     animation-delay: -8.5s;
+                          
+                    //     // }
+                    // }
+
+
+                    @keyframes animate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            transform: rotate(360deg);
+                        }
+
+                    }
+
+
+
+                    .p_details {
+                        margin: 4px;
+                        border: 1px solid gray;
+                        padding: 40px;
+                        border-radius: 20px;
+                      //  //width: 91%;
+                        position: relative;
+                        z-index: 2;
+                        background: #f4f4f4;
+
+
+                        .delail {
+                            display: flex;
+                            flex-wrap: wrap;
+                            // gap: 30px;
+                            justify-content: space-around;
+
+                            .p_inputbox {
+                                position: relative;
+                                margin: 20px;
+
+                                p {
+                                    padding: 20px 10px 12px 30px;
+                                    border: none;
+                                    width: 25vw;
+                                    background: #c7c7c7;
+                                    border: 1px solid #00dfc4;
+                                    color: #050505;
+                                    font-weight: 300;
+                                    border-radius: 25px;
+                                    font-size: 1rem;
+                                    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                        5px 5px 15px rgba(0, 0, 0, 0.35);
+                                    word-wrap: break-word;
+                                    /* add this property to wrap long text */
+                                }
+
+                                span {
+                                    color: #f7e740;
+                                    border: 1px solid #00dfc4;
+                                    background: #223243a6;
+                                    font-size: 15px;
+                                    padding: 0 8px;
+                                    border-radius: 25px;
+                                    position: absolute;
+                                    /* position the span absolutely within the inputbox */
+                                    top: -7px;
+                                    /* move the span up by 10px from the top of the inputbox */
+                                    left: 25px;
+                                    /* move the span 25px from the left of the inputbox */
+                                }
+
+
+                            }
+                        }
+
+                        //background: red;
+
+                    }
+
                 }
 
-               
+
+                // .table_predata {
+                //     margin-top: 50px;
+                //     //width: 60%;
+                //     margin-left: 40px;
+                //     font-size: 20px;
+                //     border: 1px solid gray;
+                //     padding: 40px;
+                //     border-radius: 20px;
+
+                //     td {
+
+                //         padding-top: 5px;
+                //         padding-bottom: 5px;
+                //     }
+                // }
+
+
             }
 
         }
     }
-    
+
 }

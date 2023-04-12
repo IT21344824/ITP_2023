@@ -27,18 +27,21 @@ const AboutUs = () => {
                         </div>
                         <div className="right">
                             <div className="img">
-                                <img src="/home_page/blue.png" alt="" className='icons' />
+                                <img src="/more_pg/about_us_img.jpg" alt="" className='icons' />
                             </div>
 
                         </div>
                     </div>
                     <div className="follow">
-                        <a href="">Follow us</a>
+                        <div className="btn_body">
+                            <a href='#' className="test_btn btn6"> follow  </a>
+
+                        </div>
                     </div>
                     <div className="social">
-                        <a href=""> <img src="/home_page/fb.png" alt="" className='icons' /> </a>
-                        <a href=""> <img src="/home_page/insta.png" alt="" className='icons' /> </a>
-                        <a href=""> <img src="/home_page/twitter.png" alt="" className='icons' /> </a>
+                        <a href="https://web.facebook.com/ELITEGYMKANDY/?_rdc=1&_rdr"> <img src="/home_page/fb.png" alt="" className='icons' /> </a>
+                        <a href="https://www.instagram.com/elite_gym_kandy/?hl=en"> <img src="/home_page/insta.png" alt="" className='icons' /> </a>
+                        <a href="#"> <img src="/home_page/twitter.png" alt="" className='icons' /> </a>
 
 
                     </div>

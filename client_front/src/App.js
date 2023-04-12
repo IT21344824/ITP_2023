@@ -7,11 +7,13 @@ import {
   Route,
 } from "react-router-dom";
 import React, { useContext , useState, useEffect } from 'react';
+import More_fg from "./pages/More_pg/More_fg";
+
 import Home from './pages/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import ContactUs from './pages/contact_us/ContactUs';
-import AboutUs from './pages/about_us/AboutUs';
+import ContactUs from './components/contact_us/ContactUs';
+import AboutUs from './components/about_us/AboutUs';
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style/dark.scss";
 import './App.scss';
@@ -92,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: "/contactUs",
         element: <ContactUs/>,
+      },
+      {
+        path: "/More",
+        element: <More_fg/>,
       },
       
     ]

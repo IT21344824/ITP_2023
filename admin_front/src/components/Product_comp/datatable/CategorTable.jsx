@@ -6,9 +6,28 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
 import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//delete
+import { onConfirm } from 'react-confirm-pro';
+//--
 
 
 const CategorTable = ({ id , Cat_name}) => {
+
+     //nofify--
+     const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+      }
+
+    //---
+
     const [searchQuery, setSearchQuery] = useState("");
     //----------------------------------------------------------Category------------------------------------------------------------
     const [Cat_data, setCat_Data] = useState([]);
@@ -74,20 +93,102 @@ const CategorTable = ({ id , Cat_name}) => {
 
     //Category delete data function
     const handleDelete_Cat = async (id) => {
-        try {
-            await deleteDoc(doc(db, "Product_Category", id));
-            setCat_Data(Cat_data.filter((item) => item.id !== id));
-        } catch (error) {
-            console.log(error);
-        }
+        const defaultOptions = {
+            title: (
+                <h3>
+                    Are you sure?
+                </h3>
+            ),
+            description: (
+                <p>Do you really want to delete this records? This process cannot be undone.</p>
+            ),
+            onSubmit: async() => {
+                try {
+           
 
+                    await deleteDoc(doc(db, "Product_Category", id));
+                    setCat_Data(Cat_data.filter((item) => item.id !== id));
+        
+                    toast.success(`Successfully Deleted \nID: ${id}`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                        icon: (
+                            <span
+                              style={{
+                               
+                                background: "#CC0D00",
+                                borderRadius: "50%",
+                                width: "25px",
+                                height: "25px",
+                                textAlign: "center",
+                                verticalAlign: "middle",
+                                lineHeight: "27px",
+                                color: "white",
+                                fontSize: "14px",
+                              }}
+                            >
+                              &#10003;
+                            </span>
+                          ),
+                          style: {
+                            background: "gray",
+                            color: "white",
+                          },
+                    });
+                } catch (error) {            
+                    console.log(error);
+                    
+                    toast.error(`error deleting `, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
+            },
+            onCancel: () => {
+               // alert("Cancel")
+            },
+        };
+        onConfirm({
+            ...defaultOptions,
+            type: "dark",
+            btnSubmit: "confirm ",
+            btnCancel: "Cancle ",
+            keyboardEvents: {
+                escape: true,
+                submit: true
+            }
+        })
+        
+        //if (window.confirm("Are you sure you want to delete this category?")) {
+      
+   // }
     };
 
-    const handleSubmit = async (event) => {
+    const handleSubmitCat = async (event) => {
         event.preventDefault();
 
         if (!formData.Cat_name) {
-            alert("Please enter the new Category name");
+           // alert("Please enter the new Category name");
+            toast.warn(`Please enter Category name !`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             return;
         }
         try {
@@ -97,11 +198,32 @@ const CategorTable = ({ id , Cat_name}) => {
                 timeStamp: serverTimestamp(),
             });
             console.log("Document written with ID: ", newProductRef.id);
+                //nofity
+           
+                toast.success(`Successful \nID: ${newProductRef.id}`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+
             setFormData(initialFormData);
             console.error(formData);
 
         } catch (error) {
             console.error("Error adding document: ", error);
+            toast.error(`Error adding`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     };
 
@@ -153,7 +275,7 @@ const CategorTable = ({ id , Cat_name}) => {
                             Category Add
                         </div>
                         <div className="cat_add_from">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmitCat}>
 
                                 <label> Category name </label>
                                 <input
@@ -174,6 +296,22 @@ const CategorTable = ({ id , Cat_name}) => {
                 <CatUpdate open={open} onClose={handleClose} id={selectedId} Cat_name={selectedcatname} />
             </div>
 
+            {/* <ToastContainer  
+             position="top-right"
+             autoClose={5000}
+             limit={6} //-
+             hideProgressBar={false}
+             newestOnTop={false} //-
+             closeOnClick
+             rtl={false} //--
+             pauseOnFocusLoss //--
+             draggable
+             pauseOnHover
+             theme="dark"
+
+            style={notifyStyle}
+            // progressStyle={progressStyle}
+             /> */}
         </div>
     )
 }

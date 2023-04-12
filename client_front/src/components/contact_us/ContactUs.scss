@@ -1,0 +1,201 @@
+.contents {
+    box-sizing: border-box;
+    //font-family: 'Poppins', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    //margin-top: 60px;
+    // margin-bottom: 100px;
+    //background: linear-gradient(45deg, #D9F0EC, #8db5ae);
+
+    background: #08cbae;
+    // background-image: url("https://wallpapers.com/images/featured-full/gym-og6h4kg6ciwvrj5i.jpg");
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+
+    .top {
+        max-width: 800px;
+        text-align: center;
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            color: aqua;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding-top: 50px;
+
+            &::after {
+                content: "";
+                height: 5px;
+                width: 200px;
+                background-color: aqua;
+                border-radius: 10px;
+                display: block;
+                margin: auto;
+            }
+        }
+
+        p {
+
+            font-weight: 500;
+            //color: #fff;
+        }
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        gap: 100px;
+
+        .contactInfo {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            margin-left: 300px;
+            //margin-right: -100px;
+
+            .box {
+                //background-color: #e91e63;
+                position: relative;
+                padding: 20px 0px 20px 0px;
+                display: flex;
+
+                .icon {
+                    margin: 27px 0px 0px 50px;
+                    min-width: 40px;
+                    height: 40px;
+                    background-color: crimson;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                }
+
+                .text {
+                    align-items: end;
+                    display: flex;
+                    margin-left: 20px;
+                    font-size: 16px;
+                    //color: #fff;
+                    flex-direction: column;
+                    font-weight: 300;
+                   // background-color: #666;
+
+                    h3 {
+                        font-weight: 500;
+                        color: #d45f00;
+
+                        margin-top: -4px;
+                        padding-bottom: 5px;
+                        word-wrap: break-word;
+                    }
+
+                    p {
+                        padding-right: 20px;
+                        margin-top: -15px;
+                        margin-bottom: 30px;
+                        width: 70%;
+                        word-wrap: break-word;
+                    }
+                }
+
+
+            }
+        }
+
+        .contactForm {
+            width: 30%;
+            padding: 40px;
+            border-radius: 10px;
+            background-color: #D9F0EC;
+            margin-bottom: 100px;
+            margin-right: 200px;
+
+            h2 {
+                font-size: 30px;
+                font-weight: 600;
+                color: #333;
+
+            }
+
+            .inputbox {
+                position: relative;
+                width: 100%;
+                margin-top: 30px;
+
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    width: 100%;
+                    padding: 5px 0px;
+                    font-size: 16px;
+                    margin: 10px 0px;
+                    border: none;
+                    border-bottom: 2px solid #333;
+                    outline: none;
+                    resize: none;
+                    background-color: #c9ece5;
+                }
+
+                span {
+                    position: absolute;
+                    top: -10px;
+                    left: 0px;
+
+                    padding: 5px 0px;
+                    font-size: 16px;
+                    margin: 10px 0px;
+                    pointer-events: none;
+                    transition: 0.5s;
+                    color: #666;
+                }
+
+                input[type="text"]:focus~span,
+                input[type="text"]:valid~span,
+                input[type="email"]:focus~span,
+                input[type="email"]:valid~span,
+                textarea:focus~span,
+                textarea:valid~span {
+                    color: #e91e63;
+                    font-size: 12px;
+                    transform: translateY(-20px);
+                }
+
+                button {
+                    width: 100px;
+                    background: #00bcd4;
+                    //color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px;
+                    font-size: 18px;
+                    transition-duration: 0.3s;
+                    border-radius: 10px;
+                    -webkit-transition-duration: 0.3s;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    -webkit-transition-property: box-shadow, transform;
+                    transition-property: box-shadow, transform;
+
+                    &:hover {
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        -webkit-transform: scale(1.1);
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+        }
+    }
+
+}

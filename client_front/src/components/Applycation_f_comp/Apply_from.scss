@@ -1,0 +1,179 @@
+.apply_from_container {
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    //background: linear-gradient(45deg, #D9F0EC, #8db5ae);
+    background: #bae207;
+
+    .top {
+        max-width: 800px;
+        text-align: center;
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            color: aqua;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding-top: 50px;
+
+            &::after {
+                content: "";
+                height: 5px;
+                width: 200px;
+                background-color: aqua;
+                border-radius: 10px;
+                display: block;
+                margin: auto;
+            }
+        }
+
+        p {
+
+            font-weight: 500;
+            //color: #fff;
+        }
+    }
+
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 100px;
+
+
+        .contactForm {
+            width: 30%;
+            padding: 40px;
+            border-radius: 10px;
+            background-color: #D9F0EC;
+            margin-bottom: 100px;
+
+            h2 {
+                font-size: 30px;
+                font-weight: 600;
+                color: #333;
+
+            }
+
+            .inputbox {
+                position: relative;
+                width: 100%;
+                margin-top: 30px;
+
+                // select type -------------
+                .select_role_lable {
+                    color: #666;
+                }
+
+                .select_role {
+                    display: flex;
+                    gap: 50px;
+                    margin-left: 50px;
+                    color: #666;
+                }
+
+                // select type -------------
+
+
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    width: 100%;
+                    padding: 5px 0px;
+                    font-size: 16px;
+                    margin: 10px 0px;
+                    border: none;
+                    border-bottom: 2px solid #333;
+                    outline: none;
+                    resize: none;
+                    background-color: #c9ece5;
+                }
+
+                span {
+                    position: absolute;
+                    top: -10px;
+                    left: 0px;
+
+                    padding: 5px 0px;
+                    font-size: 16px;
+                    margin: 10px 0px;
+                    pointer-events: none;
+                    transition: 0.5s;
+                    color: #666;
+                }
+
+                input[type="text"]:focus~span,
+                input[type="text"]:valid~span,
+                input[type="email"]:focus~span,
+                input[type="email"]:valid~span,
+                textarea:focus~span,
+                textarea:valid~span {
+                    color: #e91e63;
+                    font-size: 12px;
+                    transform: translateY(-20px);
+                }
+
+                button {
+                    width: 100px;
+                    background: #dde403;
+                    //color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px;
+                    font-size: 18px;
+                    transition-duration: 0.3s;
+                    border-radius: 10px;
+                    -webkit-transition-duration: 0.3s;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    -webkit-transition-property: box-shadow, transform;
+                    transition-property: box-shadow, transform;
+
+                    &:hover {
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        -webkit-transform: scale(1.1);
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+        }
+
+
+        .contactInfo {
+
+            .box {
+                width: 40%;
+                display: flex;
+                margin-top: -100px;
+
+                img {
+                    border-radius: 10px;
+                }
+
+
+            }
+
+            .box_details {
+                p {
+                    max-width: 40vw;
+                    word-wrap: break-word;
+                   // color: rgb(0, 124, 232);
+                }
+            }
+
+
+        }
+
+    }
+
+}

@@ -30,6 +30,7 @@ import ProductNew from "./pages/Product_pages/new/Product_New";
 // import CategoryList from "./pages/Product_pages/list/Category";
 // import Category_ID from "./pages/Product_pages/single/Category_ID";
 
+ import Notify from "./components/notify_status/button_test";
 
 //import{render} from "react-dom" ;
 
@@ -47,6 +48,9 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 
+//Additinoal_magagement
+import AdditionalList from "./pages//Additional_pg/Additional_pg";
+import AdditionalHome_New from "./components/Additional_comp/Home/New/Home_New";
 
 
 function App() {
@@ -76,6 +80,32 @@ function App() {
                 <Home />
               </RequireAuth>} />
 
+ {/* --------------------------------------------Users start -------------------------------------------------*/}
+
+            <Route path="Additional" >
+                <Route index element={
+                  <RequireAuth>
+                    <AdditionalList />
+                  </RequireAuth>} />
+
+                <Route path=":userId" element={
+                  <RequireAuth>
+                    <UserSingle />
+                  </RequireAuth>} />
+
+                  <Route path="home/new" element={<RequireAuth>
+                  <AdditionalHome_New />
+                </RequireAuth>} />
+
+                <Route path="new" element={<RequireAuth>
+                  <UserNew />
+                </RequireAuth>} />
+
+
+            </Route>
+ {/* --------------------------------------------Users end -------------------------------------------------*/}
+
+{/* --------------------------------------------Users start -------------------------------------------------*/}
 
             <Route path="Users" >
                 <Route index element={
@@ -94,7 +124,9 @@ function App() {
 
 
             </Route>
-{/* --------------------------------------------products -------------------------------------------------*/}
+ {/* --------------------------------------------Users end -------------------------------------------------*/}
+
+{/* --------------------------------------------products start -------------------------------------------------*/}
 
             <Route path="products" >
               <Route index element={<RequireAuth> <ProductList /> </RequireAuth>} />
@@ -110,7 +142,7 @@ function App() {
 
             </Route> */}
 
-{/* --------------------------------------------products -------------------------------------------------*/}
+{/* --------------------------------------------products end -------------------------------------------------*/}
 
             <Route path="Employees" >
                 <Route index element={
@@ -131,8 +163,9 @@ function App() {
 
             <Route path="members" >
                 <Route index element={
-                  <RequireAuth>
-                    <List />
+                  <RequireAuth> 
+                    {/* <List /> */}
+                    <Notify />
                   </RequireAuth>} />
 
                 <Route path=":membersId" element={<RequireAuth>

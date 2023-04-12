@@ -21,35 +21,36 @@ const Home = () => {
 
 
 
-          <div className="widgets">
-            <Widget type="user" />
-            <Widget type="product" />
-            <Widget type="coaches" />
-            <Widget type="members" />
+            <div className="widgets">
+              <Widget type="user" />
+              <Widget type="product" />
+              <Widget type="coaches" />
+              <Widget type="members" />
 
-          </div>
-
-          <div className="charts">
-            <Featured />
-            <Chart title="Last 6 Months ( Members Attendence )" aspect={2 / 1} />
-
-
-          </div>
-
-          <div className="latest" >
-
-            <div className="listContainer" style={{ marginLeft: "50px", marginRight: "25px" }}>
-              <div className="listTitle"> Latest Members </div>
-              {/* This is  dashboard table */}<Table />
             </div>
 
-            <div className="Product_listContainer" style={{ marginLeft: "25px", marginRight: "50px" }}>
-              <div className="Product_listTitle"> Latest Products </div>
-              {/* This is  dashboard table */}<ProductsTable />
+            <div className="charts">
+              <Featured />
+              <Chart title="Last 6 Months ( Members Attendence )" aspect={2 / 1} />
+
+
             </div>
 
+            <div className="latest" >
+
+              <div className="listContainer" style={{ marginLeft: "50px", marginRight: "25px" }}>
+                <div className="listTitle"> Latest Members </div>
+                {/* This is  dashboard table */}<Table />
+              </div>
+
+              {/* only letast 3 product will show */}
+              <div className="Product_listContainer" style={{ marginLeft: "25px", marginRight: "50px" }}>
+                <div className="Product_listTitle"> Latest Products </div>
+                {/* This is  dashboard table */}<ProductsTable />
+              </div>
+
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

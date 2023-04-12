@@ -56,14 +56,23 @@
                             cursor: pointer;
                         }
                     }
-                    .img_tag{
+
+                    .img_tag {
                         display: flex;
+                        flex-direction: column;
                         gap: 10px;
-                        
+
                     }
 
                     .formInput {
                         width: 40%;
+                        
+
+                        .p_new_hint {
+                            margin-top: 2px;
+                            font-size: 13px;
+                            color: red;
+                        }
 
                         .clear_img {
                             width: 50px;
@@ -74,20 +83,29 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                          }
-                          
-
-                        .line_height {
-
-                            line-height: 30px;
-
                         }
-                        .Item_Type{
+
+
+
+                        .Item_Type {
                             margin-bottom: 30px;
                         }
-                        .status{
+
+                        // status start--------------
+                        .status {
                             margin-bottom: 10px;
                         }
+
+                        .line_height {
+                            line-height: 30px;
+
+                            // if error
+                            &.error {
+                                border-bottom: 3px solid red;
+                            }
+                        }
+
+                        // status end--------------
 
                         .Description {
                             width: 100%;
@@ -95,14 +113,28 @@
                             padding: 5px;
                             border: none;
                             border-bottom: 1px solid gray;
+                            resize: none;
+
+                            // if error
+                            &.error {
+                                border-bottom: 3px solid red;
+
+                            }
 
                         }
 
-                        input ,.P_cat {
+                        input,
+                        .P_cat {
                             width: 100%;
                             padding: 5px;
                             border: none;
                             border-bottom: 1px solid gray;
+
+                            // if error
+                            &.error {
+                                border-bottom: 3px solid red;
+
+                            }
                         }
 
                         input.invalid {
@@ -112,8 +144,8 @@
                     }
 
                     .formButton {
-                       
-                        
+
+
                         .reset {
                             width: 150px;
                             padding: 10px;
@@ -138,7 +170,7 @@
                             margin-top: 10px;
                             margin-right: 25px;
 
-                            &:disabled{
+                            &:disabled {
                                 background-color: rgba(182, 120, 5, 0.378);
                                 cursor: not-allowed;
                             }

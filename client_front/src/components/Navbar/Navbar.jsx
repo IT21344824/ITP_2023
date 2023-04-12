@@ -120,10 +120,10 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
             </Link>
           </div>
 
-          <div className={`item ${selectedLink === 'articles' ? 'selected' : ''}`}>
-            <Link className="link" to="/Articals" onClick={() => handleLinkClick('articles')}>
+          <div className={`item ${selectedLink === 'more' ? 'selected' : ''}`}>
+            <Link className="link" to="/More" onClick={() => handleLinkClick('more')}>
               {' '}
-              Articals{' '}
+              More{' '}
             </Link>
           </div>
 

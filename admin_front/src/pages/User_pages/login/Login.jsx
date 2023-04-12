@@ -23,13 +23,14 @@ const Login = () => {
       // Signed in 
       const user = userCredential.user;
       // Check if the user's role is "Admins"
-      const userRole = user?.metadata?.customClaims?.role;
-      if (userRole === "Admins") {
+      
+      // const userRole = user?.metadata?.customClaims?.role;
+      // if (userRole === "Admins") {
         dispatch({type:"LOGIN" , payload:user})
         navigate("/")
-      } else {
-        setError(true)
-      }
+      // } else {
+      //   setError(true)
+      // }
     })
     .catch((error) => {
       setError(true)

@@ -4,8 +4,22 @@ import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import { collection, doc, updateDoc, setDoc, serverTimestamp, getDocs, onSnapshot, query, where, writeBatch, getDoc } from "firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//--
 
-const CatUpdate = ({ open, onClose, id ,Cat_name }) => {
+const CatUpdate = ({ open, onClose, id, Cat_name }) => {
+    //nofify--
+    const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+    }
+
+    //---
 
     //---------------------------------------Product data---------------------------------
     const initialUpdateData = {
@@ -39,7 +53,7 @@ const CatUpdate = ({ open, onClose, id ,Cat_name }) => {
         event.preventDefault();
 
         try {
-        
+
             const categoryRef = doc(collection(db, "Product_Category"), id);
             const docSnap = await getDoc(categoryRef);
             if (docSnap.exists()) {
@@ -71,56 +85,83 @@ const CatUpdate = ({ open, onClose, id ,Cat_name }) => {
 
     const handleUpdate = async (event) => {
         event.preventDefault();
-      
+
         if (!UpdateData.Cat_name) {
-          alert("Please enter the Category name");
-          return;
+            //alert("Please enter the Category name");
+            toast.warn(`Please enter the Category name`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
         }
-      
+
         setLoading(true);
-      
+
         try {
-          const categoryRef = doc(collection(db, "Product_Category"), id);
-      
-          // Update the category document
-          await updateDoc(categoryRef, {
-            ...UpdateData,
-            timeStamp: serverTimestamp(),
-          });
-      
-          // Find products that need to be updated
-          const prevMonthQuery = query(
-            collection(db, "Products"),
-            where("timeStamp", "==", prename),
-           
-        );
+            const categoryRef = doc(collection(db, "Product_Category"), id);
+
+            // Update the category document
+            await updateDoc(categoryRef, {
+                ...UpdateData,
+                timeStamp: serverTimestamp(),
+            });
+
+            // Find products that need to be updated
+            const prevMonthQuery = query(
+                collection(db, "Products"),
+                where("timeStamp", "==", prename),
+
+            );
 
 
-          const productsRef = collection(db, "Products");
-          const q = query(productsRef, where("item_type", "==", prename));
-          const querySnapshot = await getDocs(q);
-      
-          // Update each product with the new category name
-          const batch = writeBatch(db);
-          querySnapshot.forEach((doc) => {
-            const productRef = doc(productsRef.doc(doc.id));
-            batch.update(productRef, { item_type: UpdateData.Cat_name });
-            console.log(UpdateData.Cat_name)
-          });
-      
-          // Commit the batch to update all products
-          await batch.commit();
-      
-          // Reset the form data
-          setFormData(initialUpdateData);
-          alert(`Category with ID ${id} has been updated successfully`);
-          setLoading(false);
+            const productsRef = collection(db, "Products");
+            const q = query(productsRef, where("item_type", "==", prename));
+            const querySnapshot = await getDocs(q);
+
+            // Update each product with the new category name
+            const batch = writeBatch(db);
+            querySnapshot.forEach((doc) => {
+                const productRef = doc(productsRef.doc(doc.id));
+                batch.update(productRef, { item_type: UpdateData.Cat_name });
+                console.log(UpdateData.Cat_name)
+            });
+
+            // Commit the batch to update all products
+            await batch.commit();
+
+            // Reset the form data
+            setFormData(initialUpdateData);
+            //alert(`Category with ID ${id} has been updated successfully`);
+            toast.success(`Updated Successful\n ID ${id}   `, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setLoading(false);
         } catch (error) {
-          console.error("Error updating document: ", error);
-          setLoading(false);
+            console.error("Error updating document: ", error);
+            toast.error(`Error updating`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setLoading(false);
         }
-      };
-      
+    };
+
 
     //-----------------------------------------------------listen and update--------------------------------------------
 
@@ -157,6 +198,22 @@ const CatUpdate = ({ open, onClose, id ,Cat_name }) => {
                 </div>
 
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                limit={6} //-
+                hideProgressBar={false}
+                newestOnTop={false} //-
+                closeOnClick
+                rtl={false} //--
+                pauseOnFocusLoss //--
+                draggable
+                pauseOnHover
+                theme="colored"
+
+                style={notifyStyle}
+            // progressStyle={progressStyle}
+            />
         </div>
     )
 }

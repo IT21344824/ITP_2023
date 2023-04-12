@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from "react-router-dom";
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, query, where , orderBy , limit} from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase';
 
@@ -22,7 +22,9 @@ const Latest_Products = () => {
           const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
           const prevMonthQuery = query(
             collection(db, 'products'),
-            where('timeStamp', '>', prevMonth)
+            where('timeStamp', '>', prevMonth),
+            orderBy('timeStamp', 'desc'), // sort by timestamp in descending order
+            limit(3) // limit to only the latest 3 products
           );
     
           const unsub = onSnapshot(prevMonthQuery, (snapshot) => {
