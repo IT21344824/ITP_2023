@@ -2,6 +2,7 @@ import React from 'react';
 import './Card.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import PaidIcon from '@mui/icons-material/Paid';
 
 const Card = ({ item, productId }) => {
 
@@ -19,7 +20,7 @@ const Card = ({ item, productId }) => {
 
                 <h2>{item.item_name}</h2>
                 <div className="prices">
-                    <h3>Rs:{item.oldprice}</h3>
+                    <h3><PaidIcon/></h3>
                     <h3>Rs:{item.price}</h3>
                 </div>
             </div>

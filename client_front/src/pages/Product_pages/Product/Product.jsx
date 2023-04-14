@@ -90,8 +90,13 @@ const Product = () => {
           </div>
 
         </div>
-        <div className="right">
 
+        
+        <div className="right">
+          
+          <div >
+           <span className="p-id">  ID : {product.Product_id} </span>
+          </div>
           <h1>{product.item_name}</h1>
           <span className='price'> Rs : {product.price}</span>
           <p>{product.description}</p>

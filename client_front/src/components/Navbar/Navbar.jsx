@@ -66,6 +66,13 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
 
           </div>
 
+          <div className="middle">
+            <div className="title">
+                 Elite
+            </div>
+         
+          </div>
+
           <div className="right">
 
             <div className="l_s">

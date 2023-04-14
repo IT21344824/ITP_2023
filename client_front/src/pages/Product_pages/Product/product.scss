@@ -48,6 +48,9 @@
             flex-direction: column;
             gap: 30px;
 
+            .p-id {
+                border-bottom: 1px solid red;
+            }
 
             .price {
                 font-size: 30px;

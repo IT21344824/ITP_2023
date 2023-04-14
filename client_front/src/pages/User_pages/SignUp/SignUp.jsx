@@ -1,40 +1,148 @@
-import React from 'react'
 
-import './SignUp.scss'
+import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import { useEffect, useState } from "react";
+import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db, storage } from "../../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { Link, useNavigate } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
+
+
+//import './SignUp.scss'
 
 const SignUp = () => {
+
+  const [file, setFile] = useState("");
+  const [data, setData] = useState({});
+  const [per, setPer] = useState(null);
+
+  //const history = useHistory();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors] = useState({});
+
+
+
+
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // your registration logic here
+    try {
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      // Add a new document in collection "users"
+      await setDoc(doc(db, "Users", res.user.uid), {
+        ...data,
+        address: "",
+        age: "",
+        img: [],
+        phone: "",
+        gender: "",
+        role: "user",
+        timeStamp: serverTimestamp()
+      });
+
+      //navigate(-1)
+      console.log("Document written with ID: ", res.user.uid);
+      navigate("/LogIn");
+
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  };
+
+
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+    setData({ ...data, [name]: value });
+  };
+
+
   return (
     <div className='signup'>
-        <div>
-            this is sign up
-            
-        Contrary to popular belief, Lorem Ipsum is not simply random text. 
-        It has roots in a piece of classical Latin literature from 45 BC, making it 
-        over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-         looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through
-          the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 
-          1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. T
-          his book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum 
-          dolor sit amet..", comes from a line in section 1.10.32.
+      <div className="register-container">
 
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 
-        and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by 
-        English versions from the 1914 translation by H. Rackham.
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-        in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
-         Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
-          from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable so
-          urce. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by C
-          icero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lor
-          em Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        <h1 className="register-title">Register</h1>
+        <form className="register-form" onSubmit={handleSubmit}>
 
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finib
-        us Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation b
-        y H. Rackham.
+          <div className="form-group">
+
+            <label htmlFor="email">Email address</label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={handleChange}
+              required
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+
+          <div className="form-group">
+
+            <label htmlFor="password">Password</label>
+
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={handleChange}
+              required
+            />
+            {errors.password && <span className="error">{errors.password}</span>}
+          </div>
+
+          <button type="submit" className="submit-button">Sign up</button>
+
+        </form>
+
+        <div className="login-container">
+          <span>Already have an account?</span>
+
+          <button className="login-button" >
+            Login
+          </button>
+
         </div>
-    
-     
-      
+
+        <div className="divider-container">
+
+          <hr className="divider-line" />
+          <span className="divider-text">OR</span>
+          <hr className="divider-line" />
+
+        </div>
+
+        <button className="google-button" onClick={() => alert('sign in with google')}>
+          Sign in with Google
+        </button>
+
+      </div>
+
+
+
     </div>
   )
 }

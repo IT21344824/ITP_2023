@@ -14,28 +14,28 @@ const Login = () => {
   const navigate = useNavigate();
 
   const {dispatch} = useContext(AuthContext)
-
+  
   const handleLogin = (e)=>{
     e.preventDefault();
-  
-    signInWithEmailAndPassword (auth, email, password)
-    .then((userCredential) => {
+    
+    signInWithEmailAndPassword (auth, email, password).then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      // Check if the user's role is "Admins"
       
-      // const userRole = user?.metadata?.customClaims?.role;
-      // if (userRole === "Admins") {
-        dispatch({type:"LOGIN" , payload:user})
-        navigate("/")
+      console.log(user)
+      // Check user role
+    //  if (user.role === "Admin") {
+        dispatch({type:"LOGIN" , payload:user});
+        navigate("/");
       // } else {
-      //   setError(true)
+      //   setError(true);
       // }
     })
     .catch((error) => {
-      setError(true)
+      setError(true);
     });
   };
+  
   
   return (
     <div className="login">

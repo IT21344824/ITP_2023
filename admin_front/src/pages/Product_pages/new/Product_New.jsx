@@ -487,7 +487,7 @@ const Product_New = () => {
                                     />
                                      {ShowHint && (files.length === 0) && (
                                         <div className="p_new_hint img_hint" >
-                                            Please enter the Product Id!
+                                            Please select a Image !
                                         </div>
                                     )}
 
