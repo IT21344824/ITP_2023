@@ -3,7 +3,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { userColums, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs , deleteDoc , doc , onSnapshot ,where ,query} from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc, onSnapshot, where, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 
 {/* This is all users table  */ }
@@ -30,18 +30,19 @@ const Datatable = () => {
       unsub();
     };
   }, []);
-  
+
 
   console.log(data);
 
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "Users", id));
-     setData(data.filter((item) => item.id !== id));
+      setData(data.filter((item) => item.id !== id));
+      console.log(`deleted ${id}`)
     } catch (error) {
       console.log(error);
     }
-   
+
   };
 
   const actionColum = [

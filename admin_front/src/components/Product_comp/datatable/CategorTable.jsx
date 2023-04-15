@@ -42,7 +42,7 @@ const CategorTable = ({ id , Cat_name}) => {
     const Cat_columns = [
         { field: "Row_id", headerName: "Row", width: 65 },
         { field: "id", headerName: "BD-id", width: 200 },
-        { field: "Cat_name", headerName: "Category", width: 110 },
+        { field: "Cat_name", headerName: "Category", width: 160 },
     ];
 
     // show all Category data

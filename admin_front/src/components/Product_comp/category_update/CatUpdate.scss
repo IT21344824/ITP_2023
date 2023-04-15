@@ -75,12 +75,26 @@
                         background-color: teal;
                         color: white;
                         border-radius: 15px;
+
+                        &:active {
+                            transform: scale(0.90);
+                        }
                     }
 
                     .submit {
                         background-color: orange;
                         color: white;
                         border-radius: 15px;
+
+                        &:active {
+                            transform: scale(0.90);
+                        }
+                    }
+
+                    .Cancel {
+                        &:active {
+                            transform: scale(0.90);
+                        }
                     }
                 }
 
@@ -102,7 +116,19 @@
                         padding: 5px;
                         border: none;
                         border-bottom: 1px solid gray;
+
+                        // if error
+                        &.error {
+                            border-bottom: 3px solid red;
+
+                        }
                     }
+
+                    .p_new_hint {
+                        margin-top: 2px;
+                        font-size: 13px;
+                        color: red;
+                      }
 
 
 

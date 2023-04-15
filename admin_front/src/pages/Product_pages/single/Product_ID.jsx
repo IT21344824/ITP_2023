@@ -187,56 +187,6 @@ const Product_ID = ({ id }) => {
                             </div>
                         </div>
 
-
-
-                        {/* <div>
-                            <table className="table_predata">
-                                <tbody>
-                                    <tr>
-                                        <td> Product Id </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.Product_id ?? ''}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td> Item Name </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.item_name ?? ''}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Price (RS) </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.price ?? ''}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Quantity</td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.qty ?? ''}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Item Type </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{itemTypeData.categoryDoc}</span></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td> status </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.status ?? ''}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Description </td>
-                                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                                        <td><span className="previous_data">{data?.description ?? ''}</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
- */}
-
-
-
-
                     </div>
                 </div>
             </div>

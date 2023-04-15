@@ -388,7 +388,7 @@ const UpdatePopup = ({ open, onClose, id }) => {
                   />
                   {ShowHint && (files.length === 0) && (
                     <div className="p_new_hint img_hint" >
-                      Please enter the Product Id!
+                      Please Select Image!
                     </div>
                   )}
                 </div>

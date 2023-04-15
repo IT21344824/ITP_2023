@@ -2,7 +2,7 @@
     height: 630px;
     padding: 20px;
 
-    
+
 
 
     .datatableTitle {
@@ -146,6 +146,7 @@
             color: darkblue;
             border: 1px dotted rgba(0, 0, 139, 0.579);
             cursor: pointer;
+            
         }
 
         .viewButton {
@@ -154,6 +155,10 @@
             color: darkblue;
             border: 1px dotted rgba(0, 0, 139, 0.579);
             cursor: pointer;
+
+            &:active {
+                transform: scale(0.90);
+            }
         }
 
         .deleteButton {
@@ -162,6 +167,10 @@
             color: crimson;
             border: 1px dotted rgba(220, 20, 60, 0.6);
             cursor: pointer;
+
+            &:active {
+                transform: scale(0.90);
+            }
         }
     }
 

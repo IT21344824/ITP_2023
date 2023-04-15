@@ -3,14 +3,28 @@
         margin-top: 100px;
 
         .Category_all {
-            display: flex;
+            display: flex;  
+            
+//button pop off --- start--------
+            .cat_btn{
+                &:active{
+                    transform: scale(0.90);
+                }
+            }
+
+            .deleteButton{
+                &:active{
+                    transform: scale(0.90);
+                }
+            }
+//button pop off --- end--------
 
             .all {
-                flex: 2;
+                flex: 5;
 
                 .Cat_datagrid {
-                    height: 300px;
-                    width: 600px;
+                    height: 400px;
+                    //width: 600px;
                     padding: 10px;
                     box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
                     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -36,7 +50,7 @@
             }
 
             .add {
-                flex: 1;
+                flex: 4;
 
 
                 .Category_add {
@@ -57,7 +71,7 @@
 
                 .cat_add_from {
                     height: 100px;
-                    width: 600px;
+                   // width: 600px;
                     padding: 10px;
                     box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
                     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -113,6 +127,9 @@
                             justify-content: center;
                             cursor: pointer;
 
+                            &:active{
+                                transform: scale(0.90);
+                            }
 
                         }
                     }

@@ -414,6 +414,12 @@ const Product_New = () => {
     const [ShowHint, setShowHint] = useState(false);
 
 
+    // clear button pop ---------
+    const togglePopdown = () => {
+        var button = document.querySelector('.clear_img');
+        button.classList.toggle('popdown');
+      }
+      
 
 
 
@@ -500,6 +506,7 @@ const Product_New = () => {
                                         setFiles([]);
                                         setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
                                         setSelectedImage(null); // set the selectedImage to null
+                                       // togglePopdown();
                                     }} className="clear_img"> clear </button>
                                 </div>
                                

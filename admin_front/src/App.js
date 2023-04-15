@@ -15,6 +15,8 @@ import UserSingle from "./pages/User_pages/single/Single";
 
 import AdminList from "./pages/User_pages/list/AdminList";
 import AdminNew from "./pages/User_pages/new/Admin_new";
+import Ad_single from "./pages/User_pages/single/Employe";
+
 
 // Coach - magagement
 
@@ -151,7 +153,7 @@ function App() {
                   </RequireAuth>} />
                   
                 <Route path=":adminsId" element={<RequireAuth>
-                  <Single />
+                  <Ad_single />
                 </RequireAuth>} />
 
                 <Route path="new" element={<RequireAuth>

@@ -93,11 +93,16 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
+
+            &:active {
+              transform: scale(0.90);
+            }
           }
 
           .reset {
             background-color: teal;
             color: white;
+
           }
 
           .submit {
@@ -133,7 +138,7 @@
             margin-bottom: 10px;
 
             .line_height {
-             // background-color: aqua;
+              // background-color: aqua;
               line-height: 30px;
 
               // if error
@@ -143,7 +148,7 @@
             }
           }
 
-          
+
 
           .Description {
             width: 100%;
@@ -162,16 +167,16 @@
 
           input,
           .P_cat {
-              width: 100%;
-              padding: 5px;
-              border: none;
-              border-bottom: 1px solid gray;
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid gray;
 
-              // if error
-              &.error {
-                  border-bottom: 3px solid red;
+            // if error
+            &.error {
+              border-bottom: 3px solid red;
 
-              }
+            }
           }
 
           input.invalid {

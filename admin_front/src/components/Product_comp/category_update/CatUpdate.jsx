@@ -20,6 +20,8 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
     }
 
     //---
+    //-------error massage------
+    const [ShowHint, setShowHint] = useState(false);
 
     //---------------------------------------Product data---------------------------------
     const initialUpdateData = {
@@ -30,6 +32,7 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
     const [UpdateData, setFormData] = useState(initialUpdateData);
 
     const handleInputChange = (event) => {
+        setShowHint(false);
         const { name, value } = event.target;
         setFormData((prevState) => ({
             ...prevState,
@@ -41,6 +44,8 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
 
     const handleReset = () => {
         setFormData(initialUpdateData);
+        setShowHint(false);
+
     };
 
     const handleCancel = () => {
@@ -86,7 +91,12 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
     const handleUpdate = async (event) => {
         event.preventDefault();
 
+        let hasError = false;
+
         if (!UpdateData.Cat_name) {
+            setShowHint(true);
+
+            hasError = true;
             //alert("Please enter the Category name");
             toast.warn(`Please enter the Category name`, {
                 position: "top-right",
@@ -183,7 +193,19 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
                             <div className="bot">
                                 <div className="formInput">
                                     <label> Category Name: </label>
-                                    <input type="text" name="Cat_name" value={UpdateData.Cat_name} onChange={handleInputChange} placeholder="Enter Category name...." />
+                                    <input
+                                        className={ShowHint && !UpdateData.Cat_name ? 'error' : ''}
+                                        type="text"
+                                        name="Cat_name"
+                                        value={UpdateData.Cat_name}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter Category name...."
+                                    />
+                                    {ShowHint && !UpdateData.Cat_name && (
+                                        <div className="p_new_hint" >
+                                            Please enter the update name!
+                                        </div>
+                                    )}
                                 </div>
 
                             </div>
@@ -191,7 +213,7 @@ const CatUpdate = ({ open, onClose, id, Cat_name }) => {
                             <div className="buttons">
                                 <button type="submit" className="submit"> Update </button>
                                 <button type="reset" className="reset">  Clear </button>
-                                <button onClick={handleCancel}>Cancel</button>
+                                <button onClick={handleCancel} className="Cancel">Cancel</button>
                             </div>
                         </div>
                     </form>

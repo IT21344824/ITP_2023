@@ -156,18 +156,18 @@ const ProductTable = ({ id }) => {
   const handleDelete = async (id) => {
     const defaultOptions = {
       title: (
-          <h3>
-              Are you sure?
-          </h3>
+        <h3>
+          Are you sure?
+        </h3>
       ),
       description: (
-          <p>Do you really want to delete this records? This process cannot be undone.</p>
+        <p>Do you really want to delete this records? This process cannot be undone.</p>
       ),
-      onSubmit: async() => {
+      onSubmit: async () => {
         try {
           await deleteDoc(doc(db, "products", id));
           setData(data.filter((item) => item.id !== id));
-    
+
           toast.success(`Successfully Deleted \nID: ${id}`, {
             position: "top-right",
             autoClose: 5000,
@@ -180,7 +180,7 @@ const ProductTable = ({ id }) => {
             icon: (
               <span
                 style={{
-    
+
                   background: "#CC0D00",
                   borderRadius: "50%",
                   width: "25px",
@@ -202,7 +202,7 @@ const ProductTable = ({ id }) => {
           });
         } catch (error) {
           console.log(error);
-    
+
           toast.error(`Error deleting `, {
             position: "top-right",
             autoClose: 5000,
@@ -213,23 +213,23 @@ const ProductTable = ({ id }) => {
             progress: undefined,
           });
         }
-    
+
       },
       onCancel: () => {
-         // alert("Cancel")
+        // alert("Cancel")
       },
-  };
-  onConfirm({
+    };
+    onConfirm({
       ...defaultOptions,
       type: "dark",
       btnSubmit: "confirm ",
       btnCancel: "Cancle ",
       keyboardEvents: {
-          escape: true,
-          submit: true
+        escape: true,
+        submit: true
       }
-  })
-  
+    })
+
   };
 
   //table action header /function
