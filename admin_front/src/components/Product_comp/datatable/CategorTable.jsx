@@ -266,7 +266,7 @@ const CategorTable = ({ id , Cat_name}) => {
                             pageSize={10}
                             rowsPerPageOptions={[10]}
                             checkboxSelection
-                            getRowId={(Cat_row) => Cat_row.id}
+                            getRowId={(Cat_row) => Cat_row.id}                           
                         />
 
                     </div>

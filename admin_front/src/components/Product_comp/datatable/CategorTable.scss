@@ -7,6 +7,10 @@
             
 //button pop off --- start--------
             .cat_btn{
+                &:hover {
+                    transform: scale(1.1);
+                }
+
                 &:active{
                     transform: scale(0.90);
                 }
@@ -65,12 +69,13 @@
                     color: gray;
                     margin-bottom: 10px;
                     align-items: center;
+                   
                 }
 
 
 
                 .cat_add_from {
-                    height: 100px;
+                    flex-wrap: wrap;
                    // width: 600px;
                     padding: 10px;
                     box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
@@ -84,12 +89,13 @@
                         gap: 30px;
                         justify-content: space-around;
                         margin-top: 30px;
+                        margin-bottom: 25px;
 
                         label {
                             display: flex;
                             align-items: center;
                             gap: 10px;
-
+                            font-weight: bold;
                         }
 
                         .formInput {
@@ -126,6 +132,10 @@
                             text-align: center;
                             justify-content: center;
                             cursor: pointer;
+
+                            &:hover {
+                                transform: scale(1.05);
+                            }
 
                             &:active{
                                 transform: scale(0.90);

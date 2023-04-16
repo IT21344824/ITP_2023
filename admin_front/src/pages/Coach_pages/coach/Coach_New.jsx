@@ -1,4 +1,4 @@
-import "./product_New.scss";
+import "./Coach_New.scss";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
@@ -7,8 +7,8 @@ import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onS
 import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-
 const Coach_New = () => {
+
 
     //image upload
     const [files, setFiles] = useState([]);
@@ -21,8 +21,12 @@ const Coach_New = () => {
 
     // Product data
     const initialFormData = {
-        Product_id: "",
-        img: [], // add imgs to formData to store multiple image urls
+        Coach_id: "",
+        Coach_name:"",
+        contact:"",
+        img: [], // add imgs to formData to store multiple image urls\
+        description: "",
+        
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -83,7 +87,7 @@ const Coach_New = () => {
         setFiles([]);
         setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
         setSelectedImage(null); // set the selectedImage to null
-        document.getElementById("category").selectedIndex = 0;
+
     };
 
     const handleSubmit = async (event) => {
@@ -95,22 +99,10 @@ const Coach_New = () => {
 
         try {
             // Check if a product with the same Product_id already exists
-            const productsRef = collection(db, "products");
-            const queryRef = query(productsRef, where("Product_id", "==", formData.Product_id));
+            const productsRef = collection(db, "Coaches");
 
-            const querySnapshot = await getDocs(queryRef);
-            if (querySnapshot.size > 0) {
-                alert("Product_id already exists in the database");
-                return;
-            }
 
-            // Check if a product with the same item_name already exists
-            const itemQueryRef = query(productsRef, where("item_name", "==", formData.item_name));
-            const itemQuerySnapshot = await getDocs(itemQueryRef);
-            if (itemQuerySnapshot.size > 0) {
-                alert("item_name already exists in the database");
-                return;
-            }
+
 
             // Upload each file in the files array
             for (const file of files) {
@@ -137,8 +129,8 @@ const Coach_New = () => {
                 );
             }
 
-            // Add the product data to the database
-            const newProductRef = await addDoc(collection(db, "products"), {
+            // Add the package data to the database
+            const newProductRef = await addDoc(collection(db, "Coaches"), {
                 ...formData,
                 timeStamp: serverTimestamp(),
             });
@@ -179,7 +171,7 @@ const Coach_New = () => {
             <div className="newContainer">
                 <Navbar />
                 <div className="top">
-                    <h1>Add New Product</h1>
+                    <h1>Add New Coach</h1>
                 </div>
                 <div className="bottom">
                     <div className="left">
@@ -255,16 +247,53 @@ const Coach_New = () => {
 
 
                             <div className="formInput">
-                                <label> Product Id </label>
+                                <label> Coach Id </label>
                                 <input
                                     type="text"
-                                    name="Product_id"
-                                    value={formData.Product_id}
+                                    name="Coach_id"
+                                    value={formData.Coach_id}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Id...."
                                 />
                             </div>
-                           
+
+
+                            <div className="formInput">
+                                <label>Coach Name</label>
+                                <input
+                                    type="text"
+                                    name="Coach_name"
+                                    value={formData.Coach_name}
+                                    onChange={handleInputChange}
+                                    placeholder="Enter  Coach Name...."
+                                />
+                            </div>
+
+                            
+                            <div className="formInput">
+                                <label>contact</label>
+                                <input
+                                    type="text"
+                                    name="contact"
+                                    value={formData.contact}
+                                    onChange={handleInputChange}
+                                    placeholder="Enter Coach contact...."
+                                />
+                            </div>
+
+
+                            <div className="formInput">
+                            <label>Description</label>
+                            <textarea
+                                className="Description"
+                                name="description"
+                                value={formData.description}
+                                onChange={handleInputChange}
+                                placeholder="Enter Product Description...."
+                            ></textarea>
+                            </div>
+
+
 
                             <div className="formButton">
                                 <button disabled={per !== null && per < 100} type="submit" className="submit" >Add Stock</button>

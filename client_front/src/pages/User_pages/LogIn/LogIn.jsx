@@ -1,53 +1,81 @@
 import { useContext, useState } from "react";
 import "./LogIn.scss";
-import {  signInWithEmailAndPassword  } from "firebase/auth";
-import {auth} from "../../../firebase"
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase"
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../../context/AuthContext";
 
+
+
 const LogIn = () => {
 
-  const [error , setError] = useState(false);
-  const [email , setEmail] = useState("");
-  const [password , setPassword] = useState("");
+
+  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const {dispatch} = useContext(AuthContext)
-  
-  const handleLogin = (e)=>{
+  const { dispatch } = useContext(AuthContext)
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    
-    signInWithEmailAndPassword (auth, email, password).then((userCredential) => {
+
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      
+
       console.log(user)
-   
-        dispatch({type:"LOGIN" , payload:user});
-        navigate("/");
-    
-     // console.log("correct")
+
+      dispatch({ type: "LOGIN", payload: user });
+      navigate("/");
+
+      // console.log("correct")
     })
-    .catch((error) => {
-     
-      setError(true);
-     // console.log("not")
-    });
+      .catch((error) => {
+
+        setError(true);
+        // console.log("not")
+      });
   };
-  
-  
+
+
   return (
+    <div className="Loging_back">
+
     <div className="login">
-      <form action=""onSubmit={handleLogin}>
-        <input type="email" placeholder="email" onChange={e=>setEmail(e.target.value)}/>
-        <input type="password" placeholder="password" onChange={e=>setPassword(e.target.value)} />
+      <form className="loginform" action="" onSubmit={handleLogin}>
+        <input className="loginInput" type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
+        <input className="loginInput" type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
 
-        <button type="submit"> Login </button>
-
+        <button className="loginbtn" type="submit"> Login </button>
         {error && <span> Wrong email or password ! </span>}
+        <div class="bottom">
+          <div class="left">
+            <input type="checkbox" id="check"></input>
+            <label for="check">Remember Me</label>
+          </div>
+        </div>
+        <div class="right">
+          <button className="forgot-button">
+            Forgot password?
+          </button>
+
+        </div>
+        <div className="divider-container">
+
+          <hr className="divider-line" />
+          <span className="divider-text">OR</span>
+          <hr className="divider-line" />
+
+        </div>
+        <button className="google-button" onClick={() => alert('sign in with google')}>
+          Sign in with Google
+        </button>
       </form>
     </div>
+</div>
+
   )
 }
 

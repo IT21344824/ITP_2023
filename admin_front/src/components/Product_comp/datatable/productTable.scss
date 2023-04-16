@@ -102,6 +102,7 @@
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         border-radius: 10px;
         margin: 0 30px 30px 0;
+        
     }
 
     .cellWithImg {
@@ -156,9 +157,14 @@
             border: 1px dotted rgba(0, 0, 139, 0.579);
             cursor: pointer;
 
+            &:hover {
+                transform: scale(1.1);
+            }
+
             &:active {
                 transform: scale(0.90);
             }
+
         }
 
         .deleteButton {
@@ -168,6 +174,10 @@
             border: 1px dotted rgba(220, 20, 60, 0.6);
             cursor: pointer;
 
+            &:hover {
+                transform: scale(1.1);
+            }
+            
             &:active {
                 transform: scale(0.90);
             }

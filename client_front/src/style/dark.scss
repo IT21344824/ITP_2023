@@ -8,6 +8,17 @@
     }
 
     .navbar {
+        
+        .darkM{
+            
+            color: #00d9ffdf;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            -webkit-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            -moz-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+        }
+        
         .bot_section {
             background-color: #b5b5b5;
             .link {

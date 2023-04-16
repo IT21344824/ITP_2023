@@ -1,4 +1,4 @@
-//import "./product_New.scss";
+
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
@@ -22,7 +22,8 @@ const PackageNew = () => {
     // Product data
     const initialFormData = {
         Product_id: "",
-        img: [], // add imgs to formData to store multiple image urls
+        img: [], // add imgs to formData to store multiple image urls\
+        Categories: "",
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -83,7 +84,7 @@ const PackageNew = () => {
         setFiles([]);
         setSelectedIndex(0); // assuming you have a setSelectedIndex function to set the index of the selected image
         setSelectedImage(null); // set the selectedImage to null
-      
+
     };
 
     const handleSubmit = async (event) => {
@@ -96,9 +97,9 @@ const PackageNew = () => {
         try {
             // Check if a product with the same Product_id already exists
             const productsRef = collection(db, "Packages");
-        
 
-           
+
+
 
             // Upload each file in the files array
             for (const file of files) {
@@ -125,7 +126,7 @@ const PackageNew = () => {
                 );
             }
 
-            // Add the product data to the database
+            // Add the package data to the database
             const newProductRef = await addDoc(collection(db, "Packages"), {
                 ...formData,
                 timeStamp: serverTimestamp(),
@@ -243,7 +244,7 @@ const PackageNew = () => {
 
 
                             <div className="formInput">
-                                <label> Product Id </label>
+                                <label> Package Id </label>
                                 <input
                                     type="text"
                                     name="Product_id"
@@ -251,8 +252,18 @@ const PackageNew = () => {
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Id...."
                                 />
+
                             </div>
-                           
+
+                            <div className="form_group">
+                                <span>Category</span>
+                                <select name="Categories" value={formData.Categories} onChange={handleInputChange}>
+                                    <option >option</option>
+                                    <option value="MONTHLY SUBSCRIPTION">MONTHLY SUBSCRIPTION</option>
+                                    <option value="BUNDLED PACKAGES">BUNDLED PACKAGES</option>
+                                </select>
+                            </div>
+
 
                             <div className="formButton">
                                 <button disabled={per !== null && per < 100} type="submit" className="submit" >Add Stock</button>
@@ -266,4 +277,4 @@ const PackageNew = () => {
     );
 }
 
-export default PackageNew
+export default PackageNew;

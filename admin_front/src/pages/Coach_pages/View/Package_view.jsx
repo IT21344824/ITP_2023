@@ -5,23 +5,22 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useLocation } from "react-router-dom";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
-import "./Employe.scss";
+import "./Package_view.scss";
 
+const Package_view = () => {
 
-const Employe = ({ id }) => {
+     //geting id from http
+     const location = useLocation();
+     const _id = location.state?.id;
 
-    //geting id from http
-    const location = useLocation();
-    const _id = location.state?.id;
-
-
-    //geting selected data
+         //geting selected data
     const [data, setData] = useState({});
     console.log(data.img);
 
+    
     useEffect(() => {
         if (_id) {
-            const docRef = doc(db, "Users", _id);
+            const docRef = doc(db, "Packages", _id);
 
             const unsubscribe = onSnapshot(docRef, async (doc) => {
                 if (doc.exists()) {
@@ -41,9 +40,9 @@ const Employe = ({ id }) => {
     }, [_id]);
 
 
-    return (
-        <div className="Employe">
-            <Sidebar />
+  return (
+    <div className='Package_view'>
+       <Sidebar />
             <div className="con">
                 <Navbar />
 
@@ -52,46 +51,24 @@ const Employe = ({ id }) => {
                         <img src={data?.img ?? ''} alt="product" style={{ height: "300px" }} />
 
                     </div>
-
-
+                    
                     <div className="p_inputbox">
-                        <p>{data?.address ?? ''}</p>
-                        <span> address </span>
+                        <p>{data?.Product_id ?? ''}</p>
+                        <span> Product_id </span>
                     </div>
 
                     <div className="p_inputbox">
-                        <p>{data?.phone ?? ''}</p>
-                        <span> phone </span>
+                        <p>{data?.Categories ?? ''}</p>
+                        <span> Categories </span>
                     </div>
 
-                    <div className="p_inputbox">
-                        <p>{data?.gender ?? ''}</p>
-                        <span> gender </span>
-                    </div>
+                  
 
-                    <div className="p_inputbox">
-                        <p>{data?.name ?? ''}</p>
-                        <span> name </span>
-                    </div>
-
-                    <div className="p_inputbox">
-                        <p>{data?.email ?? ''}</p>
-                        <span> email  </span>
-                    </div>
-
-                    <div className="p_inputbox">
-                        <p>{data?.password ?? ''}</p>
-                        <span>  password </span>
-                    </div>
-
-                    <div className="p_inputbox">
-                        <p>{data?.username ?? ''}</p>
-                        <span>  username </span>
-                    </div>
+                    
                 </div>
             </div>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Employe
+export default Package_view

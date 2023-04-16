@@ -1,9 +1,13 @@
 import React from 'react';
 import './Coach.scss'
+import Packageimg from '../../../components/Coach_comp/Package/Packages'
+import BPackageimg from '../../../components/Coach_comp/Package/BPackage'
+import Trainers from '../../../components/Coach_comp/Trainers/Trainers';
 
 const Coach = () => {
   return (
     <div className="coach">
+      <img src="/img/CoachBanner.jpg" alt="Banner Image" className="banner-image" />
       <div className='coach'>
         <div className="header-container">
           <center>
@@ -21,18 +25,32 @@ const Coach = () => {
 
         </center>
         <div className="subsCribtionImg">
-          <img decoding="async" width="520" height="174" src="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png" class="elementor-animation-grow attachment-large size-large wp-image-51746" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png 520w, https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550-300x100.png 300w" sizes="(max-width: 520px) 100vw, 520px"></img>
-          <img decoding="async" width="520" height="174" src="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png" class="elementor-animation-grow attachment-large size-large wp-image-51746" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png 520w, https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550-300x100.png 300w" sizes="(max-width: 520px) 100vw, 520px"></img>
-          <img decoding="async" width="520" height="174" src="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png" class="elementor-animation-grow attachment-large size-large wp-image-51746" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550.png 520w, https://alf.lk/wp-content/uploads/2022/10/Copy-of-RS.26550-300x100.png 300w" sizes="(max-width: 520px) 100vw, 520px"></img>
+
+          <Packageimg />
+
         </div>
+
+
         <center>
           <h1>BUNDLED PACKAGES</h1>
           <h5>ALL BUNDLES WILL GIVE YOU A CUSTOMIZED TRAINING/MEAL PLAN</h5>
         </center>
-        <img decoding="async" width="462" height="329" src="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png" class="elementor-animation-grow attachment-large size-large wp-image-51405" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png 462w, https://alf.lk/wp-content/uploads/2022/07/rookie-bundle-300x214.png 300w" sizes="(max-width: 462px) 100vw, 462px"></img>
-        <img decoding="async" width="462" height="329" src="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png" class="elementor-animation-grow attachment-large size-large wp-image-51405" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png 462w, https://alf.lk/wp-content/uploads/2022/07/rookie-bundle-300x214.png 300w" sizes="(max-width: 462px) 100vw, 462px"></img>
-        <img decoding="async" width="462" height="329" src="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png" class="elementor-animation-grow attachment-large size-large wp-image-51405" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png 462w, https://alf.lk/wp-content/uploads/2022/07/rookie-bundle-300x214.png 300w" sizes="(max-width: 462px) 100vw, 462px"></img>
-        <img decoding="async" width="462" height="329" src="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png" class="elementor-animation-grow attachment-large size-large wp-image-51405" alt="" loading="lazy" srcset="https://alf.lk/wp-content/uploads/2022/07/rookie-bundle.png 462w, https://alf.lk/wp-content/uploads/2022/07/rookie-bundle-300x214.png 300w" sizes="(max-width: 462px) 100vw, 462px"></img>
+        <div className="bundelImg">
+          
+          <BPackageimg />
+          
+        </div>
+
+        
+        <center>
+          <h1>SPECIALIZED TRAINING PROGRAMS</h1>
+        </center>
+        <div>
+          
+          <Trainers/>
+        
+        </div>
+
 
         <center>
           <h1>WHY SELECT A BUNDLE?</h1>

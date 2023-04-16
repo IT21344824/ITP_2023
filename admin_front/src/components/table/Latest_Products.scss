@@ -1,6 +1,19 @@
 .table {
+
     //justify-content: space-between;
 
+    // not working
+    //  .tb_LP{
+    //    background: aqua  !important;
+    //    font-size: 32px;
+    // }
+    
+    .datagrid {
+        width: 100%;
+        height: 300px;
+
+        
+    }
 
     .cellWrapper {
         display: flex;
@@ -23,8 +36,8 @@
 
 
         &.InStock {
-            color: green;
-            background-color: rgba(2, 255, 2, 0.1);
+            color: goldenrod;
+            background-color: rgba(255, 217, 0, 0.153);
 
 
         }
@@ -42,15 +55,23 @@
         gap: 15px;
         padding: 2px 5px;
         border-radius: 5px;
-        color: darkblue;
-        background-color: rgba(0, 242, 255, 0.459);
-        border: 1px dotted rgba(0, 0, 139, 0.579);
+        color: green;
+        background-color: greenyellow;
+        border: 1px dotted greenyellow;
         cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.90);
+        }
     }
 
     .no_data {
         .tableCell {
-            
+
             text-align: center;
             //margin: auto;
             justify-content: center;

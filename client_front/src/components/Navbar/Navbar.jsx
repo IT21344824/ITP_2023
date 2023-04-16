@@ -85,7 +85,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
             </div>
 
             <div className="icons">
-              <DarkModeOutlinedIcon className="icon" onClick={() => dispatch({ type: "TOGGLE" })} />
+              <DarkModeOutlinedIcon className="icon darkM" onClick={() => dispatch({ type: "TOGGLE" })} />
               <PersonIcon />
               <FavoriteBorderIcon />
               <div className="cartIocn" onClick={() => setOpen(!open)}>

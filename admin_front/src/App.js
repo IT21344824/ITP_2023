@@ -1,11 +1,16 @@
-
+// common-------------------
 // import './App.css';
-import Home from "./pages/home/Home";
 //import Login from "./pages/login/Login";
+//import{render} from "react-dom" ;
+import { BrowserRouter,  Routes,  Route,  Navigate,} from "react-router-dom";
+import {  userInput ,adminInput} from "./formSource";
+import "./style/dark.scss";
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
+import { AuthContext } from "./context/AuthContext";
+import Home from "./pages/home/Home";
 
-import List from "./pages/User_pages/list/List";
-import Single from "./pages/User_pages/single/Single";
-import New from "./pages/User_pages/new/New";
+
 
 //user_magagement
 import Login from "./pages/User_pages/login/Login";
@@ -21,38 +26,33 @@ import Ad_single from "./pages/User_pages/single/Employe";
 // Coach - magagement
 
 import PackageNew from "./pages/Coach_pages/Packages/PackageNew";
-import CoachTable from "./pages/Coach_pages/list/CoachTable";
+import PackageTable from "./pages/Coach_pages/list/PackageTable";
+import PackageView from "./pages/Coach_pages/View/Package_view";
+
+import Coach_New from "./pages/Coach_pages/coach/Coach_New";
+import CoachTable from "./pages/Coach_pages/list/CoachList";
+import CoachView from "./pages/Coach_pages/View/Coach_vew";
+
 
 
 // product_magagement
 import ProductList from "./pages/Product_pages/list/Product";
 import ProductID from "./pages/Product_pages/single/Product_ID";
 import ProductNew from "./pages/Product_pages/new/Product_New";
-
 // import CategoryList from "./pages/Product_pages/list/Category";
 // import Category_ID from "./pages/Product_pages/single/Category_ID";
 
- import Notify from "./components/notify_status/button_test";
-
-//import{render} from "react-dom" ;
-
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-
-} from "react-router-dom";
-
-import {  userInput ,adminInput} from "./formSource";
-import "./style/dark.scss";
-import { useContext } from "react";
-import { DarkModeContext } from "./context/darkModeContext";
-import { AuthContext } from "./context/AuthContext";
 
 //Additinoal_magagement
 import AdditionalList from "./pages//Additional_pg/Additional_pg";
 import AdditionalHome_New from "./components/Additional_comp/Home/New/Home_New";
+
+// test 
+import Notify from "./components/notify_status/button_test";
+import List from "./pages/User_pages/list/List";
+import Single from "./pages/User_pages/single/Single";
+import New from "./pages/User_pages/new/New";
+
 
 
 function App() {
@@ -181,18 +181,18 @@ function App() {
             </Route>
 
 
-            <Route path="coaches" >
+             <Route path="coaches" >
                 <Route index element={
                   <RequireAuth>
-                    <List />
+                    < CoachTable/>
                   </RequireAuth>} />
 
                 <Route path=":coachesId" element={<RequireAuth>
-                  <Single />
+                  <CoachView />
                 </RequireAuth>} />
                 
                 <Route path="new" element={<RequireAuth>
-                  <New inputs={userInput} title="Add New User" />
+                  <Coach_New />
                 </RequireAuth>} />
 
             </Route>
@@ -202,16 +202,17 @@ function App() {
             <Route path="packages" >
               <Route index element={
                 <RequireAuth>
-                  <CoachTable />
+                  <PackageTable />
                 </RequireAuth>} />
               <Route path=":packagesId" element={<RequireAuth>
-                <Single />
+                <PackageView />
               </RequireAuth>} />
               <Route path="new" element={<RequireAuth>
                 <PackageNew  />
               </RequireAuth>} />
 
             </Route>
+
 
              {/* ----------------------------------------------------------- */}
 

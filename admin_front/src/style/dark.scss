@@ -1,7 +1,7 @@
 .app.dark {
 
     background-color: #222;
-   
+
     color: rgb(156, 156, 156);
 
     input {
@@ -47,7 +47,7 @@
             background-color: #111;
 
             .tableCell,
-            .cellWrapper {
+            .cellWrapper ,.datagrid{
                 color: gray;
             }
         }
@@ -61,20 +61,32 @@
             }
         }
 
-       
+
 
     }
-    .navbar{
+
+    .navbar {
         color: white;
         background-color: #292929;
+
+        .darkM{
+            
+            color: #00d9ffdf;
+            border: 2px solid #00d9ff;
+            border-radius: 50%;
+            box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            -webkit-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            -moz-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+        }
     }
-    
+
     .sidebar {
         background-color: #111;
         border-color: #333;
 
         .top {
             background-color: #202020;
+
             .logo {
                 color: #999;
             }
@@ -86,24 +98,26 @@
         }
 
         ul {
-         
+
             li {
-                span{
+                span {
                     color: #c7c7c8;
                 }
+
                 &:hover {
 
                     background-color: #333;
 
                 }
 
-                .iocn{
+                .iocn {
                     color: #c6c644;
                     //background-color: rgba(128, 0, 128, 0.43);
                 }
             }
         }
     }
+
     //--------------------------------------------------------end of dashboard------------------------------------------------------------------------------
 
 
@@ -148,6 +162,10 @@
             .cat_add_from {
                 color: rgb(128, 128, 128);
                 border: none;
+
+                label {
+                    color: rgb(215, 215, 215);
+                }
 
                 .viewButton,
                 .deleteButton,
@@ -270,8 +288,8 @@
                 }
             }
 
-            .animation_p_id{
-                .p_details{
+            .animation_p_id {
+                .p_details {
                     background-color: #2f2f2f;
                 }
             }
@@ -280,5 +298,5 @@
 
     //-----------------------------------------------------------------end of product-------------------------------------------------------------
 
-    
+
 }

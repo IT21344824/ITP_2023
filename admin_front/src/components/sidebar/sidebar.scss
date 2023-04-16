@@ -62,7 +62,9 @@
                 &:hover{
                     background-color: rgb(224, 224, 224);
                 }
-
+                &:active{
+                    transform: scale(0.90);
+                }
                 
 
                 .iocn{

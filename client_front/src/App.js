@@ -1,11 +1,6 @@
 
 // common
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  Route,
-} from "react-router-dom";
+import {  createBrowserRouter,  RouterProvider,  Outlet,  Route,} from "react-router-dom";
 import React, { useContext , useState, useEffect } from 'react';
 import More_fg from "./pages/More_pg/More_fg";
 
@@ -22,13 +17,13 @@ import './App.scss';
 import LogIn from './pages/User_pages/LogIn/LogIn';
 import SignUp from './pages/User_pages/SignUp/SignUp';
 
-//user managements
+//Product managements
 import Products from './pages/Product_pages/Products/Products';
 import Product from './pages/Product_pages/Product/Product';
 
-//user managements
+//Coach managements
 import Coach from './pages/Coach_pages/Coach_1/Coach';
-
+import Trainer from "./pages/Coach_pages/Coach_2/Trainer";
 
 //cart managements
 import Cart from './pages/Cart_pages/Cart_page';

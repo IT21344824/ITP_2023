@@ -13,15 +13,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import GroupIcon from '@mui/icons-material/Group';
 import EngineeringIcon from '@mui/icons-material/Engineering';
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState, useEffect } from "react";
-
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Sidebar = () => {
 
-    const { dispatch } = useContext(DarkModeContext);
+    const { dispatch: darkModeDispatch } = useContext(DarkModeContext);
 
     //selected link 
     const [clickedElement, setClickedElement] = useState(
@@ -32,6 +32,15 @@ const Sidebar = () => {
         localStorage.setItem("clickedElement", element);
         setClickedElement(element);
     };
+
+    // log out--
+    const navigate = useNavigate();
+    const { dispatch: authDispatch } = useContext(AuthContext);
+
+    const onlogOut = ()=>{
+        authDispatch({type:"LOGOUT" });
+        navigate("/");
+    }
 
 
     return (
@@ -48,18 +57,21 @@ const Sidebar = () => {
                 <ul>
                     <p className="title"> MAIN </p>
                     <Link to="/" style={{ textDecoration: "none" }} >
-                        <li onClick={() => handleClickedElement("Dashboard")} className={clickedElement === "Dashboard" ? "selected" : ""}>                            
-                       
+                        <li onClick={() => handleClickedElement("Dashboard")} className={clickedElement === "Dashboard" ? "selected" : ""}>
+
                             <DashboardIcon className="iocn" />
                             <span> Dashboard </span>
                         </li>
                     </Link>
 
+
                     <p className="title"> LIST </p>
+                    {/* ----------------------------list start ----------------*/}
+
 
                     <Link to="/Additional" style={{ textDecoration: "none" }} >
-                        <li onClick={() => handleClickedElement("Additional")} className={clickedElement === "Additional" ? "selected" : ""}>                            
-                        <GroupIcon className="iocn" />
+                        <li onClick={() => handleClickedElement("Additional")} className={clickedElement === "Additional" ? "selected" : ""}>
+                            <GroupIcon className="iocn" />
                             <span> Additional </span>
                         </li>
                     </Link>
@@ -114,11 +126,15 @@ const Sidebar = () => {
                         </li>
                     </Link>
 
+                    {/* ----------------------------list end ----------------*/}
 
 
 
-                    {/* ----------------------------Usefull start ----------------*/}
+
                     <p className="title"> USEFULL </p>
+                    {/* ----------------------------Usefull start ----------------*/}
+
+
 
 
                     <li onClick={() => handleClickedElement("Stats")} className={clickedElement === "Stats" ? "selected" : ""}>
@@ -131,9 +147,13 @@ const Sidebar = () => {
                         <span> Notifications </span>
                     </li>
                     {/* -----------------------------Usefull end----------------------------  */}
-                    {/* ------------------------------SERVICE start------------------------- */}
+
+
+
 
                     <p className="title"> SERVICE </p>
+                    {/* ------------------------------SERVICE start------------------------- */}
+
 
                     <li onClick={() => handleClickedElement("Health")} className={clickedElement === "Health" ? "selected" : ""}>
                         <FitnessCenterIcon className="iocn" />
@@ -150,9 +170,13 @@ const Sidebar = () => {
                         <span> Settings </span>
                     </li>
                     {/*---------------------------------- SERVICE end---------------------------- */}
-                    {/*----------------------------------- USER start -------------------------------*/}
+
+
+
 
                     <p className="title"> USER </p>
+                    {/*----------------------------------- USER start -------------------------------*/}
+
 
                     <li onClick={() => handleClickedElement("Profile")} className={clickedElement === "Profile" ? "selected" : ""}>
                         <AccountCircleIcon className="iocn" />
@@ -161,15 +185,15 @@ const Sidebar = () => {
 
                     <li onClick={() => handleClickedElement("Logout")} className={clickedElement === "Logout" ? "selected" : ""}>
                         <LogoutIcon className="iocn" />
-                        <span> Logout </span>
+                        <span onClick={()=> onlogOut()}> Logout </span>
                     </li>
                     {/*------------------------------------ USER end--------------------------------- */}
                 </ul>
 
 
                 <div className="bottem">
-                    <div className="colorOption" onClick={() => dispatch({ type: "LIGHT" })}></div>
-                    <div className="colorOption" onClick={() => dispatch({ type: "DARK" })}></div>
+                    <div className="colorOption" onClick={() => darkModeDispatch({ type: "LIGHT" })}></div>
+                    <div className="colorOption" onClick={() => darkModeDispatch({ type: "DARK" })}></div>
 
                 </div>
 

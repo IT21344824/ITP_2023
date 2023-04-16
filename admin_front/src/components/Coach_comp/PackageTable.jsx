@@ -1,4 +1,3 @@
-import React from 'react'
 //import "./productTable.scss";
 import SearchIcon from '@mui/icons-material/Search';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
@@ -9,17 +8,19 @@ import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, server
 import { db } from "../../firebase";
 
 
-const CoachTable = () => {
+
+const CoachTable = ({ id }) => {
+
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-
+  
   //table headers
   const columns = [
     { field: "Row_id", headerName: "Row", width: 65 },
     { field: "id", headerName: "BD-id", width: 150 },
     { field: "Categories", headerName: "Categories", width: 170 },
-
+    
     {
       field: "image",
       headerName: "Image",
@@ -32,17 +33,17 @@ const CoachTable = () => {
           </div>
         );
       },
-
+      
     },
 
-
+    
   ];
 
   // show all data
-
+  
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "Coaches"),
+      collection(db, "Packages"),
       (snapshot) => {
         let list = []
         snapshot.docs.forEach(doc => {
@@ -59,14 +60,14 @@ const CoachTable = () => {
 
 
   //table delete data function
-  const handleDelete = async (id) => {
+   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "Coaches", id));
-      setData(data.filter((item) => item.id !== id));
+      await deleteDoc(doc(db, "Packages", id));
+     setData(data.filter((item) => item.id !== id));
     } catch (error) {
       console.log(error);
     }
-
+   
   };
 
   //table action header /function
@@ -78,7 +79,7 @@ const CoachTable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/Coaches/${params.row.id}`} style={{ textDecoration: "none" }} state={{ id: params.row.id }}>
+            <Link to={`/packages/${params.row.id}`} style={{ textDecoration: "none" }} state={{ id: params.row.id }}>
               <div className="viewButton"> View </div>
             </Link>
             <div className="deleteButton" onClick={() => handleDelete(params.row.id)}  > Delete </div>
@@ -88,21 +89,31 @@ const CoachTable = () => {
     }
   ];
 
+  // //all date or search by name / id
+  // const filteredData = data.filter((row) =>
+  //   searchQuery === "" ||
+  //   ["id", "Product_id", "item_name"].some(
+  //     (field) =>
+  //       row[field] && row[field].toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+  //   )
+  // );
+
 
 
   return (
-    <div>
+    <div className="pro_table">
+
       <div className="datatable">
         <div className="datatableTitle">
-          Add New Coach
-          <Link to="/Coaches/new" className="link" >
+          Add New Package
+          <Link to="/packages/new" className="link" >
             Add New
           </Link>
         </div>
         <div className="search_table">
           <input
             type="text"
-            placeholder="search Coach.."
+            placeholder="search Product.."
             className="input"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -121,7 +132,6 @@ const CoachTable = () => {
 
 
       </div>
-
     </div>
   )
 }
