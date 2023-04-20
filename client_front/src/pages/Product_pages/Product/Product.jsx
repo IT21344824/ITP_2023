@@ -79,7 +79,7 @@ const Product = () => {
             {product && product.img && product.img.length > 0 && (
               <>
                 {product.img.map((imgUrl, index) => (
-                  <img key={index} src={imgUrl} alt="" onClick={e => setSelectedImg(index)} />
+                  <img key={index} src={imgUrl} alt="" onClick={e => setSelectedImg(index)} className='notSelected' />
                 ))}
               </>
             )}
@@ -91,11 +91,11 @@ const Product = () => {
 
         </div>
 
-        
+
         <div className="right">
-          
+
           <div >
-           <span className="p-id">  ID : {product.Product_id} </span>
+            <span className="p-id">  ID : {product.Product_id} </span>
           </div>
           <h1>{product.item_name}</h1>
           <span className='price'> Rs : {product.price}</span>
