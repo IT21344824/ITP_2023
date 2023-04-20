@@ -1,12 +1,13 @@
-.Home_comp_new {
-   display: flex;
+.new {
+    display: flex;
+    width: 100%;
 
-   .homeContainer{
-    flex: 6;
 
-    .contaiber{
+    .newContainer {
+        flex: 6;
 
-      .top,
+
+        .top,
         .bottom {
             box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
             -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
@@ -38,15 +39,13 @@
 
             .right {
                 flex: 2;
-                //margin-left: -100px;
+                //margin-left: 20px;
 
                 form {
                     display: flex;
                     flex-wrap: wrap;
                     gap: 30px;
-                    //justify-content: space-around;
-                     display: flex;
-                    //flex-direction: column;
+                    justify-content: space-around;
 
                     label {
                         display: flex;
@@ -57,32 +56,14 @@
                             cursor: pointer;
                         }
                     }
-                    .wrap{
-                     display: flex;
-                     margin-top: 20px;
-                     gap: 50px;
-                    }
-
-                    .img_tag {
+                    .img_tag{
                         display: flex;
-                        flex-direction: column;
                         gap: 10px;
-
-                    }
-                    .top_Margin{
-                     margin-top: 30px;
+                        
                     }
 
                     .formInput {
                         width: 40%;
-                       // background-color: aqua;
-                        
-
-                        .p_new_hint {
-                            margin-top: 2px;
-                            font-size: 13px;
-                            color: red;
-                        }
 
                         .clear_img {
                             width: 50px;
@@ -93,8 +74,19 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            color: white;
-                            cursor: pointer;
+                          }
+                          
+
+                        .line_height {
+
+                            line-height: 30px;
+
+                        }
+                        .Item_Type{
+                            margin-bottom: 30px;
+                        }
+                        .status{
+                            margin-bottom: 10px;
                         }
 
                         .Description {
@@ -103,38 +95,25 @@
                             padding: 5px;
                             border: none;
                             border-bottom: 1px solid gray;
-                            resize: none;
-
-                            // if error
-                            &.error {
-                                border-bottom: 3px solid red;
-
-                            }
 
                         }
 
-                        input {
+                        input ,.P_cat {
                             width: 100%;
                             padding: 5px;
                             border: none;
                             border-bottom: 1px solid gray;
-
-                            // if error
-                            &.error {
-                                border-bottom: 3px solid red;
-
-                            }
                         }
 
-                      
+                        input.invalid {
+                            border: 2px solid red;
+                        }
 
                     }
 
                     .formButton {
-                     margin-top: 100px;
-                    // padding-bottom: -200px;
-
-
+                       
+                        
                         .reset {
                             width: 150px;
                             padding: 10px;
@@ -159,7 +138,7 @@
                             margin-top: 10px;
                             margin-right: 25px;
 
-                            &:disabled {
+                            &:disabled{
                                 background-color: rgba(182, 120, 5, 0.378);
                                 cursor: not-allowed;
                             }
@@ -170,9 +149,8 @@
             }
         }
 
-
-      
     }
-   
-   }
+
+
+
 }

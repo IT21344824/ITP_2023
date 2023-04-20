@@ -15,6 +15,7 @@ const BPackage = () => {
           ),
           snapshot => {
             const packagesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            console.log(Bpackages.img)
             setBPackages(packagesData);
           }
         );

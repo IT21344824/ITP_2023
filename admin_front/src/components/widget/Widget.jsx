@@ -59,7 +59,7 @@ const Widget = ({ type }) => {
             };
             break;
 
-        case "coaches":
+        case "case_3":
             data = {
                 title: "COACHES",
                 navigate: "/users",
@@ -69,9 +69,9 @@ const Widget = ({ type }) => {
             };
             break;
 
-        case "members":
+        case "case_4":
             data = {
-                title: "MEMBERS",
+                title: "Profit",
                 navigate: "/users",
                 link: "View all orders",
                 icon: <DeliveryDiningIcon className="icon"

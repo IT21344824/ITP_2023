@@ -1,0 +1,97 @@
+.product_banner {
+    //display: flex;
+    //height: 630px;
+    padding: 20px;
+    gap: 40px;
+
+    .datatableTitle {
+        width: 25%;
+        display: block;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+
+        h1 {
+            padding: 15px 0px 15px 40px; //t r b l
+            font-size: 2em;
+            font-weight: bold;
+        }
+    }
+
+    .banner {
+        padding: 10px;
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        border-radius: 10px;
+
+        padding-bottom: 50px;
+
+        .title {
+            margin: 20px;
+            display: flex;
+            justify-content:flex-end;            
+
+            button {
+                margin-left: 10px;
+            }
+
+            .Cancel{
+                padding: 5px 10px;
+                background-color: rgb(223, 223, 224);
+                color: rgb(57, 56, 56);
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:active {
+                    transform: scale(0.90);
+                  }
+            }
+
+            .upBtn {
+                //position: absolute; // make the delete button position absolute
+                //  top: 10px; // adjust the top and left values to position the button
+                //  right: 10px;
+                padding: 5px 10px;
+                background-color: rgb(0, 148, 240);
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:active {
+                    transform: scale(0.90);
+                  }
+            }
+        }
+
+        .img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0 0 0; //t r b l
+
+            img {
+                border: 2px solid lightblue;
+                border-radius: 20px;
+                max-height: 300px;
+            }
+
+        }
+
+        .Up-img{
+           // margin-top: 50px;
+            margin-left: 200px;
+
+            label{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+}

@@ -24,14 +24,14 @@ const Home = () => {
             <div className="widgets">
               <Widget type="user" />
               <Widget type="product" />
-              <Widget type="coaches" />
-              <Widget type="members" />
+              <Widget type="case_3" />
+              <Widget type="case_4" />
 
             </div>
 
             <div className="charts">
               <Featured />
-              <Chart title="Last 6 Months ( Members Attendence )" aspect={2 / 1} />
+              <Chart title="Latest Sales" aspect={2 / 1} />
 
 
             </div>

@@ -66,30 +66,62 @@
                     flex-wrap: wrap;
                     gap: 50px;
                     margin-bottom: 70px;
-
                     justify-content: center;
                     align-items: center;
 
+
                     div {
+                        position: relative; // make the parent container position relative 
                         width: 200px;
                         height: 200px;
                         overflow: hidden;
                         cursor: pointer;
+                        justify-content: center;
+                        display: flex;
+                        align-items: center;
                         border: 2px solid rgb(251, 0, 0);
-
                         border-radius: 20px;
-
-
+                        
                         img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-
-
-
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
                         }
-                    }
+                        .viewBtn{
+                          position: absolute; // make the delete button position absolute
+                          top: 10px; // adjust the top and left values to position the button
+                          left: 10px;
+                          padding: 5px 10px;
+                          background-color: yellowgreen;
+                          color: white;
+                          border: none;
+                          border-radius: 5px;
+                          cursor: pointer;
+          
+                          &:active {
+                              transform: scale(0.90);
+                            }
+                        }
+                        
+                        .deleteBtn {
+                          position: absolute; // make the delete button position absolute
+                          top: 10px; // adjust the top and left values to position the button
+                          right: 10px;
+                          padding: 5px 10px;
+                          background-color: red;
+                          color: white;
+                          border: none;
+                          border-radius: 5px;
+                          cursor: pointer;
+          
+                          &:active {
+                              transform: scale(0.90);
+                            }
+                        }
+                      }
                 }
+
+                
 
                 .animation_p_id {
                     //background: #fff;
@@ -97,85 +129,52 @@
                     overflow: hidden;
                     //background: #df2100;
                     border-radius: 22px;
+
+
+                 
+
+
                     //--
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        top: 36%;
-                        left: -10%;
-                        width: 700px;
-                        height: 120px;
-                        
-                        background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
-                        z-index: 1;
-                        transform-origin: bottom right;
-                        animation: animate 10s linear infinite;
-                      
-                    }
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 36%;
-                        left: -10%;
-                        width: 700px;
-                        height: 120px;
-                        
-                        background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
-                        z-index: 1;
-                        transform-origin: bottom right;
-                        animation: animate 10s linear infinite;
-                        animation-delay: -5s;
-                      
-                    }
+                    // &::before {
+                    //     content: '';
+                    //     position: absolute;
+                    //     top: 36%;
+                    //     left: -10%;
+                    //     width: 700px;
+                    //     height: 120px;                        
+                    //     background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
+                    //     z-index: 1;
+                    //     transform-origin: bottom right;
+                    //     animation: animate 10s linear infinite;
 
+                    // }
+                    // &::after {
+                    //     content: '';
+                    //     position: absolute;
+                    //     top: 36%;
+                    //     left: -10%;
+                    //     width: 700px;
+                    //     height: 120px;                        
+                    //     background: linear-gradient(0deg, transparent, transparent, #ff7a45, #ff7a45, #ff7a45);
+                    //     z-index: 1;
+                    //     transform-origin: bottom right;
+                    //     animation: animate 10s linear infinite;
+                    //     animation-delay: -5s;
 
-                    // .borderline{
-                    //     position: relative;
-                    //     top: 0;
-                    //     inset: 0;
-
-                    //     &::before {
-                    //         content: '';
-                    //         position: absolute;
-                    //         top: 20%;
-                    //         left: -10%;
-                    //         width: 700px;
-                    //         height: 120px;
-                            
-                    //         background: linear-gradient(0deg, transparent, transparent, #4303f4, #4303f4, #4303f4);
-                    //         z-index: 1;
-                    //         transform-origin: bottom right;
-                    //         //animation: animate 10s linear infinite;
-                          
-                    //     }
-                    //     // &::after {
-                    //     //     content: '';
-                    //     //     position: absolute;
-                    //     //     top: 20%;
-                    //     //     left: -10%;
-                    //     //     width: 700px;
-                    //     //     height: 120px;
-                            
-                    //     //     background: linear-gradient(0deg, transparent, transparent, #4303f4, #4303f4, #4303f4);
-                    //     //     z-index: 1;
-                    //     //     transform-origin: bottom right;
-                    //     //    // animation: animate 10s linear infinite;
-                    //     //     animation-delay: -8.5s;
-                          
-                    //     // }
                     // }
 
 
-                    @keyframes animate {
-                        0% {
-                            transform: rotate(0deg);
-                        }
 
-                        100% {
-                            transform: rotate(360deg);
-                        }
+                    // @keyframes animate {
+                    //     0% {
+                    //         transform: rotate(0deg);
+                    //     }
 
-                    }
+                    //     100% {
+                    //         transform: rotate(360deg);
+                    //     }
+
+                    // }
 
 
 
@@ -184,11 +183,65 @@
                         border: 1px solid gray;
                         padding: 40px;
                         border-radius: 20px;
-                      //  //width: 91%;
+                        //width: 91%;
                         position: relative;
-                        z-index: 2;
+                        // z-index: 3;
                         background: #f4f4f4;
 
+                        .buttons{
+                            display: flex;
+                            justify-content:end;
+                            align-items:center;
+                            gap: 20px;
+    
+                            .Cancel{                            
+                                padding: 5px 10px;
+                                background-color: rgb(201, 199, 197);
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;                           
+    
+                                &:active {
+                                    transform: scale(0.90);
+                                  }
+                            }
+    
+                            .edit{
+                                padding: 5px 10px;
+                                background-color: rgb(0, 148, 240);
+                                color: white;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;                           
+    
+                                &:active {
+                                    transform: scale(0.90);
+                                  }
+                            }
+                        }
+
+                        .update-img{
+                            display: flex;
+                            margin-left: 30px;
+                            margin-bottom: 40px;
+    
+                            label{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                            }
+                        }
+
+                        .change-hadder{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: rgb(220, 147, 20);
+                            font-weight: bold;
+                            font-size: 24px;
+                        }
 
                         .delail {
                             display: flex;
@@ -196,11 +249,24 @@
                             // gap: 30px;
                             justify-content: space-around;
 
+                            
+
                             .p_inputbox {
                                 position: relative;
                                 margin: 20px;
 
-                                p {
+                                .p_new_hint {
+                                    margin-left: 20px;
+                                    margin-top: 4px;
+                                    display: flex;
+                                    //position: relative;
+                                    top: 100px;
+                                    font-size: 13px;
+                                    color: red;
+                                }
+
+                                textarea{
+                                    min-height: 200px;
                                     padding: 20px 10px 12px 30px;
                                     border: none;
                                     width: 25vw;
@@ -213,7 +279,39 @@
                                     box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
                                         5px 5px 15px rgba(0, 0, 0, 0.35);
                                     word-wrap: break-word;
+                                    resize: none;
+                                }
+
+                                p,.In_txt ,select{
+                                    padding: 20px 10px 12px 30px;
+                                    border: none;
+                                    width: 25vw;
+                                    background: #c7c7c7;
+                                    border: 1px solid #00dfc4;
+                                    color: #050505;
+                                    font-weight: 300;
+                                    border-radius: 25px;
+                                    font-size: 1rem;
+                                    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                        5px 5px 15px rgba(0, 0, 0, 0.35);
+                                    word-wrap: break-word;
+                                    resize: none;
                                     /* add this property to wrap long text */
+                                }
+
+                                .In_radio{
+                                    display: flex;
+                                    gap: 20px;
+                                    padding: 20px 10px 12px 30px;
+                                    border: none;                                    
+                                    background: #c7c7c7;
+                                    border: 1px solid #00dfc4;
+                                    color: #050505;
+                                    font-weight: 300;
+                                    border-radius: 25px;
+                                    font-size: 1rem;
+                                    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                        5px 5px 15px rgba(0, 0, 0, 0.35);
                                 }
 
                                 span {
@@ -235,33 +333,18 @@
                             }
                         }
 
-                        //background: red;
 
                     }
 
                 }
 
 
-                // .table_predata {
-                //     margin-top: 50px;
-                //     //width: 60%;
-                //     margin-left: 40px;
-                //     font-size: 20px;
-                //     border: 1px solid gray;
-                //     padding: 40px;
-                //     border-radius: 20px;
-
-                //     td {
-
-                //         padding-top: 5px;
-                //         padding-bottom: 5px;
-                //     }
-                // }
-
 
             }
 
         }
     }
+
+      
 
 }

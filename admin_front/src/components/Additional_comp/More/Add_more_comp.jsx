@@ -3,12 +3,13 @@ import { getDoc, collection, query, doc, updateDoc, serverTimestamp, onSnapshot 
 import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
-import "./Home.scss";
+import "./Add_more_comp.scss";
 import Addi_nav from '../Addi_navbar/Addi_nav';
 import Modal from 'react-modal';
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
-const Home = () => {
+const Add_more_comp = () => {
+
 
     //image upload
     const [files, setFiles] = useState([]);
@@ -19,7 +20,7 @@ const Home = () => {
 
     //geting selected data
     const [data, setData] = useState({});
-    const _id = "a0dKkN6QsyG64x9GnFFa";
+    const _id = "uyHXlvU1LtAsfaBEr3K7";
 
     //get data
     useEffect(() => {
@@ -50,14 +51,13 @@ const Home = () => {
     const handleImageClick = (index) => {
         setSelectedImg(index);
     };
-
-    
-
-    //------------------------------------------------------edit-------------------------------------------------------
+    //-----------------------------
     const [isEditing, setIsEditing] = useState(false);
 
+
+
     const initialUpdateData = {
-        details_id: "",
+        M_details_id: "",
         LP_description: "",
         TP_description: "",
         img: [],
@@ -181,32 +181,23 @@ const Home = () => {
 
 
 
-
-
-
     return (
-        <div className='Home_comp'>
-
+        <div className='Add_more_comp'>
+           
             <div className="top_pre">
 
                 <div className="pre_title">
-                    <h1>Home Page Details</h1>
+                    <h1>More Page Details</h1>
                 </div>
+
 
                 <div className="pre_Img">
                     {data?.img?.map((img, index) => (
                         <div key={index} >
                             <div className="img">
-                                {isEditing ? (
-                                    <div>
-                                        <img src={img} alt="Details" />
-                                        <button className="viewBtn" onClick={() => handleImageClick(index)} >view</button>
-                                        <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
-
-                                    </div>
-                                ) : (
-                                    <img src={img} alt="Details" />
-                                )}
+                                <img src={img} alt="Details" />
+                                <button className="viewBtn" onClick={() => handleImageClick(index)} >view</button>
+                                <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
                             </div>
                         </div>
                     ))}
@@ -259,14 +250,14 @@ const Home = () => {
                             </div>
 
                             <div className="p_inputbox">
-                                <span className="span"> details_id : </span>
+                                <span className="span"> M_details_id : </span>
                                 {isEditing ? (
                                     <div>
-                                        <span className="hint">{data?.details_id ?? ''} </span>
+                                        <span className="hint">{data?.M_details_id ?? ''} </span>
                                         <input
                                             type="text"
-                                            name="details_id"
-                                            value={UpdateData.details_id}
+                                            name="M_details_id"
+                                            value={UpdateData.M_details_id}
                                             onChange={handleInputChange}
                                         />
 
@@ -327,4 +318,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Add_more_comp

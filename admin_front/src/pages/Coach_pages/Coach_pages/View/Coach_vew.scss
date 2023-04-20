@@ -1,0 +1,66 @@
+.Coach_vew {
+    display: flex;
+
+    .con {
+        flex: 6;
+    }
+}
+/* Sidebar styles */
+.Coach_vew .Sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+    height: 100vh;
+  }
+  
+  /* Navbar styles */
+  .Coach_vew .Navbar {
+    background-color: #333;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .Coach_vew .Navbar h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  /* Coach details styles */
+  .Coach_vew .delail {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .Coach_vew .pre_Img {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Coach_vew .pre_Img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .Coach_vew .p_inputbox {
+    flex-basis: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .Coach_vew .p_inputbox p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .Coach_vew .p_inputbox span {
+    font-size: 14px;
+    color: #888;
+  }
+  

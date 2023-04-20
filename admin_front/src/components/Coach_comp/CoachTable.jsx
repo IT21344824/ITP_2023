@@ -18,7 +18,7 @@ const CoachTable = () => {
   const columns = [
     { field: "Row_id", headerName: "Row", width: 65 },
     { field: "id", headerName: "BD-id", width: 150 },
-    { field: "Categories", headerName: "Categories", width: 170 },
+    { field: "Coach_name", headerName: "name", width: 170 },
 
     {
       field: "image",

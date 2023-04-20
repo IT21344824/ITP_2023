@@ -16,7 +16,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/User_pages/login/Login";
 import UserList from "./pages/User_pages/list/List";
 import UserNew from "./pages/User_pages/new/User_New";
-import UserSingle from "./pages/User_pages/single/Single";
+import UserSingle from "./pages/User_pages/single/User";
 
 import AdminList from "./pages/User_pages/list/AdminList";
 import AdminNew from "./pages/User_pages/new/Admin_new";
@@ -34,23 +34,24 @@ import CoachTable from "./pages/Coach_pages/list/CoachList";
 import CoachView from "./pages/Coach_pages/View/Coach_vew";
 
 
-
 // product_magagement
 import ProductList from "./pages/Product_pages/list/Product";
-import ProductID from "./pages/Product_pages/single/Product_ID";
+import ProductID from "./pages/Product_pages/single/Product_ID"; 
 import ProductNew from "./pages/Product_pages/new/Product_New";
+//import ProductID_OBO from "./pages/Product_pages/Single_up_oneByOne/OneByOne";
 // import CategoryList from "./pages/Product_pages/list/Category";
 // import Category_ID from "./pages/Product_pages/single/Category_ID";
 
 
 //Additinoal_magagement
-import AdditionalList from "./pages//Additional_pg/Additional_pg";
-import AdditionalHome_New from "./components/Additional_comp/Home/New/Home_New";
+import AdditionalMai from "./pages//Additional_pages/Additional_pg/Additional_pg";
+import Additionalmore from "./pages//Additional_pages/more_pg/Add_More";
+
 
 // test 
 import Notify from "./components/notify_status/button_test";
 import List from "./pages/User_pages/list/List";
-import Single from "./pages/User_pages/single/Single";
+import Single from "./pages/test/Single";
 import New from "./pages/User_pages/new/New";
 
 
@@ -87,7 +88,8 @@ function App() {
             <Route path="Additional" >
                 <Route index element={
                   <RequireAuth>
-                    <AdditionalList />
+                    <AdditionalMai />
+                    {/* <AdditionalList /> */}
                   </RequireAuth>} />
 
                 <Route path=":userId" element={
@@ -95,13 +97,13 @@ function App() {
                     <UserSingle />
                   </RequireAuth>} />
 
-                  <Route path="home/new" element={<RequireAuth>
-                  <AdditionalHome_New />
+                
+
+                <Route path="more" element={<RequireAuth>
+                  <Additionalmore />
                 </RequireAuth>} />
 
-                <Route path="new" element={<RequireAuth>
-                  <UserNew />
-                </RequireAuth>} />
+                
 
 
             </Route>
@@ -134,6 +136,7 @@ function App() {
               <Route index element={<RequireAuth> <ProductList /> </RequireAuth>} />
               <Route path=":productId" element={<RequireAuth> <ProductID /> </RequireAuth>} />
               <Route path="new" element={<RequireAuth> <ProductNew /> </RequireAuth>} />
+
 
             </Route>
 
