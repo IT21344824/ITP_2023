@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./footer.scss"
 import { Link } from 'react-router-dom';
-
-const Footer = ({ selectedLink , handleLinkClick }) => {
+import { db } from '../../firebase';
+import { collection,doc, onSnapshot, query, where } from 'firebase/firestore';
+const Footer = ({ selectedLink, handleLinkClick }) => {
   //const [selectedLink, setSelectedLink] = useState('');
 
   // const handleFooterClick = (link) => {
@@ -11,13 +12,65 @@ const Footer = ({ selectedLink , handleLinkClick }) => {
   //   console.log(link)
   // };
 
+   //about us --get details---------------------------------------------------------------------------------------------------------------------------------
+    
+   const about_id = "MorePageAboutUs";
+
+   //geting selected data
+   const [aboutData, setAboutData] = useState({});
+
+   
+   useEffect(() => {
+       const docRef = doc(db, "client_home_pg", about_id);
+
+       const unsubscribe = onSnapshot(docRef, async (doc) => {
+           if (doc.exists()) {
+               const data = doc.data();
+               setAboutData(data);
+           } else {
+               console.log("No such document!");
+           }
+       }, (error) => {
+           console.log("Error getting document:", error);
+       });
+
+       // unsubscribe from the listener when the component unmounts
+       return () => unsubscribe();
+   }, [aboutData]);
+
+    //contactus us --get details---------------------------------------------------------------------------------------------------------------------------------
+    
+    const contact_id = "MorePageContactUs";
+
+    //geting selected data
+    const [contactData, setContactData] = useState({});
+ 
+    
+    useEffect(() => {
+        const docRef = doc(db, "client_home_pg", contact_id);
+ 
+        const unsubscribe = onSnapshot(docRef, async (doc) => {
+            if (doc.exists()) {
+                const data = doc.data();
+                setContactData(data);
+            } else {
+                console.log("No such document!");
+            }
+        }, (error) => {
+            console.log("Error getting document:", error);
+        });
+ 
+        // unsubscribe from the listener when the component unmounts
+        return () => unsubscribe();
+    }, [contact_id]);
+
 
   return (
     <div className='back_color'>
       <div className='footer'>
         <div className="top">
 
-        <div className="item">
+          <div className="item">
             <h1>Navigations </h1>
             <Link to="/" onClick={() => handleLinkClick('home')}>
               <span className={selectedLink === 'home' ? 'selected' : ''}>
@@ -34,9 +87,9 @@ const Footer = ({ selectedLink , handleLinkClick }) => {
                 Coach
               </span>
             </Link>
-            <Link to="/Articals" onClick={() => handleLinkClick('articles')}>
+            <Link to="/More" onClick={() => handleLinkClick('articles')}>
               <span className={selectedLink === 'articles' ? 'selected' : ''}>
-                Articals
+                More
               </span>
             </Link>
           </div>
@@ -48,21 +101,33 @@ const Footer = ({ selectedLink , handleLinkClick }) => {
             <span>CONTACT US</span>
             <span>Articals</span>
           </div>
+
           <div className="item">
             <h1 className="">About</h1>
-            <span>A job description summarizes the essential responsibilities,
+            <span> 
+            {aboutData.AU_descrip ? aboutData.AU_descrip.substring(0, 200) : ''}
+              {/* A job description summarizes the essential responsibilities,
               activities, qualifications and skills for a role. Also known as
-              a JD, this document describes the type of work performed.
+              a JD, this document describes the type of work performed. */}
             </span>
           </div>
+
+          
+
           <div className="item">
             <h1 className="">Contact</h1>
-            <span>A job description summarizes the essential responsibilities,
+            <span className='Contact'>
+              {/* {contactData.CU_descrip ? contactData.CU_descrip.substring(0, 200) : ''} */}
+              A job description summarizes the essential responsibilities,
               activities, qualifications and skills for a role. Also known as
               a JD, this document describes the type of work performed.
             </span>
           </div>
+         
+         
         </div>
+
+
         <div className="bottom">
           <div className="left">
             <span className="logo"></span>
@@ -74,6 +139,7 @@ const Footer = ({ selectedLink , handleLinkClick }) => {
             <img src="/img/payment.webp" alt="" />
           </div>
         </div>
+
       </div>
     </div>
   )

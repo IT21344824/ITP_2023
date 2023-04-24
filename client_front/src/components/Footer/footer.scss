@@ -3,10 +3,11 @@
 
     .footer {
 
-        padding: 100px 200px 20px 200px;
+        padding: 50px 200px 20px 200px;
 
 
         .top {
+            // width: 100%;
             display: flex;
             gap: 50px;
 
@@ -17,19 +18,29 @@
                 gap: 10px;
                 text-align: justify;
                 font-size: 14px;
-
+                overflow-wrap: break-word;
+                
                 h1 {
                     font-size: 18px;
                     font-weight: 500;
                     color: #555;
                 }
 
+                // p{
+                //     width: 0px;
+                // }
+
                 span {
+                    max-width: 100%;
+                     word-wrap: break-word;
+                    text-decoration: none;
+                    display: inline-block;
                     color: gray;
                 }
 
-                .selected{
-                   // padding:  3px 50px 5px 50px; //trbf
+
+                .selected {
+                    // padding:  3px 50px 5px 50px; //trbf
                     //background-color: aqua;
                     //border-radius: 20px;
                     //font-weight: bold;
@@ -37,7 +48,7 @@
             }
 
         }
-
+        
         .bottom {
             display: flex;
             align-items: center;

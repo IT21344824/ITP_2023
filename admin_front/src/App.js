@@ -2,8 +2,8 @@
 // import './App.css';
 //import Login from "./pages/login/Login";
 //import{render} from "react-dom" ;
-import { BrowserRouter,  Routes,  Route,  Navigate,} from "react-router-dom";
-import {  userInput ,adminInput} from "./formSource";
+import { BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
+import { userInput, adminInput } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -36,7 +36,7 @@ import CoachView from "./pages/Coach_pages/View/Coach_vew";
 
 // product_magagement
 import ProductList from "./pages/Product_pages/list/Product";
-import ProductID from "./pages/Product_pages/single/Product_ID"; 
+import ProductID from "./pages/Product_pages/single/Product_ID";
 import ProductNew from "./pages/Product_pages/new/Product_New";
 //import ProductID_OBO from "./pages/Product_pages/Single_up_oneByOne/OneByOne";
 // import CategoryList from "./pages/Product_pages/list/Category";
@@ -60,7 +60,7 @@ function App() {
 
   const { darkMode } = useContext(DarkModeContext);
 
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
 
   // if there is a current user go to children (home page) if not go to log in
@@ -68,7 +68,7 @@ function App() {
     return currentUser ? (children) : <Navigate to="/login" />
   }
 
- 
+
 
   return (
     <div className={darkMode ? "app dark" : "app"} >
@@ -83,54 +83,54 @@ function App() {
                 <Home />
               </RequireAuth>} />
 
- {/* --------------------------------------------Users start -------------------------------------------------*/}
+            {/* --------------------------------------------Additional start -------------------------------------------------*/}
 
             <Route path="Additional" >
-                <Route index element={
-                  <RequireAuth>
-                    <AdditionalMai />
-                    {/* <AdditionalList /> */}
-                  </RequireAuth>} />
-
-                <Route path=":userId" element={
-                  <RequireAuth>
-                    <UserSingle />
-                  </RequireAuth>} />
-
-                
-
-                <Route path="more" element={<RequireAuth>
-                  <Additionalmore />
+              <Route index element={
+                <RequireAuth>
+                  <AdditionalMai />
+                  {/* <AdditionalList /> */}
                 </RequireAuth>} />
 
-                
+              <Route path=":userId" element={
+                <RequireAuth>
+                  <UserSingle />
+                </RequireAuth>} />
+
+
+
+              <Route path="more" element={<RequireAuth>
+                <Additionalmore />
+              </RequireAuth>} />
+
+
 
 
             </Route>
- {/* --------------------------------------------Users end -------------------------------------------------*/}
+            {/* --------------------------------------------Additional end -------------------------------------------------*/}
 
-{/* --------------------------------------------Users start -------------------------------------------------*/}
+            {/* --------------------------------------------Users start -------------------------------------------------*/}
 
             <Route path="Users" >
-                <Route index element={
-                  <RequireAuth>
-                    <UserList />
-                  </RequireAuth>} />
-
-                <Route path=":userId" element={
-                  <RequireAuth>
-                    <UserSingle />
-                  </RequireAuth>} />
-
-                <Route path="new" element={<RequireAuth>
-                  <UserNew inputs={userInput} title="Add New Users" />
+              <Route index element={
+                <RequireAuth>
+                  <UserList />
                 </RequireAuth>} />
+
+              <Route path=":userId" element={
+                <RequireAuth>
+                  <UserSingle />
+                </RequireAuth>} />
+
+              <Route path="new" element={<RequireAuth>
+                <UserNew inputs={userInput} title="Add New Users" />
+              </RequireAuth>} />
 
 
             </Route>
- {/* --------------------------------------------Users end -------------------------------------------------*/}
+            {/* --------------------------------------------Users end -------------------------------------------------*/}
 
-{/* --------------------------------------------products start -------------------------------------------------*/}
+            {/* --------------------------------------------products start -------------------------------------------------*/}
 
             <Route path="products" >
               <Route index element={<RequireAuth> <ProductList /> </RequireAuth>} />
@@ -147,56 +147,56 @@ function App() {
 
             </Route> */}
 
-{/* --------------------------------------------products end -------------------------------------------------*/}
+            {/* --------------------------------------------products end -------------------------------------------------*/}
 
             <Route path="Employees" >
-                <Route index element={
-                  <RequireAuth>
-                    <AdminList />
-                  </RequireAuth>} />
-                  
-                <Route path=":adminsId" element={<RequireAuth>
-                  <Ad_single />
+              <Route index element={
+                <RequireAuth>
+                  <AdminList />
                 </RequireAuth>} />
 
-                <Route path="new" element={<RequireAuth>
-                  <AdminNew inputs={adminInput} title="Add New Employees" />
-                </RequireAuth>} />
+              <Route path=":adminsId" element={<RequireAuth>
+                <Ad_single />
+              </RequireAuth>} />
+
+              <Route path="new" element={<RequireAuth>
+                <AdminNew inputs={adminInput} title="Add New Employees" />
+              </RequireAuth>} />
 
             </Route>
 
 
             <Route path="members" >
-                <Route index element={
-                  <RequireAuth> 
-                    {/* <List /> */}
-                    <Notify />
-                  </RequireAuth>} />
-
-                <Route path=":membersId" element={<RequireAuth>
-                  <Single />
+              <Route index element={
+                <RequireAuth>
+                  {/* <List /> */}
+                  <Notify />
                 </RequireAuth>} />
 
-                <Route path="new" element={<RequireAuth>
-                  <New inputs={userInput} title="Add New User" />
-                </RequireAuth>} />
+              <Route path=":membersId" element={<RequireAuth>
+                <Single />
+              </RequireAuth>} />
+
+              <Route path="new" element={<RequireAuth>
+                <New inputs={userInput} title="Add New User" />
+              </RequireAuth>} />
 
             </Route>
 
 
-             <Route path="coaches" >
-                <Route index element={
-                  <RequireAuth>
-                    < CoachTable/>
-                  </RequireAuth>} />
+            <Route path="coaches" >
+              <Route index element={
+                <RequireAuth>
+                  < CoachTable />
+                </RequireAuth>} />
 
-                <Route path=":coachesId" element={<RequireAuth>
-                  <CoachView />
-                </RequireAuth>} />
-                
-                <Route path="new" element={<RequireAuth>
-                  <Coach_New />
-                </RequireAuth>} />
+              <Route path=":coachesId" element={<RequireAuth>
+                <CoachView />
+              </RequireAuth>} />
+
+              <Route path="new" element={<RequireAuth>
+                <Coach_New />
+              </RequireAuth>} />
 
             </Route>
 
@@ -211,13 +211,13 @@ function App() {
                 <PackageView />
               </RequireAuth>} />
               <Route path="new" element={<RequireAuth>
-                <PackageNew  />
+                <PackageNew />
               </RequireAuth>} />
 
             </Route>
 
 
-             {/* ----------------------------------------------------------- */}
+            {/* ----------------------------------------------------------- */}
 
             <Route path="patment_INFO" >
               <Route index element={

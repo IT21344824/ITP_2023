@@ -163,26 +163,26 @@ const Package_view = () => {
             <div className="con">
                 <Navbar />
 
-                <div className="delail">
+                <div className="Pa_delail">
 
                     {isEditing ? (
                         <>
 
-                            <button className="upBtn" onClick={handleSaveChanges}>update</button>
-                            <button className="Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+                            <button className="upBtn" onClick={handleSaveChanges}>Save Changes</button>
+                            <button className="p_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
                         </>
                     ) : (
-                        <button className="upBtn" onClick={() => setIsEditing(true)}>Edit</button>
+                        <button className="EditBtn" onClick={() => setIsEditing(true)}>Edit</button>
                     )}
 
-                    <div className="pre_Img">
+                    <div className="p_Img">
                         {data?.img?.map((img, index) => (
                             <div key={index} >
                                 <div className="img">
                                     {isEditing ? (
                                         <div>
                                             <img src={img} alt="Details" />
-                                            <button className="viewBtn" >view</button>
+                                           
                                             <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
 
                                         </div>
@@ -211,12 +211,12 @@ const Package_view = () => {
                         ''
                     )}
 
-                    <div className="p_inputbox">
+                    <div className="pa_inputbox">
                         <p>{data?.Product_id ?? ''}</p>
                         <span> Product_id </span>
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="pa_inputbox">
                         <p>{data?.Categories ?? ''}</p>
                         <span> Categories </span>
                     </div>

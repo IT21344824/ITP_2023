@@ -1,59 +1,60 @@
-.new{
+.new {
     display: flex;
     width: 100%;
 
-    .newContainer{
+    .newContainer {
         flex: 6;
-    
-        .top , .bottom{
-            box-shadow: 10px 11px 23px 0px rgba(0,0,0,0.25);
-            -webkit-box-shadow: 10px 11px 23px 0px rgba(0,0,0,0.25);
-            -moz-box-shadow: 10px 11px 23px 0px rgba(0,0,0,0.25);
+
+        .top,
+        .bottom {
+            box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+            -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
             padding: 10px;
             margin: 20px;
             display: flex;
 
-            h1{
+            h1 {
                 color: lightgray;
                 font-size: 20px;
             }
 
-            .left{
-                flex:1 ;
+            .left {
+                flex: 1;
                 text-align: center;
 
-                img{
+                img {
                     width: 100px;
                     height: 100px;
                     border-radius: 50%;
                     object-fit: cover;
-                    
+
                 }
             }
 
-            .right{
-                flex: 2 ;
+            .right {
+                flex: 2;
 
-                form{
+                form {
                     display: flex;
                     flex-wrap: wrap;
                     gap: 30px;
                     justify-content: space-around;
 
-                    label{
+                    label {
                         display: flex;
                         align-items: center;
                         gap: 10px;
 
-                        .icon{
+                        .icon {
                             cursor: pointer;
                         }
                     }
 
-                    .formInput{
+                    .formInput {
                         width: 40%;
 
-                        input{
+                        input {
                             width: 100%;
                             padding: 5px;
                             border: none;
@@ -61,28 +62,39 @@
                         }
                     }
 
-                    button{
+                    .submitbtn {
                         width: 150px;
                         padding: 10px;
                         border: none;
-                        background-color: teal;
+                        background-color: Orange;
                         color: white;
                         font-weight: bold;
                         cursor: pointer;
                         margin-top: 10px;
+                        margin-right: 25px;
+                        //transition: transform 0.5s ease-out;
 
-                        &:disabled{
-                            background-color: rgba(8, 91, 91, 0.348);
+                        &:disabled {
+                            background-color: rgba(182, 120, 5, 0.378);
                             cursor: not-allowed;
                         }
 
+
+                        &:active {
+                            transform: scale(0.90);
+                        }
+
                     }
+
+
                 }
             }
         }
-        
     }
 
-
-
 }
+
+
+
+
+

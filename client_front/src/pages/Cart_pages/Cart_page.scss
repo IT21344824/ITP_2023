@@ -91,13 +91,19 @@
 
 
             .reset {
+                font-size: 13px;
+                font-weight: 500;
+                width: 250px;
+                padding: 10px;
+                background-color: rgba(191, 4, 4, 0.759);
+                color: white;
                 display: flex;
-                //margin: 8px 0;align-items: center;
+                align-items: center;
                 justify-content: center;
-                color: red;
-                font-size: 12px;
+                gap: 20px;
                 cursor: pointer;
-                margin: 30px auto !important;
+                border: none;
+                margin: 5px auto;
             }
         }
         

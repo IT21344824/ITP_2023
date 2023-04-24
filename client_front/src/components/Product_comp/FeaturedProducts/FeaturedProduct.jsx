@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { db } from '../../../firebase';
 import Card from '../Card/Card';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { collection,doc, onSnapshot, query, where } from 'firebase/firestore';
 import "./FeaturedProduct.scss"
 
 const FeaturedProduct = ({ type }) => {
@@ -49,18 +49,41 @@ const FeaturedProduct = ({ type }) => {
         setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
     };
 
+
+    //get details---------------------------------------------------------------------------------------------------------------------------------
+    
+    const _id = "HomePageEdit";
+
+    //geting selected data
+    const [data, setData] = useState({});
+
+    
+    useEffect(() => {
+        const docRef = doc(db, "client_home_pg", _id);
+
+        const unsubscribe = onSnapshot(docRef, async (doc) => {
+            if (doc.exists()) {
+                const data = doc.data();
+                setData(data);
+            } else {
+                console.log("No such document!");
+            }
+        }, (error) => {
+            console.log("Error getting document:", error);
+        });
+
+        // unsubscribe from the listener when the component unmounts
+        return () => unsubscribe();
+    }, [_id]);
+
     return (
         <div className='featuredproduct'>
             <div className="top">
-                <h1>{type} products</h1>
-                <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                    content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
-                    their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
-                    over the years, sometimes by accident, sometimes on purpose
-                </p>
+                <h1> {type} products</h1>
+                <p> {data.LP_description} </p>
             </div>
+
+
             <div className="bottom">
                 <div className="icons">
                     <div className="icon" onClick={prevSlider}>

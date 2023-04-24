@@ -191,18 +191,18 @@ textarea {
   font-size: 16px;
 }
 
-input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+// input[type="submit"] {
+//   background-color: #4CAF50;
+//   color: white;
+//   padding: 10px 20px;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+// }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
-}
+// input[type="submit"]:hover {
+//   background-color: #45a049;
+// }
 
 .error {
   color: red;
@@ -236,4 +236,92 @@ input[type="submit"]:hover {
   /* set a maximum height for the image */
   object-fit: cover;
   /* scale the image to fill its container */
+}
+.submit-btn{
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #060606;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+.submit-btn:hover {
+  background-color: #d9302d;
+}
+
+
+
+.elementor-heading-title {
+  color: #FF0000;
+  font-family: "League Spartan", Sans-serif;
+  font-size: 80px;
+  font-weight: 600;
+}
+.elementor-heading-title {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+.elementor-joining{
+  color: #000000;
+    font-family: "League Spartan", Sans-serif;
+    font-size: 95px;
+    font-weight: 600;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input,
+.select,
+.textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.select {
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 4 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 8px 10px;
+  padding-right: 1.5rem;
+}
+.discription_b{
+  background-color: #ffffffe5;
+  
+
+}
+.join-form-container{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background:  radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background-size: 400% 400%, cover;
+  animation: gradient 15s ease infinite;
+  
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

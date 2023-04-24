@@ -160,17 +160,17 @@ const Coach_vew = () => {
             <div className="con">
                 <Navbar />
 
-                <div className="delail">
+                <div className="C_delail">
 
 
                     <div className="buttons">
                         {isEditing ? (
                             <>
-                                <button className="edit" onClick={handleSaveChanges}>Save Changes</button>
-                                <button className="Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+                                <button className="E_edit" onClick={handleSaveChanges}>Save Changes</button>
+                                <button className="C_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
                             </>
                         ) : (
-                            <button className="edit" onClick={() => setIsEditing(true)}>Edit</button>
+                            <button className="editbtn" onClick={() => setIsEditing(true)}>Edit</button>
                         )}
                     </div>
 
@@ -182,8 +182,8 @@ const Coach_vew = () => {
                         < img src={data.img} alt="" style={{ height: "300px" }} />
                     )}
 
-                    <div className="pre_Img">
-
+                    <div className="C_Img">
+                        
                         <div className="img">
                             {isEditing ? (
                                 <div>
@@ -204,7 +204,7 @@ const Coach_vew = () => {
 
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="C_inputbox">
                         <span> Coach_id </span>
 
                         <p>{data?.Coach_id ?? ''}</p>
@@ -212,7 +212,7 @@ const Coach_vew = () => {
 
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="C_inputbox">
                         <span> Coach_name </span>
                         {isEditing ? (
                             <div>
@@ -230,7 +230,7 @@ const Coach_vew = () => {
                         )}
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="C_inputbox">
                         <span> contact </span>
                         {isEditing ? (
                             <div>
@@ -248,7 +248,7 @@ const Coach_vew = () => {
                         )}
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="C_inputbox">
                         <span> description </span>
                         {isEditing ? (
                             <div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Slider from '../../components/Slider/Slider'
+import MSlider from '../../components/MorePageSlider/MorePageSlider'
 import AboutUs from '../../components/about_us/AboutUs'
 import ContactUs from '../../components/contact_us/ContactUs'
 import Apply_from from '../../components/Applycation_f_comp/Apply_from'
@@ -22,10 +22,11 @@ const More_fg = () => {
     }
 
     //---
+    
   return (
     <div className='More_fg'>
 
-        <div className="top"> <Slider/> </div>
+        <div className="top"> <MSlider/> </div>
         <div className="about_us"> <AboutUs/> </div>
         <div className="contact_us"> <ContactUs/> </div>
         <div className="apply_from"> <Apply_from/> </div>

@@ -6,6 +6,8 @@ import BalanceIcon from '@mui/icons-material/Balance';
 import { collection, getDocs, addDoc, getDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useParams } from 'react-router-dom'
+import { addToCart } from '../../../redux/cartReducer';
+import { useDispatch } from 'react-redux';
 //import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
 
 const Product = () => {
@@ -13,6 +15,8 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch()
+
 
   const [data, setData] = useState({});
   //console.log(id)
@@ -107,7 +111,15 @@ const Product = () => {
             <button onClick={() => setQuantity(prev => prev + 1)}> + </button>
           </div>
 
-          <button className="add" disabled={product.status === "Out Of Stock"}>
+          <button className="add" disabled={product.status === "Out Of Stock"}
+          onClick={()=>dispatch(addToCart({ 
+            id:product.id,
+            title:product.item_name,
+            price:product.price,
+            img:product.img,
+            quantity,
+          })) }
+          >
             <AddShoppingCartIcon /> ADD TO CART
           </button>
 

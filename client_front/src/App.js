@@ -16,6 +16,8 @@ import './App.scss';
 //user managements
 import LogIn from './pages/User_pages/LogIn/LogIn';
 import SignUp from './pages/User_pages/SignUp/SignUp';
+import Forgot from "./pages/User_pages/Forgot/Forgot";
+
 
 //Product managements
 import Products from './pages/Product_pages/Products/Products';
@@ -27,6 +29,15 @@ import Trainer from "./pages/Coach_pages/Coach_2/Trainer";
 
 //cart managements
 import Cart from './pages/Cart_pages/Cart_page';
+
+
+//payment management
+import Payment from './pages/payment/payment' ;
+import OnlineP from './pages/payment/Options/OnlineP';
+import DirectP from './pages/payment/Options/DirectP';
+import OrderBSuccess from './pages/payment/PaySuccess/OrderBSuccess';
+import OrderDSuccess from './pages/payment/PaySuccess/OrderDSuccess';
+
 
 
 const Layout = () => {
@@ -79,6 +90,10 @@ const router = createBrowserRouter([
         element: <Coach/>,
       },
       {
+        path: "/Trainer/:id",
+        element: <Trainer/>,
+      },
+      {
         path: "/newCart",
         element: <Cart/>,
       },
@@ -94,6 +109,30 @@ const router = createBrowserRouter([
         path: "/More",
         element: <More_fg/>,
       },
+      {
+        path: "/payment",
+        element: <Payment/>,
+      },
+
+      {
+        path: "/OnlineP",
+        element: <OnlineP/>,
+      },
+
+      {
+        path: "/DirectP",
+        element: <DirectP/>,
+      },
+
+      {
+        path: "/OrderBSuccess",
+        element: <OrderBSuccess/>,
+      },
+
+      {
+        path: "/OrderDSuccess",
+        element: <OrderDSuccess/>,
+      },
       
     ]
   },
@@ -105,6 +144,10 @@ const router = createBrowserRouter([
     path: "/SignUp",
     element: <SignUp/>,
   }, 
+  {
+    path: "/Forgot",
+    element: <Forgot/>,
+  },
  
 ]);
 

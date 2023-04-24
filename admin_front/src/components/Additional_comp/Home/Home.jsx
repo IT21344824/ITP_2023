@@ -7,8 +7,21 @@ import "./Home.scss";
 import Addi_nav from '../Addi_navbar/Addi_nav';
 import Modal from 'react-modal';
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//--
 
 const Home = () => {
+
+    //nofify--
+    const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+    }
 
     //image upload
     const [files, setFiles] = useState([]);
@@ -19,7 +32,7 @@ const Home = () => {
 
     //geting selected data
     const [data, setData] = useState({});
-    const _id = "a0dKkN6QsyG64x9GnFFa";
+    const _id = "HomePageEdit";
 
     //get data
     useEffect(() => {
@@ -51,7 +64,7 @@ const Home = () => {
         setSelectedImg(index);
     };
 
-    
+
 
     //------------------------------------------------------edit-------------------------------------------------------
     const [isEditing, setIsEditing] = useState(false);
@@ -112,9 +125,10 @@ const Home = () => {
         try {
             const categoryRef = doc(collection(db, "client_home_pg"), _id);
 
+
             // retrieve the current value of the img array
             const docSnap = await getDoc(categoryRef);
-            const currentImgArray = docSnap.data().img;
+            const currentImgArray = docSnap?.data()?.img || [];
 
             // add the new image URL to the end of the array
             const newImgArray = files[0] ? [...currentImgArray, await uploadFile(files[0])] : currentImgArray;
@@ -143,6 +157,9 @@ const Home = () => {
 
             // Update the category document with only non-empty fields
             await updateDoc(categoryRef, cleanData);
+
+            //notify
+            toast.success(`Successfully update \n`);
 
             setIsEditing(false);
             setFormData(initialUpdateData);

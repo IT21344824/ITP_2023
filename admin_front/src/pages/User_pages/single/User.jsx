@@ -48,34 +48,34 @@ const User = () => {
             <div className="con">
                 <Navbar />
 
-                <div className="delail">
-                    <div className="pre_Img">
-                        <img src={data?.img ?? ''} alt="product" style={{ height: "300px" }} />
+                <div className="U_delail">
+                    <div className="U_Img">
+                        <img src={data?.img ?? ''} alt="user" style={{ height: "300px" }} />
 
                     </div>
 
 
-                    <div className="p_inputbox">
+                    <div className="U_inputbox">
                         <p>{data?.address ?? ''}</p>
                         <span> address </span>
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="U_inputbox">
                         <p>{data?.phone ?? ''}</p>
                         <span> phone </span>
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="U_inputbox">
                         <p>{data?.gender ?? ''}</p>
                         <span> gender </span>
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="U_inputbox">
                         <p>{data?.name ?? ''}</p>
                         <span> name </span>
                     </div>
 
-                    <div className="p_inputbox">
+                    <div className="U_inputbox">
                         <p>{data?.email ?? ''}</p>
                         <span> email  </span>
                     </div>

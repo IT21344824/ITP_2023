@@ -11,17 +11,19 @@
 .trainers-header h2 {
   font-size: 36px;
   margin-bottom: 10px;
+  background-color: #ccc;
 }
 
 .trainers-header p {
   font-size: 18px;
-  color: #666;
+  color:#222;
 }
 
 .trainers-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
+  
 }
 
 .trainer-card {

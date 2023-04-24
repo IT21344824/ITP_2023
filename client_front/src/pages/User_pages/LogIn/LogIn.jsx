@@ -39,42 +39,50 @@ const LogIn = () => {
       });
   };
 
+  // --------------------------------------------------------------------------------------
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    navigate("/Forgot");
+
+  };
+
 
   return (
     <div className="Loging_back">
+      <div className="login">
+        <form className="loginform" action="" onSubmit={handleLogin}>
+          <h3 className="login_h">Login Here</h3>
+          <input className="loginInput" type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
+          <input className="loginInput" type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
 
-    <div className="login">
-      <form className="loginform" action="" onSubmit={handleLogin}>
-        <input className="loginInput" type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
-        <input className="loginInput" type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
-
-        <button className="loginbtn" type="submit"> Login </button>
-        {error && <span> Wrong email or password ! </span>}
-        <div class="bottom">
-          <div class="left">
-            <input type="checkbox" id="check"></input>
-            <label for="check">Remember Me</label>
+          <button className="loginbtn" type="submit"> Login </button>
+          {error && <span> Wrong email or password ! </span>}
+          <div class="bottom">
+            <div class="left">
+              <input type="checkbox" id="check"></input>
+              <label for="check">Remember Me</label>
+            </div>
           </div>
-        </div>
-        <div class="right">
-          <button className="forgot-button">
-            Forgot password?
+          <div class="right">
+            <button onClick={handleClick} className="forgot-button">
+              Forgot password?
+            </button>
+
+          </div>
+          <div className="divider-container">
+
+            <hr className="divider-line" />
+            <span className="divider-text">OR</span>
+            <hr className="divider-line" />
+
+          </div>
+          <button className="google-button" onClick={() => alert('sign in with google')}>
+            Sign in with Google
           </button>
-
-        </div>
-        <div className="divider-container">
-
-          <hr className="divider-line" />
-          <span className="divider-text">OR</span>
-          <hr className="divider-line" />
-
-        </div>
-        <button className="google-button" onClick={() => alert('sign in with google')}>
-          Sign in with Google
-        </button>
-      </form>
+        </form>
+      </div>
     </div>
-</div>
 
   )
 }

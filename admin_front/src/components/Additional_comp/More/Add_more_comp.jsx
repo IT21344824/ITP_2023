@@ -7,8 +7,23 @@ import "./Add_more_comp.scss";
 import Addi_nav from '../Addi_navbar/Addi_nav';
 import Modal from 'react-modal';
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//--
 
 const Add_more_comp = () => {
+
+    //nofify--
+    const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+    }
+
+    //---
 
 
     //image upload
@@ -20,7 +35,7 @@ const Add_more_comp = () => {
 
     //geting selected data
     const [data, setData] = useState({});
-    const _id = "uyHXlvU1LtAsfaBEr3K7";
+    const _id = "MorePageSlider";
 
     //get data
     useEffect(() => {
@@ -58,9 +73,7 @@ const Add_more_comp = () => {
 
     const initialUpdateData = {
         M_details_id: "",
-        LP_description: "",
-        TP_description: "",
-        img: [],
+        img: [], //slider
     };
 
     const [UpdateData, setFormData] = useState(initialUpdateData);
@@ -112,9 +125,10 @@ const Add_more_comp = () => {
         try {
             const categoryRef = doc(collection(db, "client_home_pg"), _id);
 
+
             // retrieve the current value of the img array
             const docSnap = await getDoc(categoryRef);
-            const currentImgArray = docSnap.data().img;
+            const currentImgArray = docSnap?.data()?.img || [];
 
             // add the new image URL to the end of the array
             const newImgArray = files[0] ? [...currentImgArray, await uploadFile(files[0])] : currentImgArray;
@@ -143,6 +157,9 @@ const Add_more_comp = () => {
 
             // Update the category document with only non-empty fields
             await updateDoc(categoryRef, cleanData);
+
+             //notify
+             toast.success(`Successfully update \n`);
 
             setIsEditing(false);
             setFormData(initialUpdateData);
@@ -183,11 +200,12 @@ const Add_more_comp = () => {
 
     return (
         <div className='Add_more_comp'>
-           
-            <div className="top_pre">
+
+            {/* slider  start----------------------------------------------------------------------------------------------------------------- */}
+            <div className="about_us top_pre">
 
                 <div className="pre_title">
-                    <h1>More Page Details</h1>
+                    <h1>slider Details</h1>
                 </div>
 
 
@@ -195,9 +213,14 @@ const Add_more_comp = () => {
                     {data?.img?.map((img, index) => (
                         <div key={index} >
                             <div className="img">
-                                <img src={img} alt="Details" />
-                                <button className="viewBtn" onClick={() => handleImageClick(index)} >view</button>
-                                <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
+
+                                {isEditing ? (
+                                    <div>
+                                        <img src={img} alt="Details" />
+                                        <button className="viewBtn" onClick={() => handleImageClick(index)} >view</button>
+                                        <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
+                                    </div>
+                                ) : <img src={img} alt="Details" onClick={() => handleImageClick(index)} />}
                             </div>
                         </div>
                     ))}
@@ -250,7 +273,7 @@ const Add_more_comp = () => {
                             </div>
 
                             <div className="p_inputbox">
-                                <span className="span"> M_details_id : </span>
+                                <span className="span"> M Slider id : </span>
                                 {isEditing ? (
                                     <div>
                                         <span className="hint">{data?.M_details_id ?? ''} </span>
@@ -263,50 +286,11 @@ const Add_more_comp = () => {
 
                                     </div>
                                 ) : (
-                                    <p>{data?.details_id ?? ''}</p>
+                                    <p>{data?.M_details_id ?? ''}</p>
                                 )}
 
                             </div>
 
-                            <div className="center">
-                                <div className="p_inputbox">
-                                    <span className="span"> LP_description : </span>
-                                    {isEditing ? (
-                                        <div>
-                                            <span className="hint_Descrip">{data?.LP_description ?? ''} </span>
-                                            <textarea
-                                                name="LP_description"
-                                                type="text"
-                                                value={UpdateData.LP_description}
-                                                onChange={handleInputChange}
-                                            />
-
-                                        </div>
-                                    ) : (
-                                        <p>{data?.LP_description ?? ''}</p>
-                                    )}
-
-                                </div>
-
-                                <div className="p_inputbox">
-                                    <span className="span"> TP_description : </span>
-                                    {isEditing ? (
-                                        <div>
-                                            <span className="hint_Descrip">{data?.TP_description ?? ''} </span>
-                                            <textarea
-                                                name="TP_description"
-                                                type="text"
-                                                value={UpdateData.TP_description}
-                                                onChange={handleInputChange}
-                                            />
-
-                                        </div>
-                                    ) : (
-                                        <p>{data?.TP_description ?? ''}</p>
-                                    )}
-
-                                </div>
-                            </div>
 
 
                         </div>
@@ -314,6 +298,9 @@ const Add_more_comp = () => {
                     </div>
                 </div>
             </div>
+            {/* slider  end----------------------------------------------------------------------------------------------------------------- */}
+
+
         </div>
     )
 }

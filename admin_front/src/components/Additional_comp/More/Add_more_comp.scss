@@ -1,5 +1,6 @@
 .Add_more_comp{
     padding: 20px;
+    margin-bottom: 40px;
     gap: 40px;
 
     .datatableTitle {
@@ -58,6 +59,7 @@
     
     .top_pre {
         flex: 1;
+        margin-bottom: 40px;
         box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
         -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
         -moz-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
@@ -188,7 +190,7 @@
                     flex-direction: column;
                     // gap: 30px;
                     justify-content: space-around;
-                    padding-bottom: 30vh;
+                    //padding-bottom: 30vh;
 
                     .update-img{
                         display: flex;

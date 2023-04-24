@@ -36,23 +36,23 @@ const Coach = () => {
           <h5>ALL BUNDLES WILL GIVE YOU A CUSTOMIZED TRAINING/MEAL PLAN</h5>
         </center>
         <div className="bundelImg">
-          
+
           <BPackageimg />
-          
+
         </div>
 
-        
+
         <center>
           <h1>SPECIALIZED TRAINING PROGRAMS</h1>
         </center>
         <div>
-          
-          <Trainers/>
-        
+
+          <Trainers />
+
         </div>
 
 
-        <center>
+        <center className='discription_b'>
           <h1>WHY SELECT A BUNDLE?</h1>
           <h3>YOU MAKE A SAVING OF 15%</h3>
           <p>If you have a goal that requires several months of work, purchasing a bundle will be more cost effective.We’ve bundled the monthly subscriptions together by taking into account, the differences in experience people bring to the table and the difference in attention required as the the months go by. Significant physical and lifestyle changes often require a significant commitment, both in time and effort.</p>
@@ -60,8 +60,21 @@ const Coach = () => {
 
 
         <div id="joinform" className="join-form-container">
-          <h2>Join Now!</h2>
+          <h2 class="elementor-heading-title">Interested</h2>
+          <h2 class="elementor-joining ">in Joining?</h2>
+          <div class="elementor-widget-container">
+            <p><span >Submit your interest and we will WhatsApp you and get your set up &amp; payment process started..</span></p>
+          </div>
+
           <form>
+            <label for="country">PACKAGES:</label>
+            <select id="PACKAGES" name="PACKAGES" required>
+              <option value="">--Select PACKAGES--</option>
+              <option value="MONTHLY SUBSCRIPTION">MONTHLY SUBSCRIPTION</option>
+              <option value="BUNDLED PACKAGES">BUNDLED PACKAGES</option>
+              <option value="SPECIALIZED TRAINING PROGRAMS">SPECIALIZED TRAINING PROGRAMS</option>
+
+            </select>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="name" required />
@@ -72,13 +85,13 @@ const Coach = () => {
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" id="phone" name="phone" required />
+              <input type="tel" placeholder="Whatsapp Number" id="phone" name="phone" required />
             </div>
             <div className="form-group">
               <label htmlFor="message">Message:</label>
               <textarea id="message" name="message" required></textarea>
             </div>
-            <button type="submit" className="submit-btn">Submit</button>
+            <button type="submit" className="submit-btn">Pay Now</button>
           </form>
         </div>
 

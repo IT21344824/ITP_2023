@@ -297,6 +297,9 @@ const Product_ID = ({ id }) => {
             // Update the category document with only non-empty fields
             await updateDoc(categoryRef, cleanData);
 
+            //notify
+            toast.success(`Successfully updated \n`);
+
             setIsEditing(false);
             setUpdateData(initialUpdateData);
             setFiles([]);
@@ -338,6 +341,7 @@ const Product_ID = ({ id }) => {
             }
         }
     };
+    
     //---------------------------------------------------------------------------one By one | end--------------------------------------------------
 
 

@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const User_new = ({ inputs, title }) => {
     const [file, setFile] = useState("");
     const [data, setData] = useState({});
-    const [per , setPer ] = useState(null);
+    const [per, setPer] = useState(null);
     const navigate = useNavigate
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const User_new = ({ inputs, title }) => {
 
             uploadTask.on('state_changed',
                 (snapshot) => {
-          
+
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPer(progress)
@@ -41,13 +41,14 @@ const User_new = ({ inputs, title }) => {
                             break;
                     }
                 },
+
                 (error) => {
                     console.log(error)
                 },
                 () => {
-                 
+
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setData((prev)=>({...prev, img:downloadURL}))
+                        setData((prev) => ({ ...prev, img: downloadURL }))
                     });
                 }
             );
@@ -66,6 +67,12 @@ const User_new = ({ inputs, title }) => {
     const handleAdd = async (e) => {
         e.preventDefault()
 
+        if (!data.email) {
+            // handle error or display message to user
+            alert("Please Enter your  email.");
+            return;
+        }
+
         try {
             const res = await createUserWithEmailAndPassword(
                 auth,
@@ -79,11 +86,16 @@ const User_new = ({ inputs, title }) => {
                 role: "user",
                 timeStamp: serverTimestamp()
             });
-            
+
             //navigate(-1)
             console.log("Document written with ID: ", res.user.uid);
+            // navigate to a success page
+            alert("add successs.");
+            navigate("/success");
         } catch (error) {
             console.log(error)
+            // display error message to user
+           // setError("There was an error creating your account. Please try again.");
         }
 
 
@@ -135,8 +147,7 @@ const User_new = ({ inputs, title }) => {
                                     />
                                 </div>
                             ))}
-
-                            <button disabled={per !== null && per < 100} type="submit">Send</button>
+                            <button disabled={per !== null && per < 100} type="submit" className="submitbtn">Submit</button>
                         </form>
                     </div>
                 </div>

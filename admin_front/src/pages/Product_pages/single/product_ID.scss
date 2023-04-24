@@ -1,9 +1,11 @@
 .pro_single {
     display: flex;
+    //flex: 1;
     width: 100%;
 
     .singleContainer {
         flex: 6;
+        
 
         .top {
             padding: 20px;

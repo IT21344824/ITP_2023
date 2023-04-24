@@ -1,127 +1,152 @@
-/* Set the font family and background color for the whole page */
+.sigup_back{
+  background-image: url(../LogIn/loginback.jpg);
+  background-size: cover;
+ 
+}
+.signup {
+  // height: 520px;
+  // width: 400px;
+  // background-color: rgba(255, 255, 255, 0.13);
+  // position: absolute;
+  // transform: translate(-50%, -50%);
+  // top: 50%;
+  // left: 50%;
+  // border-radius: 10px;
+  // backdrop-filter: blur(10px);
+  // border: 2px solid rgba(255, 255, 255, 0.1);
+  // box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  // padding: 50px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 
-  /* Style the form container */
-  .signup {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.register-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background:  radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background-size: 400% 400%, cover;
+  animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  /* Style the form title */
-  .register-title {
-    margin-top: 0;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  /* Style the form input and label */
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  
-  /* Style the error message */
-  .error {
-    display: block;
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  /* Style the submit button */
-  .submit-button {
-    background-color: #030303;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:hover {
-    background-color: #d9001d;
-  }
-  
-  /* Style the login container */
-  .login-container {
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  .login-container span {
-    margin-right: 5px;
-  }
-  
-  .login-button {
-    background-color: #008CBA;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .login-button:hover {
-    background-color: #0073aa;
-  }
-  
-  /* Style the divider container */
-  .divider-container {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-  }
-  
-  .divider-line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-  }
-  
-  .divider-text {
-    margin: 0 10px;
-    font-size: 14px;
-    color: #888;
-  }
-  
-  /* Style the Google sign-in button */
-  .google-button {
-    background-color: #dd4b39;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  .google-button:hover {
-    background-color: #c23321;
-  }
+}
 
-  .background_img {
-    background-image: url();
-    background-size: cover;
-    background-position: center;
-  }
-  // .signup_back{
-  //   background-color: #030303;
-  //   background-size: cover;
-  // }
+/* Style the form title */
+.register-title {
+  margin-top: 0;
+}
 
+// /* Style the form input and label */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+// /* Style the error message */
+.error {
+  display: block;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+// /* Style the submit button */
+.submit-button {
+  background-color: #030303;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #d9001d;
+}
+
+/* Style the login container */
+.login-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login-container span {
+  margin-right: 5px;
+}
+
+.login-button {
+  background-color: #008CBA;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #0073aa;
+}
+
+/* Style the divider container */
+.divider-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider-text {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.google-button {
+  background-color: #dd4b39;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.google-button:hover {
+  background-color: #c23321;
+}
+.signup_back{
+  background-color: #030303;
+}

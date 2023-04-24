@@ -464,7 +464,7 @@ const UpdatePopup = ({ open, onClose, id }) => {
                 <div className="formInput">
                   <div>
                     <div className="Item_Type">
-                      <label htmlFor="item_type">Category:</label>
+                      <label htmlFor="item_type">Category :</label>
                       <select id="category" name="category" className={`P_cat ${ShowHint && !UpdateData.item_type ? 'error' : ''}`} onChange={handleCategoryChange}>
                         <option value=""> </option>
                         {/* <option value={formData.item_type}> </option> */}
@@ -520,7 +520,7 @@ const UpdatePopup = ({ open, onClose, id }) => {
 
 
                 <div className="formInput">
-                  <label>Description</label>
+                  <label>Description :</label>
                   <textarea
                     className={`Description ${ShowHint && !UpdateData.description ? 'error' : ''}`}
                     name="description"

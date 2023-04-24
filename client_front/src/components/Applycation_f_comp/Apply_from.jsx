@@ -116,12 +116,38 @@ const Apply_from = () => {
     };
   }, []);
 
+  //get details---------------------------------------------------------------------------------------------------------------------------------
+    
+  const _id = "MorePageApplyForm";
+
+  //geting selected data
+  const [data, setData] = useState({});
+
+  
+  useEffect(() => {
+      const docRef = doc(db, "client_home_pg", _id);
+
+      const unsubscribe = onSnapshot(docRef, async (doc) => {
+          if (doc.exists()) {
+              const data = doc.data();
+              setData(data);
+          } else {
+              console.log("No such document!");
+          }
+      }, (error) => {
+          console.log("Error getting document:", error);
+      });
+
+      // unsubscribe from the listener when the component unmounts
+      return () => unsubscribe();
+  }, [_id]);
+
 
   return (
     <div className="apply_from_container">
       <div className="top">
         <h1> Apply for </h1>
-        <p>From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage</p>
+        <p> {data.AF_title} </p>
       </div>
 
 
@@ -218,21 +244,12 @@ const Apply_from = () => {
         <div className="contactInfo">
 
           <div className="box">
-            <img src="/more_pg/t3.jpg" alt="" />
+            {/* <img src="/more_pg/t3.jpg" alt="" /> */}
+            <img src={data.img} alt="" />
           </div>
 
           <div className="box_details">
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-              a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
-              from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-              Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-              written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
-              "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-              Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form,
-              accompanied by English versions from the 1914 translation by H. Rackham.
-            </p>
+            <p> {data.AF_descrip} </p>
           </div>
 
 

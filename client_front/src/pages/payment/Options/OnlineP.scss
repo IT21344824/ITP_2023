@@ -1,0 +1,43 @@
+.onlinePay{
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 80px auto;
+    padding: 100px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  
+    label {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    button[type="submit"] {
+      background-color: #4b9eff;
+      color: #fff;
+      border: none;
+      margin-right: -25px;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+  
+      &:hover {
+        background-color: #0051b5;
+      }
+    }
+  }
+
+}

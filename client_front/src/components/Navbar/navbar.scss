@@ -76,9 +76,12 @@
 
                 .title{
                     padding: 5px 10px 5px 10px;
-                    background: linear-gradient(45deg, #7380df, #e91e63);
+                   // background: linear-gradient(45deg, #7380df, #e91e63);
                     font-size: 40px;
+                    font-weight: bold;
                     border-radius: 20px;
+                    color: rgb(255, 2, 2);
+                    //text-shadow: 2px 2px 4px #ffffff;
                     //color: rgb(12, 128, 229);
                 }
             }
@@ -195,7 +198,7 @@
 
             .selected {
                 padding: 3px 50px 5px 50px; //trbf
-                background-color: crimson;
+                background-color: #d9302d;
                 border-radius: 20px;
                 font-weight: bold;
             }

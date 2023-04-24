@@ -24,10 +24,6 @@ const SignUp = () => {
 
 
 
-
-
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     // your registration logic here
@@ -48,7 +44,12 @@ const SignUp = () => {
         gender: "",
         role: "user",
         timeStamp: serverTimestamp()
+
       });
+      const config ={
+        //url:process.env.React_App_Register_url,
+        handleCodeInApp:true,
+      };
 
       //navigate(-1)
       console.log("Document written with ID: ", res.user.uid);
@@ -74,20 +75,25 @@ const SignUp = () => {
     setData({ ...data, [name]: value });
   };
 
+  // --------------------------------------------------------------------------------------
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    navigate("/LogIn");
+
+  };
+
 
   return (
-    <div className="signup_back">
-      
+    <div className="sigup_back">
       <div className='signup'>
         <div className="register-container">
-
-          <h1 className="register-title">Register</h1>
           <form className="register-form" onSubmit={handleSubmit}>
+            <h1 className="register-title">Register</h1>
+
 
             <div className="form-group">
-
               <label htmlFor="email">Email address</label>
-
               <input
                 id="email"
                 name="email"
@@ -100,7 +106,6 @@ const SignUp = () => {
             </div>
 
             <div className="form-group">
-
               <label htmlFor="password">Password</label>
 
               <input
@@ -116,34 +121,27 @@ const SignUp = () => {
 
             <button type="submit" className="submit-button">Sign up</button>
 
-          </form>
+            <div className="login-container">
+              <span>Already have an account?</span>
+              <button onClick={handleClick} className="login-button" >
+                Login
+              </button>
+            </div>
 
-          <div className="login-container">
-            <span>Already have an account?</span>
+            <div className="divider-container">
+              <hr className="divider-line" />
+              <span className="divider-text">OR</span>
+              <hr className="divider-line" />
+            </div>
 
-            <button className="login-button" >
-              Login
+            <button className="google-button" onClick={() => alert('sign in with google')}>
+              Sign in with Google
             </button>
-
-          </div>
-
-          <div className="divider-container">
-
-            <hr className="divider-line" />
-            <span className="divider-text">OR</span>
-            <hr className="divider-line" />
-
-          </div>
-
-          <button className="google-button" onClick={() => alert('sign in with google')}>
-            Sign in with Google
-          </button>
-
+          </form>
         </div>
-
       </div>
-     </div>
-   
+    </div>
+
   )
 }
 

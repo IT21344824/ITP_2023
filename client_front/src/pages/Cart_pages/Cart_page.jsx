@@ -1,31 +1,24 @@
 import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Cart_page.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../../redux/cartReducer';
+import { resetCart } from '../../redux/cartReducer';
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
-  const data = [
-    {
-      id: 1,
-      img: "https://cdn.shopify.com/s/files/1/0564/2439/9023/products/PRE20OM22465011822V1.2-FRONT-1200_1024x1024.png?v=1675879828",
-      img2: "https://cdn.shopify.com/s/files/1/0564/2439/9023/products/iso_ml_front_5aaa74c2-6a9e-411b-8778-4c9cf4c27ed2_1024x1024.png?v=1675113217",
-      title: "hi im akidu",
-      desc: "hi im akidu this is a wery long descri[tion so don't botter me",
-      isNew: true,
-      oldprice: 19,
-      price: 100,
-    },
-    {
-      id: 2,
-      img: "https://cdn.shopify.com/s/files/1/0564/2439/9023/products/PRE20OM22465011822V1.2-FRONT-1200_1024x1024.png?v=1675879828",
-      img2: "https://cdn.shopify.com/s/files/1/0564/2439/9023/products/iso_ml_front_5aaa74c2-6a9e-411b-8778-4c9cf4c27ed2_1024x1024.png?v=1675113217",
-      title: "hi im anuka",
-      desc: "hi im akidu this is a wery long descri[tion so don't botter me",
-      isNew: false,
-      oldprice: 19,
-      price: 500,
-    },
-  ];
+  const products = useSelector(state=>state.cart.products);
+   const dispatch = useDispatch();
+
+   const totalPrice=()=>{
+    let total=0;
+    products.forEach((item) => (total+=item.quantity*item.price));
+      return total.toFixed(2); 
+
+  
+   }
+
 
   return (
     <div className='page_cart'>
@@ -34,28 +27,30 @@ const Cart = () => {
           <th><h1> Products in your cart </h1></th>
         </tr>
         <tr>
-          {data?.map((item) => (
+          {products?.map((item) => (
             <div className="item">
               <img src={item.img} alt="" />
               <div className="details">
                 <h1> {item.title} </h1>
-                <p> {item.desc.substring(0, 100)} </p>
-                <div className="price"> 1 x ${item.price} </div>
+                {/* <p> {item.desc.substring(0, 100)} </p> */}
+                <div className="price"> {item.quantity} x ${item.price} </div>
               </div>
-              <DeleteIcon className='delete' />
+              <DeleteIcon className='delete' onClick={()=> dispatch(removeItem(item.id))} />
             </div>
           ))}
         </tr>
         <tr>
           <div className="total">
             <span> SUBTOTAL </span>
-            <span> Rs : 2324 </span>
+            <span> Rs {totalPrice()} :</span>
           </div>
         </tr>
         <tr>
           <div className="check_reset">
+            <Link to={"/payment"}>
             <button className='button'> PROCEED TO CHECKOUT </button>
-            <span className='reset' > Reset</span>
+            </Link>
+            <button className='reset' onClick={()=> dispatch(resetCart())} > Reset</button>
           </div>
           </tr>
       </table>

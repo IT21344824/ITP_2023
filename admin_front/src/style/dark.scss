@@ -47,7 +47,8 @@
             background-color: #111;
 
             .tableCell,
-            .cellWrapper ,.datagrid{
+            .cellWrapper,
+            .datagrid {
                 color: gray;
             }
         }
@@ -69,14 +70,20 @@
         color: white;
         background-color: #292929;
 
-        .darkM{
-            
+        // .wrapper {
+        //     width: 100%;    
+        //     justify-content: space-between;
+
+        // }
+
+        .darkM {
+
             color: #00d9ffdf;
             border: 2px solid #00d9ff;
             border-radius: 50%;
-            box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
-            -webkit-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
-            -moz-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -webkit-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -moz-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
         }
     }
 
@@ -150,57 +157,72 @@
     //all categories---
     .categories {
         .datatable {
+            .Category_all {
 
-            .Category_all_title,
-            .Category_add {
-                color: rgb(114, 203, 227);
+                .Category_all_title,
+                .Category_add {
+                    color: rgb(114, 203, 227);
 
-                .all {}
-            }
-
-            .Cat_datagrid,
-            .cat_add_from {
-                color: rgb(128, 128, 128);
-                border: none;
-
-                label {
-                    color: rgb(215, 215, 215);
+                    .all {}
                 }
 
-                .viewButton,
-                .deleteButton,
-                .cellAction {
-                    color: rgb(172, 169, 169);
+                .Cat_datagrid,
+                .cat_add_from {
+                    color: rgb(128, 128, 128);
                     border: none;
+
+                    label {
+                        color: rgb(215, 215, 215);
+                    }
+
+                    .viewButton,
+                    .deleteButton,
+                    .cellAction {
+                        color: rgb(172, 169, 169);
+                        border: none;
+                    }
+
+                    .viewButton {
+                        color: rgb(172, 169, 169);
+                        border: none;
+                        background-color: rgba(8, 8, 192, 0.395);
+                    }
+
+                    .deleteButton {
+                        color: rgb(172, 169, 169);
+                        background-color: rgba(154, 12, 41, 0.659);
+                    }
                 }
 
-                .viewButton {
+
+                .Category_all_title,
+                .Cat_datagrid,
+                .Category_add,
+                .cat_add_from {
+                    -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                    -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                    box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                }
+
+                .cat_btn {
                     color: rgb(172, 169, 169);
                     border: none;
                     background-color: rgba(8, 8, 192, 0.395);
                 }
-
-                .deleteButton {
-                    color: rgb(172, 169, 169);
-                    background-color: rgba(154, 12, 41, 0.659);
-                }
             }
+        }
+    }
 
-
-            .Category_all_title,
-            .Cat_datagrid,
-            .Category_add,
-            .cat_add_from {
-                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-            }
-
-            .cat_btn {
-                color: rgb(172, 169, 169);
-                border: none;
-                background-color: rgba(8, 8, 192, 0.395);
-            }
+    //popup category
+    .CatUpdate{
+        .popup{
+             background-color: #363636;
+             h1{
+                color: rgb(0, 200, 255);
+             }
+             label{
+                color: #ffffff;
+             }
         }
     }
 
@@ -273,30 +295,135 @@
     //single products--------
     .pro_single {
         background-color: #222;
-        width: 100vw;
+        width: 100%;
 
-        .top_pre {
-            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
-            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        .top {
+            .top_pre {
+                -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+                box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
 
-            .pre_title {
-                color: rgb(0, 200, 255);
+                .pre_title {
+                    color: rgb(0, 200, 255);
 
-                button {
-                    background: #ffc800;
+                    button {
+                        background: #ffc800;
+                    }
                 }
-            }
 
-            .animation_p_id {
-                .p_details {
-                    background-color: #2f2f2f;
+                .animation_p_id {
+
+                    .p_details {
+                        background: #9f9f9f;
+                    }
+
+
                 }
             }
         }
     }
 
+    //popupedit
+    .popup-overlay{
+           .popup{
+             background-color: #363636;
+             h1{
+                font-weight: bold;
+                color: rgb(0, 200, 255);
+             }
+             label{
+                color: #ffffff;
+             }
+             .full_from{
+                .line_rows{
+                    .top{
+                        .details_tag{
+                            color: #f8df009b;
+                        }                       
+                    }
+                    .formInput{
+                            .P_cat ,textarea{
+                                resize: none;
+                                background-color: #363636;
+                            }
+                    }
+                }
+             }
+        }
+    }
+         
+
     //-----------------------------------------------------------------end of product-------------------------------------------------------------
 
+
+
+    //--------------------------------------------------------------Additional of product---------------------------------------------------------------------------
+    .Addi_nav {
+
+        .datatableTitle {
+            color: rgb(255, 255, 255);
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+    }
+
+    .Home_comp {
+
+        .top_pre {
+            .pre_title {
+                color: rgb(0, 200, 255);
+            }
+
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+            .animation_p_id {
+                .p_details {
+                    background: #5b5b5b;
+                }
+            }
+        }
+    }
+
+    .product_banner {
+
+        .datatableTitle {
+            color: rgb(0, 200, 255);
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+
+        .banner {
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+        }
+    }
+
+    .Add_more_comp,
+    .AboutUs,
+    .ApplyForm,
+    .ConactUs {
+        .top_pre {
+            .pre_title {
+                color: rgb(0, 200, 255);
+            }
+
+            -webkit-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            -moz-box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+            box-shadow: 6px 6px 11px 0px rgba(255, 255, 255, 1);
+
+            .animation_p_id {
+                .p_details {
+                    background: #5b5b5b;
+                }
+            }
+        }
+    }
+
+    //-----------------------------------------------------------------Additional of product-------------------------------------------------------------
 
 }

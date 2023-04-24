@@ -7,9 +7,21 @@ import "./product_banner.scss";
 import Addi_nav from '../Addi_navbar/Addi_nav';
 import Modal from 'react-modal';
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
-
+//notify-
+//import NofitySuc from "../../../components/notify_status/nofity";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//--
 
 const Product_banner = () => {
+
+     //nofify--
+     const notifyStyle = {
+        whiteSpace: 'pre-line'
+    }
+    const progressStyle = {
+        background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)'
+    }
 
     const [files, setFiles] = useState([]);
     const [per, setPer] = useState(null);
@@ -17,7 +29,7 @@ const Product_banner = () => {
 
     //geting selected data
     const [data, setData] = useState({});
-    const _id = "xbspKCBp2K4kwyl86GCE";
+    const _id = "ProdcutsBanner";
 
     //get data
     useEffect(() => {
@@ -78,6 +90,10 @@ const Product_banner = () => {
                     timeStamp: serverTimestamp(),
                 });
             }
+            
+            //notify
+            toast.success(`Successfully update \n`);
+            
             setIsEditing(false);
         } catch (error) {
             console.error("Error updating document: ", error);

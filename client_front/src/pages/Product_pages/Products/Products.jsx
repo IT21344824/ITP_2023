@@ -39,84 +39,116 @@ const Products = () => {
     setSort(null);
   }
 
+    //get details---------------------------------------------------------------------------------------------------------------------------------
+    
+    const _id = "ProdcutsBanner";
+
+    //geting selected data
+    const [data, setData] = useState({});
+
+    
+    useEffect(() => {
+        const docRef = doc(db, "client_home_pg", _id);
+
+        const unsubscribe = onSnapshot(docRef, async (doc) => {
+            if (doc.exists()) {
+                const data = doc.data();
+                setData(data);
+            } else {
+                console.log("No such document!");
+            }
+        }, (error) => {
+            console.log("Error getting document:", error);
+        });
+
+        // unsubscribe from the listener when the component unmounts
+        return () => unsubscribe();
+    }, [_id]);
+
   return (
     <div className='products'>
-      <div className="left">
 
-        <div className="filterItems">
-          <h2>Product Categories</h2>
-          {catData.map((cat) => (
-            <div className="inputItem" key={cat.id}>
-              <input
-                type="radio"
-                id={cat.id}
-                value={cat.id}
-                checked={selectedCategories.includes(cat.id)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedCategories([cat.id]);
-                  }
-                }}
-              />
-              <label htmlFor={cat.id}>{cat.Cat_name}</label>
+
+      <div className="container">
+        {/* <img className='catImg' src="/products/banner.jpg" alt="p_banner" /> */}
+        <img className='catImg' src={data.img} alt="p_banner" />
+
+        <div className="P_C">
+
+
+          <div className="left">
+
+            <div className="filterItems">
+              <h2>Product Categories</h2>
+              {catData.map((cat) => (
+                <div className="inputItem" key={cat.id}>
+                  <input
+                    type="radio"
+                    id={cat.id}
+                    value={cat.id}
+                    checked={selectedCategories.includes(cat.id)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedCategories([cat.id]);
+                      }
+                    }}
+                  />
+                  <label htmlFor={cat.id}>{cat.Cat_name}</label>
+                </div>
+              ))}
+              <button onClick={() => setSelectedCategories([])}>Clear</button>
             </div>
-          ))}
-          <button onClick={() => setSelectedCategories([])}>Clear</button>
-        </div>
 
 
 
-        <div className="filterItems">
-          <h2> Filter by price </h2>
-          <div className="inputItem">
-            <span>0</span>
-            <input type="range" min={0} max={100000} onChange={(e) => setMaxPrice(e.target.value)} />
-            <span> {maxPrice} </span>
-            {/* <button onClick={() => setMaxPrice([])}>Clear</button> */}
+            <div className="filterItems">
+              <h2> Filter by price </h2>
+              <div className="inputItem">
+                <span>0</span>
+                <input type="range" min={0} max={100000} onChange={(e) => setMaxPrice(e.target.value)} />
+                <span> {maxPrice} </span>
+                {/* <button onClick={() => setMaxPrice([])}>Clear</button> */}
+              </div>
+
+            </div>
+            <div className="filterItems">
+              <h2> Sort by </h2>
+              <div className="inputItem">
+                <input
+                  type="radio"
+                  id="asc"
+                  value="asc"
+                  name="price"
+                  onChange={(e) => setSort(e.target.value)}
+                  checked={sort === "asc"}
+                />
+                <label htmlFor="asc"> Price (Lowest first )</label>
+              </div>
+              <div className="inputItem">
+                <input
+                  type="radio"
+                  id="desc"
+                  value="desc"
+                  name="price"
+                  onChange={(e) => setSort(e.target.value)}
+                  checked={sort === "desc"}
+                />
+                <label htmlFor="desc"> Price (Highest first )</label>
+              </div>
+              <button onClick={clearSort}>Clear</button>
+            </div>
+
           </div>
 
+          <div className="p_list">
+            <List
+              maxPrice={maxPrice}
+              sort={sort}
+              selectedCategories={selectedCategories}
+            />
+          </div>
+          
         </div>
-        <div className="filterItems">
-        <h2> Sort by </h2>
-        <div className="inputItem">
-          <input
-            type="radio"
-            id="asc"
-            value="asc"
-            name="price"
-            onChange={(e) => setSort(e.target.value)}
-            checked={sort === "asc"}
-          />
-          <label htmlFor="asc"> Price (Lowest first )</label>
-        </div>
-        <div className="inputItem">
-          <input
-            type="radio"
-            id="desc"
-            value="desc"
-            name="price"
-            onChange={(e) => setSort(e.target.value)}
-            checked={sort === "desc"}
-          />
-          <label htmlFor="desc"> Price (Highest first )</label>
-        </div>
-        <button onClick={clearSort}>Clear</button>
-      </div>
-      
-      </div>
-
-      <div className="right">
-        <img
-          className='catImg'
-          src="/products/banner.jpg"
-          alt="" />
-
-        <List
-
-          maxPrice={maxPrice}
-          sort={sort}
-          selectedCategories={selectedCategories}
-        />
       </div>
 
     </div>
