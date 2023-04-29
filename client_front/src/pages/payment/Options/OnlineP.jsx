@@ -1,66 +1,93 @@
 import React from 'react'
 import './OnlineP.scss'
 import { useState } from 'react';
-
+import { useNavigate, useLocation} from 'react-router-dom';
+import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onSnapshot, doc } from "firebase/firestore";
+import { db, storage } from "../../../firebase";
 
 const OnlineP = () => {
-    const [cardNumber, setCardNumber] = useState("");
-    const [expirationDate, setExpirationDate] = useState("");
-    const [cvv, setCvv] = useState("");
+
+    const location = useLocation();
+    const oldformData = location.state;
+
+   //console.log(oldformData)
     const [cardNumberError, setCardNumberError] = useState("");
     const [expirationDateError, setExpirationDateError] = useState("");
     const [cvvError, setCvvError] = useState("");
 
-    const handleCardNumberChange = (e) => {
-        setCardNumber(e.target.value);
-    };
+    const navigate = useNavigate(); 
 
-    const handleExpirationDateChange = (e) => {
-        setExpirationDate(e.target.value);
-    };
-
-    const handleCvvChange = (e) => {
-        setCvv(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!cardNumber) {
-            setCardNumberError("Please enter a valid card number.");
-        } else {
-            setCardNumberError("");
-        }
+        // if (!formData.cardNumber) {
+        //     setCardNumberError("Please enter a valid card number.");
+        //     return;
+        // } else {
+        //     setCardNumberError("");
+        // }
 
-        if (!expirationDate) {
-            setExpirationDateError("Please enter a valid expiration date.");
-        } else {
-            setExpirationDateError("");
-        }
+        // if (!formData.expirationDate) {
+        //     setExpirationDateError("Please enter a valid expiration date.");
+        //     return;
+        // } else {
+        //     setExpirationDateError("");
+        // }
 
-        if (!cvv || !/^\d{3,4}$/.test(cvv)) {
-            setCvvError("Please enter a valid 3 or 4 digit CVV.");
-        } else {
-            setCvvError("");
-        }
+        // if (!formData.cvv || !/^\d{3,4}$/.test(formData.cvv)) {
+        //     setCvvError("Please enter a valid 3 or 4 digit CVV.");
+        //     return;
+        // } else {
+        //     setCvvError("");
+        // }
 
         // Submit the payment form to your payment gateway provider
+       
+        console.log(formData)
+
+        // Add the package data to the database
+
+          const newProductRef = await addDoc(collection(db, "payment"), {
+            ...formData,oldformData,
+            //oldformData,
+            timeStamp: serverTimestamp(),
+        });
+
+        console.log("Document written with ID: ", newProductRef.id);
+        alert(`New Product have added and ID: ${newProductRef.id}`);
+
+        setFormData(initialFormData);
+        navigate('/OrderDSuccess');
     };
+
+        //  data
+        const initialFormData = {
+            cardNumber: "",
+            expirationDate: "",
+            cvv: "",
+        };
+    
+        const [formData, setFormData] = useState(initialFormData);
+    
+        const handleInputChange = (event) => {        
+            const { name, value } = event.target;
+            setFormData({ ...formData, [name]: value });
+        };
 
 
     return (
         <div className="onlinePay">
 
-        <div class="cart-container">
+        <div className="cart-container">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="card-number">Card Number</label>
                 <input
                     type="text"
                     id="card-number"
-                    name="card-number"
-                    value={cardNumber}
+                    name="cardNumber"
+                    value={formData.cardNumber}
                     placeholder="1111-2222-3333-4444"
-                    onChange={handleCardNumberChange}
+                    onChange={handleInputChange}
                 />
                 {cardNumberError && <p>{cardNumberError}</p>}
 
@@ -68,10 +95,10 @@ const OnlineP = () => {
                 <input
                     type="text"
                     id="expiration-date"
-                    name="expiration-date"
+                    name="expirationDate"
                     placeholder="06/24"
-                    value={expirationDate}
-                    onChange={handleExpirationDateChange}
+                    value={formData.expirationDate}
+                    onChange={handleInputChange}
                 />
                 {expirationDateError && <p>{expirationDateError}</p>}
 
@@ -81,12 +108,12 @@ const OnlineP = () => {
                     id="cvv"
                     name="cvv"
                     placeholder="352"
-                    value={cvv}
-                    onChange={handleCvvChange}
+                    value={formData.cvv}
+                    onChange={handleInputChange}
                 />
                 {cvvError && <p>{cvvError}</p>}
                 
-                    <button type="submit">Proceed</button>
+                    <button type="submit" >Proceed</button>
 
             </form>
         </div>

@@ -160,114 +160,117 @@ const Coach_vew = () => {
             <div className="con">
                 <Navbar />
 
-                <div className="C_delail">
+                <div className="C_container">
+                    <div className="C_delail">
 
 
-                    <div className="buttons">
-                        {isEditing ? (
-                            <>
-                                <button className="E_edit" onClick={handleSaveChanges}>Save Changes</button>
-                                <button className="C_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
-                            </>
-                        ) : (
-                            <button className="editbtn" onClick={() => setIsEditing(true)}>Edit</button>
-                        )}
-                    </div>
-
-                    {isEditing ? (
-                        <div>
-                            <img src={data.img} alt="" style={{ height: "300px" }} />
+                        <div className="buttons">
+                            {isEditing ? (
+                                <>
+                                    <button className="E_edit" onClick={handleSaveChanges}>Save Changes</button>
+                                    <button className="C_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+                                </>
+                            ) : (
+                                <button className="editbtn" onClick={() => setIsEditing(true)}>Edit</button>
+                            )}
                         </div>
-                    ) : (
-                        < img src={data.img} alt="" style={{ height: "300px" }} />
-                    )}
 
-                    <div className="C_Img">
-                        
-                        <div className="img">
+                        {isEditing ? (
+                            <div>
+                                <img src={data.img} alt="" style={{ height: "300px" }} />
+                            </div>
+                        ) : (
+                            < img src={data.img} alt="" style={{ height: "300px" }} />
+                        )}
+
+                        <div className="C_Img">
+
+                            <div className="img">
+                                {isEditing ? (
+                                    <div>
+
+                                        <label htmlFor="file">
+                                            Update Image : <DriveFolderUploadIcon className="icon" />
+                                        </label>
+                                        <input
+                                            type="file"
+                                            id="file"
+                                            onChange={(e) => setFiles(Array.from(e.target.files))}
+                                            style={{ display: "none" }}
+                                        />
+
+                                    </div>
+                                ) : ''}
+                            </div>
+
+                        </div>
+
+                        <div className="C_inputbox">
+                            <span> Coach_id </span>
+
+                            <p>{data?.Coach_id ?? ''}</p>
+
+
+                        </div>
+
+                        <div className="C_inputbox">
+                            <span> Coach_name </span>
                             {isEditing ? (
                                 <div>
-
-                                    <label htmlFor="file">
-                                        Update Image : <DriveFolderUploadIcon className="icon" />
-                                    </label>
+                                    <span className="hint">{data?.Coach_name ?? ''} </span>
                                     <input
-                                        type="file"
-                                        id="file"
-                                        onChange={(e) => setFiles(Array.from(e.target.files))}
-                                        style={{ display: "none" }}
+                                        type="text"
+                                        name="Coach_name"
+                                        value={UpdateData.Coach_name}
+                                        onChange={handleInputChange}
                                     />
 
                                 </div>
-                            ) : ''}
+                            ) : (
+                                <p>{data?.Coach_name ?? ''}</p>
+                            )}
                         </div>
 
+                        <div className="C_inputbox">
+                            <span> contact </span>
+                            {isEditing ? (
+                                <div>
+                                    <span className="hint">{data?.contact ?? ''} </span>
+                                    <input
+                                        type="text"
+                                        name="contact"
+                                        value={UpdateData.contact}
+                                        onChange={handleInputChange}
+                                    />
+
+                                </div>
+                            ) : (
+                                <p>{data?.contact ?? ''}</p>
+                            )}
+                        </div>
+
+                        <div className="C_inputbox">
+                            <span> description </span>
+                            {isEditing ? (
+                                <div>
+                                    <span className="hint">{data?.description ?? ''} </span>
+                                    <input
+                                        type="text"
+                                        name="description"
+                                        value={UpdateData.description}
+                                        onChange={handleInputChange}
+                                    />
+
+                                </div>
+                            ) : (
+                                <p>{data?.description ?? ''}</p>
+                            )}
+                        </div>
+
+
                     </div>
-
-                    <div className="C_inputbox">
-                        <span> Coach_id </span>
-
-                        <p>{data?.Coach_id ?? ''}</p>
-
-
-                    </div>
-
-                    <div className="C_inputbox">
-                        <span> Coach_name </span>
-                        {isEditing ? (
-                            <div>
-                                <span className="hint">{data?.Coach_name ?? ''} </span>
-                                <input
-                                    type="text"
-                                    name="Coach_name"
-                                    value={UpdateData.Coach_name}
-                                    onChange={handleInputChange}
-                                />
-
-                            </div>
-                        ) : (
-                            <p>{data?.Coach_name ?? ''}</p>
-                        )}
-                    </div>
-
-                    <div className="C_inputbox">
-                        <span> contact </span>
-                        {isEditing ? (
-                            <div>
-                                <span className="hint">{data?.contact ?? ''} </span>
-                                <input
-                                    type="text"
-                                    name="contact"
-                                    value={UpdateData.contact}
-                                    onChange={handleInputChange}
-                                />
-
-                            </div>
-                        ) : (
-                            <p>{data?.contact ?? ''}</p>
-                        )}
-                    </div>
-
-                    <div className="C_inputbox">
-                        <span> description </span>
-                        {isEditing ? (
-                            <div>
-                                <span className="hint">{data?.description ?? ''} </span>
-                                <input
-                                    type="text"
-                                    name="description"
-                                    value={UpdateData.description}
-                                    onChange={handleInputChange}
-                                />
-
-                            </div>
-                        ) : (
-                            <p>{data?.description ?? ''}</p>
-                        )}
-                    </div>
-
-
                 </div>
+
             </div>
         </div>
     )

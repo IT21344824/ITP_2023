@@ -31,10 +31,10 @@ const Cart = () => {
             <div className="item">
               <img src={item.img} alt="" />
               <div className="details">
-                <h1> {item.title} </h1>
-                {/* <p> {item.desc.substring(0, 100)} </p> */}
-                <div className="price"> {item.quantity} x ${item.price} </div>
-              </div>
+            <div className="h1"> {item.title} </div>
+            <div className="p"> {item.desc} ... </div>
+            <div className="price"> {item.quantity} x ${item.price} </div>
+          </div>
               <DeleteIcon className='delete' onClick={()=> dispatch(removeItem(item.id))} />
             </div>
           ))}

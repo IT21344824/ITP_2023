@@ -112,13 +112,14 @@ const Product = () => {
           </div>
 
           <button className="add" disabled={product.status === "Out Of Stock"}
-          onClick={()=>dispatch(addToCart({ 
-            id:product.id,
-            title:product.item_name,
-            price:product.price,
-            img:product.img,
-            quantity,
-          })) }
+            onClick={() => dispatch(addToCart({
+              id: product.Product_id,
+              title: product.item_name,
+              price: product.price,
+              img: product.img,
+              desc: product.description,
+              quantity,
+            }))}
           >
             <AddShoppingCartIcon /> ADD TO CART
           </button>
@@ -136,8 +137,12 @@ const Product = () => {
 
           <div className="info">
             {/* <span> Vendor : {product.vendor}</span> */}
-            <span> Product type : <span className='type'> {itemTypeData.categoryDoc}</span></span>
-            <span > Available : <span className={`status ${product.status === 'In Stock' ? 'in-stock' : 'not-in-stock'}`}> {product.status}</span></span>
+            <span> Product type :
+              <span className='type'> {itemTypeData.categoryDoc}</span>
+            </span>
+            <span > Available :
+              <span className={`status ${product.status === 'In Stock' ? 'in-stock' : 'not-in-stock'}`}> {product.status}</span>
+            </span>
           </div>
 
           <hr className='hr' />

@@ -163,68 +163,72 @@ const Package_view = () => {
             <div className="con">
                 <Navbar />
 
-                <div className="Pa_delail">
+                <div className="p_container">
+                    <div className="Pa_delail">
 
-                    {isEditing ? (
-                        <>
+                        {isEditing ? (
+                            <>
 
-                            <button className="upBtn" onClick={handleSaveChanges}>Save Changes</button>
-                            <button className="p_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
-                        </>
-                    ) : (
-                        <button className="EditBtn" onClick={() => setIsEditing(true)}>Edit</button>
-                    )}
+                                <button className="upBtn" onClick={handleSaveChanges}>Save Changes</button>
+                                <button className="p_Cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+                            </>
+                        ) : (
+                            <button className="EditBtn" onClick={() => setIsEditing(true)}>Edit</button>
+                        )}
 
-                    <div className="p_Img">
-                        {data?.img?.map((img, index) => (
-                            <div key={index} >
-                                <div className="img">
-                                    {isEditing ? (
-                                        <div>
+                        <div className="p_Img">
+                            {data?.img?.map((img, index) => (
+                                <div key={index} >
+                                    <div className="img">
+                                        {isEditing ? (
+                                            <div>
+                                                <img src={img} alt="Details" />
+
+                                                <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
+
+                                            </div>
+                                        ) : (
                                             <img src={img} alt="Details" />
-                                           
-                                            <button className="deleteBtn" onClick={() => handleDelete(index)} >Delete</button>
-
-                                        </div>
-                                    ) : (
-                                        <img src={img} alt="Details" />
-                                    )}
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+
+                        </div>
+
+                        {isEditing ? (
+                            <>
+                                <label htmlFor="file">
+                                    Upload Image : <DriveFolderUploadIcon className="icon" />
+                                </label>
+                                <input
+                                    type="file"
+                                    id="file"
+                                    onChange={(e) => setFiles(Array.from(e.target.files))}
+                                    style={{ display: "none" }}
+                                />
+                            </>
+                        ) : (
+                            ''
+                        )}
+
+                        <div className="pa_inputbox">
+                            <p>{data?.Product_id ?? ''}</p>
+                            <span> Product_id </span>
+                        </div>
+
+                        <div className="pa_inputbox">
+                            <p>{data?.Categories ?? ''}</p>
+                            <span> Categories </span>
+                        </div>
+
+
+
 
                     </div>
-
-                    {isEditing ? (
-                        <>
-                            <label htmlFor="file">
-                                Upload Image : <DriveFolderUploadIcon className="icon" />
-                            </label>
-                            <input
-                                type="file"
-                                id="file"
-                                onChange={(e) => setFiles(Array.from(e.target.files))}
-                                style={{ display: "none" }}
-                            />
-                        </>
-                    ) : (
-                        ''
-                    )}
-
-                    <div className="pa_inputbox">
-                        <p>{data?.Product_id ?? ''}</p>
-                        <span> Product_id </span>
-                    </div>
-
-                    <div className="pa_inputbox">
-                        <p>{data?.Categories ?? ''}</p>
-                        <span> Categories </span>
-                    </div>
-
-
-
-
                 </div>
+
+              
             </div>
         </div>
     )

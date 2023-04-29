@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { db } from '../../../firebase';
 import Card from '../Card/Card';
-import { collection,doc, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, where } from 'firebase/firestore';
 import "./FeaturedProduct.scss"
 
 const FeaturedProduct = ({ type }) => {
@@ -51,13 +51,13 @@ const FeaturedProduct = ({ type }) => {
 
 
     //get details---------------------------------------------------------------------------------------------------------------------------------
-    
+
     const _id = "HomePageEdit";
 
     //geting selected data
     const [data, setData] = useState({});
 
-    
+
     useEffect(() => {
         const docRef = doc(db, "client_home_pg", _id);
 
@@ -91,11 +91,17 @@ const FeaturedProduct = ({ type }) => {
                     </div>
                 </div>
                 <div className="f_scroll">
-                    <div className="featured_map" style={{ transform: `translateX(-${currentSlide * 30}vw)` }}>
-                        {newproducts.map(item => (
-                          <span className="img"> <Card item={item} key={item.id}  productId={item.id}/></span> 
-                        ))}
-                    </div>
+                    {/* {newproducts.length === 0 ? (
+                        <p> No new Products  </p>
+                    ) : ( */}
+                        <div className="featured_map" style={{ transform: `translateX(-${currentSlide * 30}vw)` }}>
+                            {newproducts?.map(item => (
+                                <span className="img" key={item.id}>
+                                    {item.id}
+                                </span>
+                            ))}
+                        </div>
+                    {/* )} */}
                 </div>
 
                 <div className="icons">

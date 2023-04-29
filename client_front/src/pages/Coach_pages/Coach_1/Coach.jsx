@@ -3,11 +3,21 @@ import './Coach.scss'
 import Packageimg from '../../../components/Coach_comp/Package/Packages'
 import BPackageimg from '../../../components/Coach_comp/Package/BPackage'
 import Trainers from '../../../components/Coach_comp/Trainers/Trainers';
+import { useNavigate } from 'react-router-dom';
+
 
 const Coach = () => {
+
+  const navigate = useNavigate();
+
+  const handlepay = (e) => {
+    e.preventDefault();
+    navigate('/DirectP');
+  }
+
   return (
     <div className="coach">
-      <img src="/img/CoachBanner.jpg" alt="Banner Image" className="banner-image" />
+      <img src="/img/C-bannder.png" alt="Banner Image" className="banner-image" />
       <div className='coach'>
         <div className="header-container">
           <center>
@@ -91,7 +101,7 @@ const Coach = () => {
               <label htmlFor="message">Message:</label>
               <textarea id="message" name="message" required></textarea>
             </div>
-            <button type="submit" className="submit-btn">Pay Now</button>
+            <button type="submit" className="submit-btn" onClick={handlepay}>Pay Now</button>
           </form>
         </div>
 

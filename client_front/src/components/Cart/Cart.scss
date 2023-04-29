@@ -1,62 +1,84 @@
-.cart{
+.cart {
     position: absolute;
     right: 20px;
     top: 80px;
     z-index: 999;
     background-color: white;
     padding: 20px;
-    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
-    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
 
-    h1{
-        margin-bottom: 30px;
-        color: gray;
-        font-weight: 400;font-size: 24px;
+    .cart_top {
+        display: flex;
+        gap: 100px;
+
+        h1 {
+            margin-bottom: 30px;
+            color: gray;
+            font-weight: 400;
+            font-size: 24px;
+        }
+
+        .savebtn {
+            height: 30px;
+            width: 50px;
+            border-radius: 10px;
+            
+            &:active {
+                transform: scale(0.90);
+            }
+        }
     }
 
-    .item{
+
+    .item {
         display: flex;
         align-items: center;
         gap: 20px;
         margin-bottom: 30px;
 
-        img{
-            width: 80px;height: 100px;object-fit: cover;
+        img {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
         }
 
-        .details{
-            h1{
+        .details {
+            display: flex;
+            flex-direction: column;
+
+            .h1 {
                 font-size: 18px;
                 font-weight: 500;
             }
 
-            p{
+            .p {
                 color: gray;
                 margin: 10px;
                 font-size: 14px;
             }
 
-            .price{
+            .price {
                 color: blue;
             }
         }
 
-        .delete{
+        .delete {
             color: red;
             font-size: 30px;
             cursor: pointer;
         }
     }
 
-    .total{
+    .total {
         display: flex;
         justify-content: space-between;
         font-weight: 500;
         font-size: 18px;
         margin-bottom: 20px;
     }
-        
-    button{
+
+    button {
         font-size: 13px;
         font-weight: 500;
         width: 250px;
@@ -72,10 +94,11 @@
         margin-bottom: 20px;
 
     }
-    .reset{
+
+    .reset {
         color: red;
         font-size: 12px;
         cursor: pointer;
     }
-    
+
 }

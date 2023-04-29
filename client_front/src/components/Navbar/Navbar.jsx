@@ -7,8 +7,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { DarkModeContext } from "../../context/darkModeContext";
+import { useDispatch, useSelector } from 'react-redux';
 import Cart from '../Cart/Cart';
 import Results from './Search/Results';
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = ({ selectedLink, handleLinkClick }) => {
   const [open, setOpen] = useState(false);
@@ -34,7 +36,42 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
     setSearchQuery(event.target.value);
   };
 
-  //-----------------------------------------------------
+  //did log in? start----------------------------------------------------------------------------------------------------------------
+ 
+  const [uid, setUid] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  // Load uid from localStorage
+  useEffect(() => {
+    const getUser = async () => {
+      const userObj = JSON.parse(localStorage.getItem('userClient'));
+      const uid = userObj ? userObj.uid : null;
+      setUid(uid);
+    };
+    getUser();
+  }, []);
+
+  // Set isEditing to true if uid is not null
+  useEffect(() => {
+    const checkUid = async () => {
+      if (uid !== null) {
+        setIsEditing(true);
+      } else {
+        setIsEditing(false);
+      }
+    };
+    checkUid();
+  }, [uid]);
+
+
+  //did log in? end----------------------------------------------------------------------------------------------------------------
+
+
+
+  //cart------------------------
+  const products = useSelector(state => state.cart.products);
+
+  ////////////////
 
 
   return (
@@ -68,20 +105,35 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
 
           <div className="middle">
             <div className="title">
-                 Elite
+              Elite
             </div>
-         
+
           </div>
 
           <div className="right">
 
             <div className="l_s">
-              <Link className="link log_sign" to="/LogIn">
+              {isEditing ? (
+                ''
+              ) : (
+                <div className="l_s">
+                  <Link className="link log_sign" to="/LogIn">
+                    <div className="log">log in</div>
+                  </Link>
+                  <Link className="link log_sign" to="/SignUp">
+                    <div className="reg">Sign Up</div>
+                  </Link>
+                </div>
+              )}
+
+
+
+              {/* <Link className="link log_sign" to="/LogIn">
                 <div className="log">log in</div>
               </Link>
               <Link className="link log_sign" to="/SignUp">
                 <div className="reg">Sign Up</div>
-              </Link>
+              </Link> */}
             </div>
 
             <div className="icons">
@@ -90,14 +142,14 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
               <FavoriteBorderIcon />
               <div className="cartIocn" onClick={() => setOpen(!open)}>
                 <ShoppingCartOutlinedIcon />
-                <span>0</span>
+                <span> {products.length} </span>
               </div>
             </div>
 
           </div>
 
         </div>
-        
+
         <hr />
 
         <div className="bot_section">

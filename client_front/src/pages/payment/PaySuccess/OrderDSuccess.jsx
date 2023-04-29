@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './PaySuccess.scss'
 
 const OrderDSuccess = () => {
+  
   return (
     <div>
       <p>Your payment is successful!</p>
@@ -13,4 +14,4 @@ const OrderDSuccess = () => {
   );
 }
 
-export default OrderDSuccess;
+export default OrderDSuccess;

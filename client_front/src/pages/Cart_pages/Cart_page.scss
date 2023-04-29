@@ -33,15 +33,17 @@
 
             .details {
                 text-align: left;
-                h1 {
+                .h1 {
                     font-size: 18px;
                     font-weight: 500;
                 }
 
-                p {
+                .p {
                     color: gray;
                     margin: 10px;
                     font-size: 14px;
+                    max-width: 40vw;
+                    word-wrap: break-word;
                 }
 
                 .price {

@@ -42,6 +42,9 @@ import ProductNew from "./pages/Product_pages/new/Product_New";
 // import CategoryList from "./pages/Product_pages/list/Category";
 // import Category_ID from "./pages/Product_pages/single/Category_ID";
 
+//payment_magagement
+import PaymentList from "./pages/payment_pages/Payment_pg" 
+import PaymentSingle from "./pages/payment_pages/single/PaymentSingle"
 
 //Additinoal_magagement
 import AdditionalMai from "./pages//Additional_pages/Additional_pg/Additional_pg";
@@ -222,11 +225,11 @@ function App() {
             <Route path="patment_INFO" >
               <Route index element={
                 <RequireAuth>
-                  <List />
+                  <PaymentList />
                 </RequireAuth>} />
               <Route path=":patment_INFO_Id" element={
                 <RequireAuth>
-                  <Single />
+                  <PaymentSingle />
                 </RequireAuth>} />
               <Route path="new" element={
                 <RequireAuth>
