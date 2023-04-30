@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import './Cart.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { removeItem } from '../../redux/cartReducer';
-import { resetCart } from '../../redux/cartReducer';
-import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, where, onSnapshot, doc } from "firebase/firestore";
+import { removeItem, resetCart } from '../../redux/cartReducer';
+import { collection, getDocs, getDoc, addDoc, serverTimestamp, query, updateDoc, onSnapshot, doc } from "firebase/firestore";
 import { db, storage } from "../../firebase";
 
 const Cart = () => {
@@ -21,46 +20,59 @@ const Cart = () => {
 
   //get details-------------------------------------------------------------------------------
   const [cartItems, setCartItems] = useState([]);
+  const [cartId, setCartId] = useState('');
 
   //get uid
   const userObj = JSON.parse(localStorage.getItem('userClient'));
-  const uid = userObj.uid;
-  // console.log(uid); // "sDv3mSKhxwbBN1zvkTjehC9rV993"
+  const uid = userObj?.uid;
 
+  //get current user cart id
   useEffect(() => {
-    // create a query to get the cart items that belong to the user
-    const cartQuery = query(
-      collection(db, 'cart'),
-      where('uid', '==', uid)
-    );
-
-    // subscribe to changes to the cart items
-    const unsubscribe = onSnapshot(cartQuery, (snapshot) => {
-      const items = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setCartItems(items);
+    // create a query to get the cart ID of the current user
+    const userRef = doc(db, 'Users', uid);
+    const unsubscribe = onSnapshot(userRef, (doc) => {
+      const cartId = doc.data()?.cartId;
+      setCartId(cartId);
     });
-
     // unsubscribe from the listener when the component unmounts
     return () => unsubscribe();
   }, [uid]);
+  //console.log('cart id: ' + cartId)
 
+  //get current user cart details
+  useEffect(() => {
+    if (cartId) {
+      const cartRef = doc(db, 'cart', cartId);
+      // create a query to get the cart items that belong to the user
+      const cartItemsQuery = collection(cartRef, 'items');
+      // subscribe to changes to the cart items
+      const unsubscribe = onSnapshot(cartItemsQuery, (snapshot) => {
+        const items = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setCartItems(items);
+      });
+      // unsubscribe from the listener when the component unmounts
+      return () => unsubscribe();
+    }
+  }, [cartId]);
+
+  //console.log('cart data: ' + cartItems)
 
   // save data in cart------------------------------------------------------------------------------------------------------------------
 
   const handleSaveCart = async (event) => {
     event.preventDefault();
 
-     // Add the product data to the database
-     const newProductRef = await addDoc(collection(db, "cart"), {
-      ...products,uid,
+    //Add the product data to the database
+    const newProductRef = await updateDoc(doc(db, "cart", cartId), {
+      cartItems: products,
       timeStamp: serverTimestamp(),
-  });
+    });
   }
 
-  console.log(products);
+  //console.log(products);
 
   return (
     <div className='cart'>
@@ -68,7 +80,6 @@ const Cart = () => {
         <h1> Products in your cart </h1>
         <button className='savebtn' onClick={handleSaveCart}>save</button>
       </div>
-
 
       {products?.map((item) => (
         <div className="item" key={item.id}>
@@ -83,8 +94,8 @@ const Cart = () => {
 
           <DeleteIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
         </div>
-
       ))}
+
 
       <div className="total">
         <span> SUBTOTAL </span>

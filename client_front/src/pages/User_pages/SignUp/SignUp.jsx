@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, setDoc ,updateDoc} from "firebase/firestore";
 import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -23,7 +23,6 @@ const SignUp = () => {
   const [errors] = useState({});
 
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     // your registration logic here
@@ -33,7 +32,7 @@ const SignUp = () => {
         data.email,
         data.password
       );
-
+  
       // Add a new document in collection "users"
       await setDoc(doc(db, "Users", res.user.uid), {
         ...data,
@@ -44,24 +43,28 @@ const SignUp = () => {
         gender: "",
         role: "user",
         timeStamp: serverTimestamp()
-
       });
-      const config ={
+  
+      // Create a new cart and associate it with the user
+      const cartRef = collection(db, "cart");
+      const newCartDoc = await addDoc(cartRef, { uid: res.user.uid });
+      const cartId = newCartDoc.id;
+      await updateDoc(doc(db, "Users", res.user.uid), { cartId });
+  
+      const config = {
         //url:process.env.React_App_Register_url,
-        handleCodeInApp:true,
+        handleCodeInApp: true,
       };
-
+  
       //navigate(-1)
       console.log("Document written with ID: ", res.user.uid);
       navigate("/LogIn");
-
-
+  
     } catch (error) {
       console.log(error)
     }
-
   };
-
+  
 
 
 

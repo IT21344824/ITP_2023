@@ -280,6 +280,9 @@
         }
 
         .right {
+            label{
+                color: white;
+            }
             .P_cat {
                 color: rgb(172, 169, 169);
                 background-color: transparent;
@@ -288,6 +291,15 @@
             .Description {
                 color: rgb(172, 169, 169);
                 background-color: transparent;
+            }
+
+            .status{
+                .line_height{
+                    label{ 
+                        //accent-color: #04fbef;
+                        color: #999;
+                    }                    
+                }
             }
         }
     }
@@ -315,6 +327,10 @@
 
                     .p_details {
                         background: #9f9f9f;
+
+                        .change-hadder{
+                            color: #ffee00;
+                        }
                     }
 
 

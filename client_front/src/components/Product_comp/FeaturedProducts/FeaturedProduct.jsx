@@ -90,6 +90,7 @@ const FeaturedProduct = ({ type }) => {
                         <KeyboardDoubleArrowLeftIcon />
                     </div>
                 </div>
+
                 <div className="f_scroll">
                     {/* {newproducts.length === 0 ? (
                         <p> No new Products  </p>
@@ -97,7 +98,7 @@ const FeaturedProduct = ({ type }) => {
                         <div className="featured_map" style={{ transform: `translateX(-${currentSlide * 30}vw)` }}>
                             {newproducts?.map(item => (
                                 <span className="img" key={item.id}>
-                                    {item.id}
+                                    <Card item={item} key={item.id}  productId={item.id}/>                                   
                                 </span>
                             ))}
                         </div>

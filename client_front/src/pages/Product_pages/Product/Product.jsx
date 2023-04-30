@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import './product.scss';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BalanceIcon from '@mui/icons-material/Balance';
+
 import { collection, getDocs, addDoc, getDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { useParams } from 'react-router-dom'
+
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, Navigate , useNavigate } from 'react-router-dom'
 import { addToCart } from '../../../redux/cartReducer';
 import { useDispatch } from 'react-redux';
+import { AuthContext } from "../../../context/AuthContext";
 //import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
 
 const Product = () => {
@@ -15,6 +18,7 @@ const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState({});
+
   const dispatch = useDispatch()
 
 
@@ -35,7 +39,7 @@ const Product = () => {
       if (!item_type_data) {
         return "";
       }
-      console.log(item_type_data.Cat_name);
+      // console.log(item_type_data.Cat_name);
       return item_type_data.Cat_name.toString();
 
     } catch (error) {
@@ -48,7 +52,7 @@ const Product = () => {
 
   useEffect(() => {
     const docRef = doc(db, "products", id);
-    console.log(id)
+    // console.log(id)
 
     const unsubscribe = onSnapshot(docRef, async (doc) => {
       if (doc.exists()) {
@@ -73,6 +77,72 @@ const Product = () => {
   }, [id]);
 
 
+  //user excist--------------------------------------------
+  //get uid
+  const { currentUser } = useContext(AuthContext)
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    if (currentUser) {
+      dispatch(
+        addToCart({
+          id: product.Product_id,
+          title: product.item_name,
+          price: product.price,
+          img: product.img,
+          desc: product.description,
+          quantity,
+         
+        })
+      );
+    } else {
+      // Redirect to login page or show a message
+      navigate('/LogIn' );
+      window.alert("Please log in first!"); // show alert if uid is null
+    }
+  };
+
+  
+  const userObj = JSON.parse(localStorage.getItem('userClient'));
+  const uid = userObj?.uid;
+  
+
+  //get cart deiatls----------------------------------------------------------------------------------------------------------------------
+  const [cartItems, setCartItems] = useState([]);
+  const [cartId, setCartId] = useState(''); 
+  //get current user cart id
+   useEffect(() => {
+    // create a query to get the cart ID of the current user
+    const userRef = doc(db, 'Users', uid);
+    const unsubscribe = onSnapshot(userRef, (doc) => {
+      const CurrentcartId = doc.data()?.cartId;
+      setCartId(CurrentcartId);
+    });
+    // unsubscribe from the listener when the component unmounts
+    return () => unsubscribe();
+  }, [uid]);
+  //console.log('cart id: ' + cartId)
+
+  //get current user cart details
+  // useEffect(() => {
+  //   if (cartId) {
+  //     const cartRef = doc(db, 'cart', cartId);
+  //     // create a query to get the cart items that belong to the user
+  //     const cartItemsQuery = collection(cartRef, 'items');
+  //     // subscribe to changes to the cart items
+  //     const unsubscribe = onSnapshot(cartItemsQuery, (snapshot) => {
+  //       const items = snapshot.docs.map((doc) => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
+  //       setCartItems(items);
+  //     });
+  //     // unsubscribe from the listener when the component unmounts
+  //     return () => unsubscribe();
+  //   }
+  // }, []);
+  console.log('cart id: ' + cartId)
 
 
   return (
@@ -99,7 +169,7 @@ const Product = () => {
         <div className="right">
 
           <div >
-            <span className="p-id">  ID : {product.Product_id} </span>
+            <span className="p-id">  Brand : {product.Product_id} </span>
           </div>
           <h1>{product.item_name}</h1>
           <span className='price'> Rs : {product.price}</span>
@@ -111,19 +181,13 @@ const Product = () => {
             <button onClick={() => setQuantity(prev => prev + 1)}> + </button>
           </div>
 
-          <button className="add" disabled={product.status === "Out Of Stock"}
-            onClick={() => dispatch(addToCart({
-              id: product.Product_id,
-              title: product.item_name,
-              price: product.price,
-              img: product.img,
-              desc: product.description,
-              quantity,
-            }))}
+          <button
+            className="add"
+            disabled={product.status === "Out Of Stock"}
+            onClick={handleAddToCart}
           >
             <AddShoppingCartIcon /> ADD TO CART
           </button>
-
 
           <div className="links">
             <div className="item">

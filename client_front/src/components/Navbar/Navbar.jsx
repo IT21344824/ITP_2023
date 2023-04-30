@@ -1,6 +1,6 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import './navbar.scss';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
@@ -37,32 +37,14 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
   };
 
   //did log in? start----------------------------------------------------------------------------------------------------------------
- 
-  const [uid, setUid] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
 
-  // Load uid from localStorage
-  useEffect(() => {
-    const getUser = async () => {
-      const userObj = JSON.parse(localStorage.getItem('userClient'));
-      const uid = userObj ? userObj.uid : null;
-      setUid(uid);
-    };
-    getUser();
-  }, []);
 
-  // Set isEditing to true if uid is not null
-  useEffect(() => {
-    const checkUid = async () => {
-      if (uid !== null) {
-        setIsEditing(true);
-      } else {
-        setIsEditing(false);
-      }
-    };
-    checkUid();
-  }, [uid]);
+  // if there is a current user go to children (home page) if not go to log in
+  const { currentUser } = useContext(AuthContext)
 
+  // const RequireAuth = () => {
+  //   return currentUser ? uid = true : uid = false
+  // }
 
   //did log in? end----------------------------------------------------------------------------------------------------------------
 
@@ -113,7 +95,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
           <div className="right">
 
             <div className="l_s">
-              {isEditing ? (
+              {currentUser ? (
                 ''
               ) : (
                 <div className="l_s">
@@ -140,10 +122,15 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
               <DarkModeOutlinedIcon className="icon darkM" onClick={() => dispatch({ type: "TOGGLE" })} />
               <PersonIcon />
               <FavoriteBorderIcon />
-              <div className="cartIocn" onClick={() => setOpen(!open)}>
-                <ShoppingCartOutlinedIcon />
-                <span> {products.length} </span>
-              </div>
+              
+              {currentUser ? (
+               <div className="cartIocn" onClick={() => setOpen(!open)}>
+                  <ShoppingCartOutlinedIcon />
+                  <span> {products.length} </span>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
 
           </div>

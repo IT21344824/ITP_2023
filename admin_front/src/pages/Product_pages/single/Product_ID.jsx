@@ -461,7 +461,7 @@ const Product_ID = ({ id }) => {
                                         ) : (
                                             <p>{data?.Product_id ?? ''}</p>
                                         )}
-                                        <span> Product Id </span>
+                                        <span> Brand </span>
                                     </div>
 
                                     <div className="p_inputbox">

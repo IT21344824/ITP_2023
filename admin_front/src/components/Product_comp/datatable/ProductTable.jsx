@@ -72,7 +72,7 @@ const ProductTable = ({ id }) => {
   const columns = [
     { field: "Row_id", headerName: "Row", width: 65 },
     { field: "id", headerName: "BD-id", width: 150 },
-    { field: "Product_id", headerName: "Product ID", width: 150 },
+    { field: "Product_id", headerName: "Brand", width: 150 },
     { field: "item_name", headerName: "Item Name", width: 150 },
     {
       field: "image",

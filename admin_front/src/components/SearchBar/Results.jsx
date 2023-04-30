@@ -7,18 +7,37 @@ const Results = ({ searchQuery }) => {
     { name: "Home", to: "/" },
     { name: "Users", to: "/Users" },
     { name: "Add a New User", to: "/Users/new" },
-    //-----------------prodcuts search---------------------
+    { name: "Employees", to: "/Employees" },
+
+    //-----------------prodcuts search start---------------------
     { name: "All products", to: "/products" },
     { name: "Add a New Product", to: "/products/new" },
-        //cat
+    //cat
     { name: "Add a New category", to: "/products" },
     { name: "All category", to: "/products" },
-    //----------------------------------------------------
-    { name: "Employees", to: "/Employees" },
-    { name: "members", to: "/members" },
+    //-----------------prodcuts search end---------------------
+
+
+    // { name: "members", to: "/members" },
+
+    //-----------------coach search start---------------------
     { name: "coaches", to: "/coaches" },
     { name: "packages", to: "/packages" },
+    //-----------------coach search end---------------------
+
     { name: "patment info", to: "/patment_INFO" },
+
+    //-----------------additional search start---------------------
+    { name: "Additional", to: "/Additional" },    
+    { name: "Home Page Details", to: "/Additional" },   
+    { name: "Product banner", to: "/Additional" },
+    { name: "More page slider", to: "/Additional/more" },
+    { name: "About us", to: "/Additional/more" },
+    { name: "Contact us", to: "/Additional/more" },
+    { name: "Applycation", to: "/Additional/more" },
+
+    //-----------------additional search end---------------------
+
   ];
 
   const filteredItems = items.filter(item =>

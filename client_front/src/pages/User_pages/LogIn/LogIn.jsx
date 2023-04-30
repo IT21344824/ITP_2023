@@ -58,13 +58,13 @@ const LogIn = () => {
 
           <button className="loginbtn" type="submit"> Login </button>
           {error && <span> Wrong email or password ! </span>}
-          <div class="bottom">
-            <div class="left">
+          <div className="bottom">
+            <div className="left">
               <input type="checkbox" id="check"></input>
               <label for="check">Remember Me</label>
             </div>
           </div>
-          <div class="right">
+          <div className="right">
             <button onClick={handleClick} className="forgot-button">
               Forgot password?
             </button>

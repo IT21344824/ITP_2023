@@ -516,7 +516,7 @@ const Product_New = () => {
 
 
                             <div className={`formInput ${ShowHint ? 'error' : ''}`}>
-                                <label> Product Id : </label>
+                                <label> Brand : </label>
                                 <input
                                     type="text"
                                     name="Product_id"

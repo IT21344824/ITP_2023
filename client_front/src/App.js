@@ -1,6 +1,6 @@
 
 // common
-import {  createBrowserRouter,  RouterProvider,  Outlet,  Route,} from "react-router-dom";
+import {  createBrowserRouter,  RouterProvider,  Outlet,  Route, Navigate} from "react-router-dom";
 import React, { useContext , useState, useEffect } from 'react';
 import More_fg from "./pages/More_pg/More_fg";
 
@@ -12,6 +12,8 @@ import AboutUs from './components/about_us/AboutUs';
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style/dark.scss";
 import './App.scss';
+import { AuthContext } from "./context/AuthContext";
+
 
 //user managements
 import LogIn from './pages/User_pages/LogIn/LogIn';
@@ -41,6 +43,15 @@ import OrderDSuccess from './pages/payment/PaySuccess/OrderDSuccess';
 
 
 const Layout = () => {
+
+ // if there is a current user go to children (home page) if not go to log in
+  const { currentUser } = useContext(AuthContext)
+
+  const RequireAuth = ({ children }) => {
+    return currentUser ? (children) : <Navigate to="/login" />
+  }
+
+
   const { darkMode } = useContext(DarkModeContext);
   
   const [selectedLink, setSelectedLink] = useState(localStorage.getItem('selectedLink') || '');
