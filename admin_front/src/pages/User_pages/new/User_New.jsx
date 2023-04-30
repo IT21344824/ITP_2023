@@ -3,7 +3,7 @@ import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, setDoc , updateDoc} from "firebase/firestore";
 import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -83,9 +83,25 @@ const User_new = ({ inputs, title }) => {
             // Add a new document in collection "users"
             await setDoc(doc(db, "Users", res.user.uid), {
                 ...data,
+                address: "",
+                age: "",
+                img: [],
+                phone: "",
+                gender: "",
                 role: "user",
                 timeStamp: serverTimestamp()
             });
+
+            // Create a new cart and associate it with the user
+            const cartRef = collection(db, "cart");
+            const newCartDoc = await addDoc(cartRef, { uid: res.user.uid });
+            const cartId = newCartDoc.id;
+            await updateDoc(doc(db, "Users", res.user.uid), { cartId });
+
+            const config = {
+                //url:process.env.React_App_Register_url,
+                handleCodeInApp: true,
+            };
 
             //navigate(-1)
             console.log("Document written with ID: ", res.user.uid);
@@ -95,7 +111,7 @@ const User_new = ({ inputs, title }) => {
         } catch (error) {
             console.log(error)
             // display error message to user
-           // setError("There was an error creating your account. Please try again.");
+            // setError("There was an error creating your account. Please try again.");
         }
 
 

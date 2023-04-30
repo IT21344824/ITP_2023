@@ -19,16 +19,18 @@ const List = () => {
   }
 
   return (
-    <div className="list">
+    <div className="Prodcutslist">
       <Sidebar />
       <div className="listContainer">
         <Navbar />
         <ProductTable />
-        <div>
-          <CategorTable className="CategorTable" />
+
+        <div className="CategorTable">
+          <CategorTable />
         </div>
+        
       </div>
-      
+
       <ToastContainer
         position="top-right"
         autoClose={5000}

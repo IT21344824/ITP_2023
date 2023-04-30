@@ -4,7 +4,7 @@ import { userColums, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc, onSnapshot, where, query } from "firebase/firestore";
-import { db } from "../../../firebase";
+import { db ,auth} from "../../../firebase";
 
 {/* This is all users table  */ }
 
@@ -36,14 +36,23 @@ const Datatable = () => {
 
   const handleDelete = async (id) => {
     try {
+      // Get the user from the auth service
+      const user = auth.currentUser;
+  
+      // If the user's UID matches the ID of the user being deleted, delete their authentication info
+      if (user && user.uid === id) {
+        await user.delete();
+      }
+  
+      // Delete the user from the database
       await deleteDoc(doc(db, "Users", id));
       setData(data.filter((item) => item.id !== id));
       console.log(`deleted ${id}`)
     } catch (error) {
       console.log(error);
     }
-
   };
+  
 
   const actionColum = [
     {
@@ -65,22 +74,25 @@ const Datatable = () => {
 
 
   return (
-    <div className="datatable">
-      <div className="datatableTitle">
-        Add New Users
-        <Link to="/Users/new" className="link" >
-          Add New
-        </Link>
+    <div className="Usertable">
+      <div className="datatable">
+        <div className="datatableTitle">
+          Add New Users
+          <Link to="/Users/new" className="link" >
+            Add New
+          </Link>
+        </div>
+        <DataGrid
+          className="datagrid"
+          rows={data}
+          columns={userColums.concat(actionColum)}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+        />
       </div>
-      <DataGrid
-        className="datagrid"
-        rows={data}
-        columns={userColums.concat(actionColum)}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
-        checkboxSelection
-      />
     </div>
+
   )
 }
 

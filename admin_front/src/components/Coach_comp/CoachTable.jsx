@@ -1,5 +1,5 @@
 import React from 'react'
-//import "./productTable.scss";
+
 import SearchIcon from '@mui/icons-material/Search';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 // import { userColums, userRows } from "../../../datatablesource";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import "./CoachTable.scss";
 
 const CoachTable = () => {
   const [data, setData] = useState([]);
@@ -91,7 +91,7 @@ const CoachTable = () => {
 
 
   return (
-    <div>
+    <div className='CTdatatable'>
       <div className="datatable">
         <div className="datatableTitle">
           Add New Coach

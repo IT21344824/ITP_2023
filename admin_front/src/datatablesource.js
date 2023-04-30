@@ -85,24 +85,7 @@ export const adminColums = [
         headerName : "Gender" ,
         width :200 ,
 
-    },
-    
-    // {
-    //     field : "status" ,
-    //     headerName : "Status" ,
-    //     width :140 ,
-    //     renderCell :(params) => {
-    //         return(
-    //             <div className={`cellWithStatus ${params.row.status}`}>
-    //                 {params.row.status}
-    //             </div>
-    //         );
-    //     },
-
-    // },
-    
-
-    
+    },  
 ] 
 
 
