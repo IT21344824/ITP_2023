@@ -188,7 +188,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
 
       </div>
       {settingopen && <Setting />}
-      {open && <Cart />}
+      {open && <Cart  setOpen={setOpen}/>}
     </div>
   );
 };

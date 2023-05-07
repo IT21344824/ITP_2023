@@ -5,7 +5,7 @@ import './payment.scss'
 // import { collection, getDocs, addDoc, getDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 // import { db } from "../../../firebase"
 
-const Payment = () => {
+const Payment = ({total}) => {
     const [visibleA, setVisibleA] = useState(false);
     const [visibleB, setVisibleB] = useState(false);
 

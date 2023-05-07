@@ -43,11 +43,20 @@ const FeaturedProduct = ({ type }) => {
 
 
     const prevSlider = () => {
-        setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1);
+        setCurrentSlide(currentSlide === 0 ?  newproducts.length/4 : (prev) => prev - 1);
     };
+
     const nextSlider = () => {
-        setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
+        setCurrentSlide(currentSlide ===  newproducts.length/4 ? 0 : (prev) => prev + 1);
     };
+
+    //   const prevSlider = () => {
+    //     setCurrentSlide(currentSlide === 0 ? newproducts.length - 1 : currentSlide - 1);
+    //   };
+    
+    //   const nextSlider = () => {
+    //     setCurrentSlide(currentSlide === newproducts.length - 1 ? 0 : currentSlide + 1);
+    //   };
 
 
     //get details---------------------------------------------------------------------------------------------------------------------------------

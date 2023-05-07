@@ -28,6 +28,7 @@ import Product from './pages/Product_pages/Product/Product';
 //Coach managements
 import Coach from './pages/Coach_pages/Coach_1/Coach';
 import Trainer from "./pages/Coach_pages/Coach_2/Trainer";
+import CoachDetails from "./pages/Coach_pages/Coach_details/Coach_details";
 
 //cart managements
 import Cart from './pages/Cart_pages/Cart_page';
@@ -124,6 +125,10 @@ const router = createBrowserRouter([
       {
         path: "/Coach",
         element: <Coach/>,
+      },
+      {
+        path: "/CoachDetails",
+        element: <CoachDetails/>,
       },
       {
         path: "/Trainer/:id",

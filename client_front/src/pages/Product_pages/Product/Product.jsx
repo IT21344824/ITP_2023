@@ -182,6 +182,7 @@ const Product = () => {
       await updateDoc(cartRef, {
         Total : newTotalPrice,
       });
+      alert("add to cart");
   
     }
     else {

@@ -3,7 +3,7 @@ import './Coach.scss'
 import Packageimg from '../../../components/Coach_comp/Package/Packages'
 import BPackageimg from '../../../components/Coach_comp/Package/BPackage'
 import Trainers from '../../../components/Coach_comp/Trainers/Trainers';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 
 
 const Coach = () => {
@@ -26,7 +26,7 @@ const Coach = () => {
         </div>
         <div className="button-container">
           <a href="#joinform"><button className="join_btn">JOIN</button></a>
-          <button className="learn_more_btn">COACHING DETAILS</button>
+          <Link to={'/CoachDetails'}><button className="learn_more_btn">COACHING DETAILS</button> </Link>
         </div>
 
         <center>
