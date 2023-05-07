@@ -107,4 +107,13 @@
 .Loging_back{
   background-image: url(../LogIn/loginback.jpg);
   background-size: cover;
+
+  .home{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d07900;
+    cursor: pointer;
+  }
 }

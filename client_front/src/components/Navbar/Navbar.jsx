@@ -9,6 +9,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useDispatch, useSelector } from 'react-redux';
 import Cart from '../Cart/Cart';
+import Setting from '../setting/Setting';
 import Results from './Search/Results';
 import { AuthContext } from "../../context/AuthContext";
 
@@ -54,6 +55,9 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
   const products = useSelector(state => state.cart.products);
 
   ////////////////
+
+  //settings------------------------------------
+  const [settingopen, setSettingOpen] = useState(false);
 
 
   return (
@@ -120,11 +124,18 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
 
             <div className="icons">
               <DarkModeOutlinedIcon className="icon darkM" onClick={() => dispatch({ type: "TOGGLE" })} />
-              <PersonIcon />
-              <FavoriteBorderIcon />
-              
               {currentUser ? (
-               <div className="cartIocn" onClick={() => setOpen(!open)}>
+                <div className="cartIocn" onClick={() => setSettingOpen(!settingopen)} >
+                  <PersonIcon />
+                </div>
+              ) : (
+                ''
+              )}
+
+              <FavoriteBorderIcon />
+
+              {currentUser ? (
+                <div className="cartIocn" onClick={() => setOpen(!open)}>
                   <ShoppingCartOutlinedIcon />
                   <span> {products.length} </span>
                 </div>
@@ -176,6 +187,7 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
         </div>
 
       </div>
+      {settingopen && <Setting />}
       {open && <Cart />}
     </div>
   );

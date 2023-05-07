@@ -39,6 +39,8 @@ import OnlineP from './pages/payment/Options/OnlineP';
 import DirectP from './pages/payment/Options/DirectP';
 import OrderBSuccess from './pages/payment/PaySuccess/OrderBSuccess';
 import OrderDSuccess from './pages/payment/PaySuccess/OrderDSuccess';
+import { auth, db } from "./firebase";
+import { onSnapshot , collection ,doc } from "firebase/firestore";
 
 
 
@@ -51,6 +53,29 @@ const Layout = () => {
     return currentUser ? (children) : <Navigate to="/login" />
   }
 
+
+  //getcurrentuser
+  // function Getcurrentuser(){
+  //   const [user ,setUser] = useState(null);
+  //   useEffect(()=>{
+  //     auth.onAuthStateChanged(user=>{
+  //       if(user){
+  //         db.collection('Users').doc(user.id).get().then(snapshot=>{
+  //           setUser(snapshot.data.email);
+  //         })
+  //       }
+  //       else{
+  //         setUser(null);
+  //       }
+  //     })
+  //   },[])
+  //   return user;
+  // }
+
+  //const user = Getcurrentuser();
+  //console.log(user);
+
+  //----------------
 
   const { darkMode } = useContext(DarkModeContext);
   

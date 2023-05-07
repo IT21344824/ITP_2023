@@ -24,7 +24,7 @@ const Cart = () => {
 
   //get uid
   const userObj = JSON.parse(localStorage.getItem('userClient'));
-  const uid = userObj?.uid;
+  const uid = userObj ? userObj.uid : null;
 
   //get current user cart id
   useEffect(() => {
@@ -45,7 +45,7 @@ const Cart = () => {
       const cartRef = doc(db, 'cart', cartId);
       // create a query to get the cart items that belong to the user
       const cartItemsQuery = collection(cartRef, 'items');
-      // subscribe to changes to the cart items
+     
       const unsubscribe = onSnapshot(cartItemsQuery, (snapshot) => {
         const items = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -53,7 +53,7 @@ const Cart = () => {
         }));
         setCartItems(items);
       });
-      // unsubscribe from the listener when the component unmounts
+     
       return () => unsubscribe();
     }
   }, [cartId]);

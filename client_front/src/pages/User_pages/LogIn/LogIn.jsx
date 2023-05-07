@@ -47,10 +47,21 @@ const LogIn = () => {
 
   };
 
+  const handlehome = () => {
+
+    try {
+      navigate("/");
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <div className="Loging_back">
       <div className="login">
+        
         <form className="loginform" action="" onSubmit={handleLogin}>
           <h3 className="login_h">Login Here</h3>
           <input className="loginInput" type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
@@ -80,6 +91,9 @@ const LogIn = () => {
           <button className="google-button" onClick={() => alert('sign in with google')}>
             Sign in with Google
           </button>
+          <div className="home" onClick={handlehome}>
+          <h1>Home</h1>
+        </div>
         </form>
       </div>
     </div>

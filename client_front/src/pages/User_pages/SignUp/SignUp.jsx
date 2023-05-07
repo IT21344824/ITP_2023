@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, serverTimestamp, setDoc ,updateDoc} from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db, storage } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -32,7 +32,7 @@ const SignUp = () => {
         data.email,
         data.password
       );
-  
+
       // Add a new document in collection "users"
       await setDoc(doc(db, "Users", res.user.uid), {
         ...data,
@@ -44,27 +44,27 @@ const SignUp = () => {
         role: "user",
         timeStamp: serverTimestamp()
       });
-  
+
       // Create a new cart and associate it with the user
       const cartRef = collection(db, "cart");
       const newCartDoc = await addDoc(cartRef, { uid: res.user.uid });
       const cartId = newCartDoc.id;
       await updateDoc(doc(db, "Users", res.user.uid), { cartId });
-  
+
       const config = {
         //url:process.env.React_App_Register_url,
         handleCodeInApp: true,
       };
-  
+
       //navigate(-1)
       console.log("Document written with ID: ", res.user.uid);
       navigate("/LogIn");
-  
+
     } catch (error) {
       console.log(error)
     }
   };
-  
+
 
 
 
@@ -86,11 +86,26 @@ const SignUp = () => {
 
   };
 
+ 
+  const handlehome = () => {    
+
+    try {     
+      navigate("/");     
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <div className="sigup_back">
+
       <div className='signup'>
         <div className="register-container">
+          <div className="home" onClick={handlehome}>
+            <h1>Home</h1>
+          </div>
           <form className="register-form" onSubmit={handleSubmit}>
             <h1 className="register-title">Register</h1>
 
