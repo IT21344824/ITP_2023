@@ -19,7 +19,6 @@ const Setting = () => {
 
   //get details-------------------------------------------------------------------------------
 
-
   //get uid
   const userObj = JSON.parse(localStorage.getItem('userClient'));
   const uid = userObj ? userObj.uid : null;
@@ -32,10 +31,20 @@ const Setting = () => {
       // Reset the cart in the Redux store
       dispatch(resetCart());
       // Refresh the page
-      //window.location.reload();
+
       // Navigate to the login page
       navigate("/LogIn");
       //history.push("/LogIn");
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const  handleProfile = () => {    
+
+    try {     
+      navigate("/Profile", { state: uid });  
 
     } catch (error) {
       console.error(error);
@@ -54,13 +63,13 @@ const Setting = () => {
 
       <div className="center">
         <ul>
-          <Link to="#" style={{ textDecoration: "none" }} >
-            <li >
+          {/* <Link to="/Profile" style={{ textDecoration: "none" }} > */}
+            <li onClick={handleProfile}>
 
               <AccountCircleIcon className="iocn" />
               <span> Profile </span>
             </li>
-          </Link>
+          {/* </Link> */}
           <Link to="#" style={{ textDecoration: "none" }} >
             <li >
 

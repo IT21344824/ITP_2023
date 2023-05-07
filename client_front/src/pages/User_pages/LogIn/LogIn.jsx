@@ -48,9 +48,9 @@ const LogIn = () => {
   };
 
   const handlehome = () => {
-
     try {
       navigate("/");
+      window.location.reload();
 
     } catch (error) {
       console.error(error);

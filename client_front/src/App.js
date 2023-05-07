@@ -19,6 +19,7 @@ import { AuthContext } from "./context/AuthContext";
 import LogIn from './pages/User_pages/LogIn/LogIn';
 import SignUp from './pages/User_pages/SignUp/SignUp';
 import Forgot from "./pages/User_pages/Forgot/Forgot";
+import Profile from "./components/Profile/Profile";
 
 
 //Product managements
@@ -129,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "/CoachDetails",
         element: <CoachDetails/>,
+      },
+      {
+        path: "/Profile",
+        element: <Profile/>,
       },
       {
         path: "/Trainer/:id",

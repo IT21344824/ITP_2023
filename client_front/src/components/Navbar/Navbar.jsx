@@ -14,6 +14,7 @@ import Results from './Search/Results';
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = ({ selectedLink, handleLinkClick }) => {
+  
   const [open, setOpen] = useState(false);
   const { dispatch } = useContext(DarkModeContext);
 

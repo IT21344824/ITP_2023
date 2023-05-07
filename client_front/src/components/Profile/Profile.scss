@@ -1,0 +1,280 @@
+.clentProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+
+        box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+        -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        width: 80%;
+
+
+
+        .pre_title {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 70px;
+
+            .protag {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                font-size: 44px;
+
+            }
+
+
+        }
+
+        .pre_Img {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 70px;
+            justify-content: center;
+            align-items: center;
+
+            div {
+                position: relative; // make the parent container position relative 
+                width: 200px;
+                height: 200px;
+                overflow: hidden;
+                cursor: pointer;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+                border: 2px solid rgb(251, 0, 0);
+                border-radius: 20px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .viewBtn {
+                    position: absolute; // make the delete button position absolute
+                    top: 10px; // adjust the top and left values to position the button
+                    left: 10px;
+                    padding: 5px 10px;
+                    background-color: yellowgreen;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:active {
+                        transform: scale(0.90);
+                    }
+                }
+
+                .deleteBtn {
+                    position: absolute; // make the delete button position absolute
+                    top: 10px; // adjust the top and left values to position the button
+                    right: 10px;
+                    padding: 5px 10px;
+                    background-color: red;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:active {
+                        transform: scale(0.90);
+                    }
+                }
+            }
+        }
+
+        .animation_p_id {
+
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+
+
+            .p_details {
+                margin: 4px;
+                border: 1px solid gray;
+                padding: 40px;
+                border-radius: 20px;
+                //  //width: 91%;
+                position: relative;
+                //z-index: 2;
+                background: #f4f4f4;
+
+
+                .detail {
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 30px;
+                    justify-content: space-around;
+                    //padding-bottom: 30vh;
+
+                    .update-img {
+                        display: flex;
+                        margin-left: 30px;
+                        margin-bottom: 40px;
+
+                        label {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                    }
+
+                    .center {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                    }
+
+                    .p_inputbox {
+                        position: relative;
+                        margin: 20px;
+
+                        .marL-10 {
+                            margin-left: 100px;
+                        }
+
+                        textarea {
+                            min-height: 150px;
+                            padding: 20px 10px 12px 30px;
+                            border: none;
+                            width: 25vw;
+                            background: #c7c7c7;
+                            border: 1px solid #00dfc4;
+                            color: #050505;
+                            font-weight: 300;
+                            border-radius: 25px;
+                            font-size: 1rem;
+                            box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                5px 5px 15px rgba(0, 0, 0, 0.35);
+                            word-wrap: break-word;
+                            resize: none;
+                        }
+
+                        p,
+                        input {
+                            margin-bottom: 20px;
+                            padding: 20px 10px 12px 30px;
+                            border: none;
+                            width: 25vw;
+                            background: #c7c7c7;
+                            border: 1px solid #00dfc4;
+                            color: #050505;
+                            font-weight: 300;
+                            border-radius: 25px;
+                            font-size: 1rem;
+                            box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                5px 5px 15px rgba(0, 0, 0, 0.35);
+                            word-wrap: break-word;
+                            resize: none;
+                            /* add this property to wrap long text */
+                        }
+
+                        .hint_Descrip {
+                            color: #f74040;
+                            //border: 1px solid #00dfc4;
+                            //background: #223243a6;
+                            font-size: 15px;
+                            padding: 0 8px;
+                            //border-radius: 25px;
+                            position: absolute;
+                            /* position the span absolutely within the inputbox */
+                            top: 9px;
+                            /* move the span up by 10px from the top of the inputbox */
+                            left: 28vw;
+
+                            width: 80%;
+                            /* move the span 25px from the left of the inputbox */
+                            word-wrap: break-word;
+                        }
+
+                        .hint {
+                            color: #f74040;
+                            //border: 1px solid #00dfc4;
+                            //background: #223243a6;
+                            font-size: 15px;
+                            padding: 0 8px;
+                            //border-radius: 25px;
+                            position: absolute;
+                            /* position the span absolutely within the inputbox */
+                            top: 60px;
+                            /* move the span up by 10px from the top of the inputbox */
+                            left: 10px;
+                            width: 400px;
+                            /* move the span 25px from the left of the inputbox */
+                            word-wrap: break-word;
+                        }
+
+                        .span {
+                            color: #f7e740;
+                            border: 1px solid #00dfc4;
+                            background: #223243a6;
+                            font-size: 15px;
+                            padding: 0 8px;
+                            border-radius: 25px;
+                            position: absolute;
+                            /* position the span absolutely within the inputbox */
+                            top: -7px;
+                            /* move the span up by 10px from the top of the inputbox */
+                            left: 25px;
+                            /* move the span 25px from the left of the inputbox */
+                        }
+
+
+                    }
+
+                    .buttons {
+                        display: flex;
+                        justify-content: end;
+                        align-items: center;
+                        gap: 20px;
+
+                        .Cancel {
+                            padding: 5px 10px;
+                            background-color: rgb(201, 199, 197);
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+
+                            &:active {
+                                transform: scale(0.90);
+                            }
+                        }
+
+                        .edit {
+                            padding: 5px 10px;
+                            background-color: rgb(0, 148, 240);
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+
+                            &:active {
+                                transform: scale(0.90);
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+    }
+
+}

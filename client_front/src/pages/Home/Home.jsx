@@ -7,6 +7,8 @@ import './home.scss'
 import FeaturedProduct from '../../components/Product_comp/FeaturedProducts/FeaturedProduct'
 
 const Home = () => {
+
+  
   return (
     <div className='home'>
       <Slider/>

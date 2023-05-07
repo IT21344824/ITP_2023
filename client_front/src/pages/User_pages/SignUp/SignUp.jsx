@@ -91,7 +91,7 @@ const SignUp = () => {
 
     try {     
       navigate("/");     
-
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
