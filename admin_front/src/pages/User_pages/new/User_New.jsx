@@ -94,7 +94,7 @@ const User_new = ({ inputs, title }) => {
 
             // Create a new cart and associate it with the user
             const cartRef = collection(db, "cart");
-            const newCartDoc = await addDoc(cartRef, { uid: res.user.uid });
+            const newCartDoc = await addDoc(cartRef, { uid: res.user.uid, Total: 0, items: []  });
             const cartId = newCartDoc.id;
             await updateDoc(doc(db, "Users", res.user.uid), { cartId });
 
