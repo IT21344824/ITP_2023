@@ -126,71 +126,60 @@ const Product = () => {
   const [cartDetails, setCartDetails] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const AddToCart = async (product, quantity = 1) => { // Add quantity parameter with default value 1
+  const AddToCart = async (product, quantity = 1) => {
     if (uid) {
       const cartRef = doc(db, 'cart', cartId);
-  
       const cartSnapshot = await getDoc(cartRef);
       const cartData = cartSnapshot.data();
   
-      // Check if the item is already in the cart
-      const existingCartItemIndex = cartData.items.findIndex(item => item.id === product.Product_id);
+      if (cartData) { // check if cartData is defined before accessing its properties
+        const existingCartItemIndex = cartData.items.findIndex(item => item.id === product.Product_id);
   
-      if (existingCartItemIndex !== -1) {
-        // If the item already exists, update the quantity
-        const updatedCartItems = [...cartData.items];
-        updatedCartItems[existingCartItemIndex].quantity += quantity;
-        
-        console.log()
+        if (existingCartItemIndex !== -1) {
+          const updatedCartItems = [...cartData.items];
+          updatedCartItems[existingCartItemIndex].quantity += quantity;
+          await updateDoc(cartRef, {
+            items: updatedCartItems,
+          });
+          console.log("updateDoc");
+        } else {
+          const newCartItem = {
+            id: product.Product_id,
+            title: product.item_name,
+            price: product.price,
+            img: product.img,
+            desc: product.description,
+            quantity: quantity,
+          };
+          const newCartItems = [...cartData.items, newCartItem];
+          await updateDoc(cartRef, {
+            items: newCartItems,
+          });
+          console.log("add");
+        }
   
-        // Update the `items` field in the `cart` document with the updated cart items
+        const updatedCartSnapshot = await getDoc(cartRef);
+        const updatedCartData = updatedCartSnapshot.data();
+        setCartDetails(updatedCartData.items);
+  
+        const newTotalPrice = updatedCartData.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        setTotalPrice(newTotalPrice);
+  
+        console.log(newTotalPrice)
+  
         await updateDoc(cartRef, {
-          items: updatedCartItems,
+          Total : newTotalPrice,
         });
-  
-        console.log("updateDoc");
+        alert("add to cart");
+      } else {
+        console.log("cart data is undefined");
       }
-      else {
-        // If the item does not exist, add it to the cart
-        const newCartItem = {
-          id: product.Product_id,
-          title: product.item_name,
-          price: product.price,
-          img: product.img,
-          desc: product.description,
-          quantity: quantity,
-        };
-  
-        const newCartItems = [...cartData.items, newCartItem];
-  
-        // Update the `items` field in the `cart` document with the new array of cart items
-        await updateDoc(cartRef, {
-          items: newCartItems,
-        });
-        console.log("add");
-      }
-  
-      const updatedCartSnapshot = await getDoc(cartRef);
-      const updatedCartData = updatedCartSnapshot.data();
-      setCartDetails(updatedCartData.items);
-  
-      const newTotalPrice = updatedCartData.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-      setTotalPrice(newTotalPrice);
-  
-      console.log(newTotalPrice)
-  
-      await updateDoc(cartRef, {
-        Total : newTotalPrice,
-      });
-      alert("add to cart");
-  
-    }
-    else {
-      // Redirect to login page or show a message
+    } else {
       navigate('/LogIn');
-      window.alert("Please log in first!"); // show alert if uid is null
+      window.alert("Please log in first!");
     }
   };
+  
   
 
 

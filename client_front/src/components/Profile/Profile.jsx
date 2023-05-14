@@ -261,7 +261,7 @@ const Profile = () => {
 
                                 <div className="p_inputbox">
                                     <span className="span"> password : </span>
-                                    {isEditing ? (
+                                    {/* {isEditing ? (
                                         <div>
                                             <span className="hint">{data?.password ?? ''} </span>
                                             <input
@@ -272,15 +272,15 @@ const Profile = () => {
                                             />
 
                                         </div>
-                                    ) : (
+                                    ) : ( */}
                                         <p>{data?.password ?? ''}</p>
-                                    )}
+                                    {/* )} */}
 
                                 </div>
 
                                 <div className="p_inputbox">
                                     <span className="span"> email : </span>
-                                    {isEditing ? (
+                                    {/* {isEditing ? (
                                         <div>
                                             <span className="hint">{data?.email ?? ''} </span>
                                             <input
@@ -291,9 +291,9 @@ const Profile = () => {
                                             />
 
                                         </div>
-                                    ) : (
+                                    ) : ( */}
                                         <p>{data?.email ?? ''}</p>
-                                    )}
+                                    {/* )} */}
 
                                 </div>
 

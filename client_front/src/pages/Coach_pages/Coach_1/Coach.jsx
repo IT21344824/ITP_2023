@@ -1,12 +1,14 @@
-import React from 'react';
+import { useState } from 'react';
 import './Coach.scss'
 import Packageimg from '../../../components/Coach_comp/Package/Packages'
 import BPackageimg from '../../../components/Coach_comp/Package/BPackage'
 import Trainers from '../../../components/Coach_comp/Trainers/Trainers';
-import { useNavigate , Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Coach = () => {
+
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
 
@@ -14,6 +16,35 @@ const Coach = () => {
     e.preventDefault();
     navigate('/DirectP');
   }
+
+  //  data
+  const initialFormData = {
+    PACKAGES: "",
+    phone: "",
+    email: "",
+    message: "",
+    
+    // img: [], // add imgs to formData to store multiple image urls
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    try {
+      navigate('/DirectP', { state: formData });
+    } catch (error) {
+      console.log(error)
+    }
+
+  };
 
   return (
     <div className="coach">
@@ -76,9 +107,9 @@ const Coach = () => {
             <p><span >Submit your interest and we will WhatsApp you and get your set up &amp; payment process started..</span></p>
           </div>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label for="country">PACKAGES:</label>
-            <select id="PACKAGES" name="PACKAGES" required>
+            <select id="PACKAGES" name="PACKAGES" required onChange={handleInputChange}>
               <option value="">--Select PACKAGES--</option>
               <option value="MONTHLY SUBSCRIPTION">MONTHLY SUBSCRIPTION</option>
               <option value="BUNDLED PACKAGES">BUNDLED PACKAGES</option>
@@ -87,21 +118,21 @@ const Coach = () => {
             </select>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
-              <input type="text" id="name" name="name" required />
+              <input type="text" id="name" name="name" required onChange={handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" required onChange={handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" placeholder="Whatsapp Number" id="phone" name="phone" required />
+              <input type="tel" placeholder="Whatsapp Number" id="phone" name="phone" required onChange={handleInputChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="message">Message:</label>
-              <textarea id="message" name="message" required></textarea>
+              <textarea id="message" name="message" required onChange={handleInputChange} ></textarea>
             </div>
-            <button type="submit" className="submit-btn" onClick={handlepay}>Pay Now</button>
+            <button type="submit" className="submit-btn">Pay Now</button>
           </form>
         </div>
 
