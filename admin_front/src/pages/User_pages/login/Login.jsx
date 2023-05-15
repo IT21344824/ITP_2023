@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useState , useEffect } from "react";
 import "./login.scss";
+import { getDoc, collection, query, doc, addDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase"
+import { auth , db } from "../../../firebase"
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../../context/AuthContext";
 
@@ -13,28 +14,50 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { dispatch } = useContext(AuthContext)
+  const { dispatch } = useContext(AuthContext);
+
+  const [data, setData] = useState({});
+  const [user, setUser] = useState(null); 
 
   const handleLogin = (e) => {
     e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
 
-    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
+        const user = userCredential.user;    
+        setUser(user);
 
-      console.log(user)
-      // Check user role
-      //  if (user.role === "Admin") {
-      dispatch({ type: "LOGIN", payload: user });
-      navigate("/");
-      // } else {
-      //   setError(true);
-      // }
-    })
+        const docRef = doc(db, "Users", user.uid);
+        const unsubscribe = onSnapshot(
+          docRef,
+          async (doc) => {
+            if (doc.exists()) {
+              const data = doc.data();
+              setData(data);
+              if (data.role === "Admins") {
+                dispatch({ type: "LOGIN", payload: user });
+                navigate("/");
+              } else {
+                alert("User is not an Admin. Login not allowed.");
+                console.log("User is not an Admin. Login not allowed.");
+              }
+            } else {
+              console.log("No such document!");
+            }
+          },
+          (error) => {
+            console.log("Error getting document:", error);
+          }
+        );
+
+        return () => unsubscribe();
+      })
       .catch((error) => {
         setError(true);
       });
   };
+
+  
 
 
   return (

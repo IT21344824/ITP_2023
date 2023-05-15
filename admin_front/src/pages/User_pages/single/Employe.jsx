@@ -17,7 +17,7 @@ const Employe = ({ id }) => {
 
     //geting selected data
     const [data, setData] = useState({});
-    console.log(data.img);
+   // console.log(data.img);
 
     useEffect(() => {
         if (_id) {
