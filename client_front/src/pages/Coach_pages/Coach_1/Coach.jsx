@@ -48,7 +48,7 @@ const Coach = () => {
 
   return (
     <div className="coach">
-      <img src="/img/C-bannder.png" alt="Banner Image" className="banner-image" />
+      {/* <img src="/img/C-bannder.png" alt="Banner Image" className="banner-image" /> */}
       <div className='coach'>
         <div className="header-container">
           <center>
@@ -84,7 +84,7 @@ const Coach = () => {
 
 
         <center>
-          <h1>SPECIALIZED TRAINING PROGRAMS</h1>
+          <h1 className='Specialized'>SPECIALIZED TRAINING PROGRAMS</h1>
         </center>
         <div>
 

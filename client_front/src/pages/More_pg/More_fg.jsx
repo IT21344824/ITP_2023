@@ -3,7 +3,7 @@ import MSlider from '../../components/MorePageSlider/MorePageSlider'
 import AboutUs from '../../components/about_us/AboutUs'
 import ContactUs from '../../components/contact_us/ContactUs'
 import Apply_from from '../../components/Applycation_f_comp/Apply_from'
-
+import './More_fg.scss'
 //notify-
 //import NofitySuc from "../../../components/notify_status/nofity";
 import { ToastContainer, toast } from 'react-toastify';

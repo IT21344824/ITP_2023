@@ -8,26 +8,29 @@
     }
 
     .navbar {
-        
-        .darkM{
-            
+        background: linear-gradient(90deg, rgb(34, 34, 34) 0%, rgb(146, 146, 146) 100%, rgb(0, 97, 116) 100%);
+
+        .darkM {
+
             color: #00d9ffdf;
             border: 2px solid #00d9ff;
             border-radius: 50%;
-            box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
-            -webkit-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
-            -moz-box-shadow: 0px 0px 30px 7px rgba(0,246,255,0.73);
+            box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -webkit-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
+            -moz-box-shadow: 0px 0px 30px 7px rgba(0, 246, 255, 0.73);
         }
-        .middle{
-            .title{
+
+        .middle {
+            .title {
                 // box-shadow: 0px 0px 30px 7px rgb(255, 255, 255);
                 // -webkit-box-shadow: 0px 0px 30px 7px rgb(255, 255, 255);
                 // -moz-box-shadow: 0px 0px 30px 7px rgb(255, 255, 255);
             }
         }
-        
+
         .bot_section {
             background-color: #b5b5b5;
+
             .link {
                 color: rgb(0, 0, 0)
             }
@@ -77,40 +80,116 @@
         }
     }
 
-    .product{
-        .right{
-            .price{
+    .product {
+        .right {
+            .price {
                 color: rgb(162, 255, 0);
             }
-            .links{
-                .item{
+
+            .links {
+                .item {
                     color: rgba(191, 4, 4, 0.759);
                 }
             }
-            .info{
-                .type{
+
+            .info {
+                .type {
                     color: rgb(177, 177, 177);
                 }
             }
         }
 
-       
+
 
     }
-    .list_container{
-        .search_table{
-            .from_search{
+
+    .list_container {
+        .search_table {
+            .from_search {
                 input {
                     background-color: #868686;
                     color: rgb(0, 0, 0);
 
-                    &::placeholder{
+                    &::placeholder {
                         color: rgb(0, 0, 0);
                     }
                 }
             }
         }
     }
+
     //-----------------------------------------------end of products ---------------------------------------------------------------------------
+
+    //--------------------------------------------------- start Coach--------------------------------------------------------------------------------------//
+
+    .coach {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(113, 98, 102, 1) 100%, rgba(0, 212, 255, 1) 100%);
+        padding: 30px;
+
+        .header-container h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #a82121;
+        }
+
+        .trainers-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            background-color: #a82121;
+        }
+
+        .discription_b {
+            background-color: #a82121;
+
+
+        }
+
+        .subsCribtionImg img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 20px;
+            box-shadow: 9px 3px 8px 7px rgba(200, 117, 117, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .bundelImg img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 20px;
+            box-shadow: 9px 3px 8px 7px rgba(200, 117, 117, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .Specialized {
+            background-color: #746e6e;
+
+        }
+
+        .trainer-card h3 {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            color: #050505;
+        }
+
+        .trainer-card {
+            background-color: #a29e9e;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+    }
+
+        //--------------------------------------------------- end Coach--------------------------------------------------------------------------------------//
+        .More_fg{
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(113, 98, 102, 1) 100%, rgb(0, 97, 116) 100%);
+        }
 
 }
