@@ -93,6 +93,15 @@ const Coach_New = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        if (!formData.contact || isNaN(formData.contact)) {
+            alert("Please enter number for contact");           
+            return;
+        }
+
+        if (files.length === 0) {
+            alert("Please select an image");           
+            return;
+        }
 
         // Initialize formData.img as an empty array if it is null
         const images = formData.img ? formData.img : [];
@@ -229,6 +238,7 @@ const Coach_New = () => {
                                     onChange={(e) => setFiles(Array.from(e.target.files))}
                                     multiple
                                     style={{ display: "none" }}
+                                   
                                 />
                                 <button onClick={(event) => {
                                     event.preventDefault();
@@ -254,6 +264,7 @@ const Coach_New = () => {
                                     value={formData.Coach_id}
                                     onChange={handleInputChange}
                                     placeholder="Enter Product Id...."
+                                    required
                                 />
                             </div>
 
@@ -266,6 +277,7 @@ const Coach_New = () => {
                                     value={formData.Coach_name}
                                     onChange={handleInputChange}
                                     placeholder="Enter  Coach Name...."
+                                    required
                                 />
                             </div>
 
@@ -278,6 +290,7 @@ const Coach_New = () => {
                                     value={formData.contact}
                                     onChange={handleInputChange}
                                     placeholder="Enter Coach contact...."
+                                    required
                                 />
                             </div>
 
@@ -290,6 +303,7 @@ const Coach_New = () => {
                                 value={formData.description}
                                 onChange={handleInputChange}
                                 placeholder="Enter Product Description...."
+                                required
                             ></textarea>
                             </div>
 
