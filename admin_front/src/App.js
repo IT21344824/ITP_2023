@@ -52,7 +52,7 @@ import Additionalmore from "./pages//Additional_pages/more_pg/Add_More";
 
 
 // test 
-import Notify from "./components/notify_status/button_test";
+import Notify from "./components/Tests/testPDF";
 import List from "./pages/User_pages/list/List";
 import Single from "./pages/test/Single";
 import New from "./pages/User_pages/new/New";
@@ -169,7 +169,7 @@ function App() {
             </Route>
 
 
-            <Route path="members" >
+            <Route path="test" >
               <Route index element={
                 <RequireAuth>
                   {/* <List /> */}

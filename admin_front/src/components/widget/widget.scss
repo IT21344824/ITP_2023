@@ -20,9 +20,25 @@
 
 
         .title {
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
             font-weight: bold;
             font-size: 14px;
             color: gray;
+
+            .DUrl{
+                align-items: center;
+                justify-content: center;
+                display: flex;
+
+                button{
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
         }
 
         .counter {

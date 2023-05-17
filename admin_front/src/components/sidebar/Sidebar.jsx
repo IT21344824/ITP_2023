@@ -98,10 +98,10 @@ const Sidebar = () => {
                         </li>
                     </Link>
 
-                    <Link to="/members" style={{ textDecoration: "none" }} >
+                    <Link to="/test" style={{ textDecoration: "none" }} >
                         <li onClick={() => handleClickedElement("members")} className={clickedElement === "members" ? "selected" : ""}>
                             <GroupAddIcon className="iocn" />
-                            <span> Members </span>
+                            <span> test </span>
                         </li>
                     </Link>
 
