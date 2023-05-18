@@ -14,6 +14,8 @@
       height: 300px;
       object-fit: cover;
       margin-bottom: 50px;
+      border-radius: 10px;
+      border: 1px solid rgb(134, 137, 0);
     }
 
     .P_C {
@@ -33,6 +35,27 @@
         padding-right: 10px;
         padding-top: 50px;
         padding-bottom: 80px;
+
+        .clear_img {
+          margin-left: 160px;
+          color: white;
+          width: 50px;
+          border-radius: 10px;
+          height: 30px;
+          font-size: 12px;
+          background-color: rgb(115, 0, 0);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          &:active{
+              transform: scale(0.96);
+          }
+          &:hover{
+            transform: scale(1.08);
+        }
+      }
 
 
         .filterItems {
@@ -58,6 +81,24 @@
         flex: 4;
         margin-left: 20px;
       }
+    }
+
+    .prodcuts_videos {
+      h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+  
+        margin-bottom: 200px;
+      }
+  
     }
   }
 }

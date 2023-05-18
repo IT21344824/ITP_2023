@@ -62,13 +62,13 @@ const Slider = () => {
     return (
         <div className='slider'>
             {Sliderdata.img && Sliderdata.img.length > 0 ? (
-                <div className="container" style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
+                <div className="container" style={{ transform: `translateX(-${currentSlide * 100}vw)`, width: `${Sliderdata.img.length * 100}vw` }}>
                     {Sliderdata.img.map((img, index) => (
                         <img key={index} src={img} alt="" />
                     ))}
                 </div>
             ) : (
-                <div className="container" style={{ transform: `translateX(-${currentSlide * 100}vw)` }}>
+                <div className="container" style={{ transform: `translateX(-${currentSlide * 100}vw)`, width: `${data.length * 100}vw` }}>
                     {data.map((img, index) => (
                         <img key={index} src={img} alt="" />
                     ))}

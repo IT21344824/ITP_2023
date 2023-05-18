@@ -83,6 +83,8 @@ const Navbar = ({ selectedLink, handleLinkClick }) => {
                 />
                 <SearchIcon className="icon" />
               </div>
+
+             
               {searchQuery !== "" && (
                 <Results searchQuery={searchQuery} className="search_result" />
               )}

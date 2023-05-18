@@ -23,7 +23,7 @@ const Coach = () => {
     phone: "",
     email: "",
     message: "",
-    
+
     // img: [], // add imgs to formData to store multiple image urls
   };
 
@@ -92,6 +92,56 @@ const Coach = () => {
 
         </div>
 
+        <div className="coah_videos">
+          <h1 className='Specialized' > For more tips </h1>
+          
+          <div className="video">
+
+
+            <div className="youtube-video-container">
+              <h1> how stay healthy </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/QK7Tea_-VY4"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+            <div className="youtube-video-container">
+              <h1> healthy drinks </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/DEiueXH--HI"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+
+            <div className="youtube-video-container">
+              <h1> how gain muscles </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/MilYefF9DjI"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
 
         <center className='discription_b'>
           <h1>WHY SELECT A BUNDLE?</h1>
@@ -109,13 +159,26 @@ const Coach = () => {
 
           <form onSubmit={handleSubmit}>
             <label for="country">PACKAGES:</label>
-            <select id="PACKAGES" name="PACKAGES" required onChange={handleInputChange}>
-              <option value="">--Select PACKAGES--</option>
-              <option value="MONTHLY SUBSCRIPTION">MONTHLY SUBSCRIPTION</option>
-              <option value="BUNDLED PACKAGES">BUNDLED PACKAGES</option>
+            <select id="PACKAGES" name="PACKAGES" className='p_name' required onChange={handleInputChange}>
+
+              <option value="">-- Select PACKAGES --</option>
+
+              <option value="Package 01">Package 01</option>
+
+              <option value="Package 02">Package 02</option>
+
+              <option value="Package 03">Package 03</option>
+
+              <option value="Rookie Bundle">Rookie Bundle</option>
+
+              <option value="Intermediate Bundle">Intermediate Bundle</option>
+
+              <option value="Advanced Bundle">Advanced Bundle</option>
+
               <option value="SPECIALIZED TRAINING PROGRAMS">SPECIALIZED TRAINING PROGRAMS</option>
 
             </select>
+
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="name" required onChange={handleInputChange} />
@@ -126,7 +189,7 @@ const Coach = () => {
             </div>
             <div className="form-group">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" placeholder="Whatsapp Number" id="phone" name="phone" required onChange={handleInputChange}/>
+              <input type="tel" id="phone" name="phone" required onChange={handleInputChange} />
             </div>
             <div className="form-group">
               <label htmlFor="message">Message:</label>
@@ -134,6 +197,8 @@ const Coach = () => {
             </div>
             <button type="submit" className="submit-btn">Pay Now</button>
           </form>
+
+
         </div>
 
       </div>

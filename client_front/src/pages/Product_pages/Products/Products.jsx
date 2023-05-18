@@ -96,7 +96,7 @@ const Products = () => {
                   <label htmlFor={cat.id}>{cat.Cat_name}</label>
                 </div>
               ))}
-              <button onClick={() => setSelectedCategories([])}>Clear</button>
+              <button onClick={() => setSelectedCategories([])} className="clear_img" >Clear</button>
             </div>
 
 
@@ -135,7 +135,7 @@ const Products = () => {
                 />
                 <label htmlFor="desc"> Price (Highest first )</label>
               </div>
-              <button onClick={clearSort}>Clear</button>
+              <button onClick={clearSort} className="clear_img" >Clear</button>
             </div>
 
           </div>
@@ -147,7 +147,59 @@ const Products = () => {
               selectedCategories={selectedCategories}
             />
           </div>
+
+
           
+          
+        </div>
+
+        <div className="prodcuts_videos">
+          <h1 className='Specialized' > For more tips </h1>
+          
+          <div className="video">
+
+
+            <div className="youtube-video-container">
+              <h1> how stay healthy </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/aaNhNDYRdQE"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+            <div className="youtube-video-container">
+              <h1> healthy drinks </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/DEiueXH--HI"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+
+            <div className="youtube-video-container">
+              <h1> how gain muscles </h1>
+
+              <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/MilYefF9DjI"
+                title="YouTube Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+
+
+
+          </div>
         </div>
       </div>
 

@@ -94,14 +94,17 @@ const Product = () => {
 
   //get current user cart id
   useEffect(() => {
-    // create a query to get the cart ID of the current user
-    const userRef = doc(db, 'Users', uid);
-    const unsubscribe = onSnapshot(userRef, (doc) => {
-      const cartId = doc.data()?.cartId;
-      setCartId(cartId);
-    });
-    return () => unsubscribe();
+    if (uid) { // Add a condition to check if uid exists
+      // create a query to get the cart ID of the current user
+      const userRef = doc(db, 'Users', uid);
+      const unsubscribe = onSnapshot(userRef, (doc) => {
+        const cartId = doc.data()?.cartId;
+        setCartId(cartId);
+      });
+      return () => unsubscribe();
+    }
   }, [uid]);
+  
 
 
   //get current user cart details

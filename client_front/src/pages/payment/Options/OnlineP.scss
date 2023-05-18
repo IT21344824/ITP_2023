@@ -1,5 +1,12 @@
 .onlinePay{
-
+  padding-left: 180px;
+  padding-right: 180px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: radial-gradient(circle, rgb(47, 47, 47) 0%, rgb(255, 255, 255) 100%);
+  animation: gradient 15s ease infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-size: 400% 400%, cover;
 
 
 form {
@@ -8,7 +15,7 @@ form {
     width: 400px;
     margin: 80px auto;
     padding: 100px;
-    background-color: #f0f0f0;
+    background-color: #ffffff4c;
     border-radius: 10px;
   
     label {
@@ -25,7 +32,7 @@ form {
     }
   
     button[type="submit"] {
-      background-color: #4b9eff;
+      background-color: #FF0000;
       color: #fff;
       border: none;
       margin-right: -25px;

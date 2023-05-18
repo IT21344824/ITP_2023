@@ -56,57 +56,57 @@ const PaymentSingle = () => {
 
                 <div className="P_container">
                     <div className="pDetail">
-                        <h1> payment details </h1>
+                        <h1> Billing details </h1>
 
-                        <div>
-                            <span>Name: {data?.oldformData?.fullName}</span>
+                        <div className='billDetails'>
+                            <span>Name : {data?.oldformData?.fullName}</span>
                         </div>
 
-                        <div>
-                            <span>Email: {data?.oldformData?.email}</span>
+                        <div className='billDetails'>
+                            <span>Email : {data?.oldformData?.email}</span>
                         </div>
 
-                        <div>
-                            <span>Address: {data?.oldformData?.address}</span>
+                        <div className='billDetails'>
+                            <span>Address : {data?.oldformData?.address}</span>
                         </div>
 
-                        <div>
-                            <span>city: {data?.oldformData?.city}</span>
+                        <div className='billDetails'>
+                            <span>City : {data?.oldformData?.city}</span>
                         </div>
 
-                        <div>
-                            <span> selected option: {data?.oldformData?.selectedOption}</span>
+                        <div className='billDetails'>
+                            <span> Selected option : {data?.oldformData?.selectedOption}</span>
                         </div>
                     </div>
 
 
                     <div className="otherDetail ">
-                        <h1> details </h1>
+                        <h1>Bank slip details </h1>
 
-                        <div>
-                            <span> img : </span>
+                        <div className='bankDetails'>
+                            <span> Img : </span>
                             <img src={data?.img} alt="" />                            
                         </div>
 
-                        <div>
-                            <span> bank: {data?.bank}</span>
+                        <div className='bankDetails'>
+                            <span> Bank : {data?.bank}</span>
                         </div>
 
-                        <div>
-                            <span> branch : {data?.branch}</span>
+                        <div className='bankDetails'>
+                            <span> Branch : {data?.branch}</span>
                         </div>
 
-                        <div>
-                            <span> depositDate : {data?.depositDate}</span>
+                        <div className='bankDetails'>
+                            <span> Deposit Date : {data?.depositDate}</span>
                         </div>
 
-                        <div>
-                            <span> refNo : {data?.refNo}</span>
+                        <div className='bankDetails'>
+                            <span> RefNo : {data?.refNo}</span>
                         </div>
 
 
-                        <div>
-                            <span> depositAmount : {data?.depositAmount}</span>
+                        <div className='bankDetails'>
+                            <span> Deposit Amount : {data?.depositAmount}</span>
                         </div>
 
 
@@ -119,6 +119,7 @@ const PaymentSingle = () => {
             </div>
         </div>
     )
+
 }
 
 export default PaymentSingle

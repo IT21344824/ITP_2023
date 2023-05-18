@@ -59,19 +59,20 @@ const ContactUs = () => {
             return;
         }
 
-        if (!formData.email) {
-            //alert("Please enter the email");
-            toast.warn('Please enter the email!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+        if (!/^[\w.-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+            //alert("Please enter the Product_id");
+            toast.warn('Please enter the valid email !', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
             return;
-        }
+          }
+
 
         if (!formData.message) {
             //alert("Please enter the message");
@@ -233,24 +234,7 @@ const ContactUs = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                limit={6} //-
-                hideProgressBar={false}
-                newestOnTop={false} //-
-                closeOnClick
-                rtl={false} //--
-                pauseOnFocusLoss //--
-                draggable
-                pauseOnHover
-                theme="colored"
-
-                style={notifyStyle}
-
-            // progressStyle={progressStyle}
-
-            />
+            
         </div>
     )
 }

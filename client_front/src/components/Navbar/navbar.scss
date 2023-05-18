@@ -30,20 +30,24 @@
                     //display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 25vw;
+                  
 
                     .search_container {
                         display: flex;
-                        align-items: center;
+                            align-items: center;
+                            justify-content: center;    
                         border: 0.5px solid rgb(185, 183, 183);
                         border-radius: 10px;
 
                         input {
+                            padding-left: 20px;
                             position: relative;
                             z-index: 1;
                             border: none;
                             background-color: transparent;
                             outline: none;
+                            width: 21vw;
+                            height: 30px;
 
                             &::placeholder {
                                 font-size: 12px;
@@ -51,7 +55,8 @@
 
                         }
 
-                        .icon {
+                        .icon {      
+                                           
                             margin-right: 10px;
                         }
                     }
@@ -78,12 +83,12 @@
                 .title{
                     padding: 5px 10px 5px 10px;
                    // background: linear-gradient(45deg, #7380df, #e91e63);
-                    font-size: 40px;
-                    font-weight: bold;
-                    border-radius: 20px;
-                    color: rgb(255, 2, 2);
-                    //text-shadow: 2px 2px 4px #ffffff;
-                    //color: rgb(12, 128, 229);
+                      font-size: 50px;
+                        background: -webkit-linear-gradient(#fa2121, #818181);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-family: Fantasy ;
+                      
                 }
             }
 
@@ -109,32 +114,40 @@
                         //box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
                         transition: 0.4s;
                         text-align: center;
-
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
 
 
 
                         .reg {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                             width: 70px;
                             color: white;
-                            background-color: rgba(104, 85, 224, 1);
+                            background-color: rgb(235, 119, 101);
                             padding-bottom: 5px;
                             border-radius: 10px;
 
                         }
 
                         .log {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                             width: 60px;
-                            color: rgb(104, 85, 224);
+                            color: rgb(233, 59, 32);
                             background-color: rgba(255, 255, 255, 1);
-                            border: 1px solid rgba(104, 85, 224, 1);
+                            border: 1px solid rgb(233, 59, 32);
                             padding-bottom: 5px;
                             border-radius: 10px;
 
                             &:hover {
                                 color: white;
                                 //width:;
-                                box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-                                background-color: rgba(104, 85, 224, 1);
+                                box-shadow: 0 0 20px rgb(233, 59, 32);
+                                background-color: rgb(233, 59, 32);
                             }
                         }
 
@@ -157,7 +170,7 @@
                             width: 20px;
                             height: 20px;
                             border-radius: 50%;
-                            background-color: #4326e7;
+                            background-color: #fa2121;
                             color: white;
                             position: absolute;
                             right: -10px;

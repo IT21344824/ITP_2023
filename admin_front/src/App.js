@@ -57,6 +57,16 @@ import List from "./pages/User_pages/list/List";
 import Single from "./pages/test/Single";
 import New from "./pages/User_pages/new/New";
 
+//Contact
+import ContactList from "./pages/Contact_Apply_pages/Contact_pages/Contact" 
+import ContactSingle from "./pages/Contact_Apply_pages/Contact_pages/single/ContactSingle"
+
+import ApplycationsList from "./pages/Contact_Apply_pages/Applycations_pages/Applycations_pg"
+import ApplycationsSingle from "./pages/Contact_Apply_pages/Applycations_pages/single/ApplycationsSingle"
+
+
+
+
 
 
 function App() {
@@ -237,6 +247,35 @@ function App() {
                 </RequireAuth>} />
 
             </Route>
+
+
+            <Route path="Contact_Us" >
+              <Route index element={
+                <RequireAuth>
+                  <ContactList />
+                </RequireAuth>} />
+              <Route path=":Contact_Us_ID" element={
+                <RequireAuth>
+                  <ContactSingle />
+                </RequireAuth>} />
+              
+
+            </Route>
+
+            <Route path="Applycations" >
+              <Route index element={
+                <RequireAuth>
+                  <ApplycationsList />
+                </RequireAuth>} />
+              <Route path=":Applycations_ID" element={
+                <RequireAuth>
+                  <ApplycationsSingle />
+                </RequireAuth>} />
+              
+
+            </Route>
+
+
           </Route>
 
         </Routes>

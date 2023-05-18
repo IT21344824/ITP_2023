@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import { onConfirm } from 'react-confirm-pro';
 
 
 const CoachTable = ({ id }) => {
@@ -14,13 +14,13 @@ const CoachTable = ({ id }) => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  
+
   //table headers
   const columns = [
     { field: "Row_id", headerName: "Row", width: 65 },
     { field: "id", headerName: "BD-id", width: 150 },
     { field: "Categories", headerName: "Categories", width: 170 },
-    
+
     {
       field: "image",
       headerName: "Image",
@@ -33,14 +33,14 @@ const CoachTable = ({ id }) => {
           </div>
         );
       },
-      
+
     },
 
-    
+
   ];
 
   // show all data
-  
+
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, "Packages"),
@@ -60,15 +60,51 @@ const CoachTable = ({ id }) => {
 
 
   //table delete data function
-   const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "Packages", id));
-     setData(data.filter((item) => item.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
-   
+  const handleDelete = async (id) => {
+    const defaultOptions = {
+      title: (
+        <h3>
+          Are you sure?
+        </h3>
+      ),
+      description: (
+        <p>Do you really want to delete this records? This process cannot be undone.</p>
+      ),
+      onSubmit: async () => {
+        try {
+          await deleteDoc(doc(db, "Packages", id));
+          setData(data.filter((item) => item.id !== id));
+        } catch (error) {
+          console.log(error);
+        }
+
+      },
+      onCancel: () => {
+        // alert("Cancel")
+      },
+    };
+    onConfirm({
+      ...defaultOptions,
+      type: "dark",
+      btnSubmit: "confirm ",
+      btnCancel: "Cancle ",
+      keyboardEvents: {
+        escape: true,
+        submit: true
+      }
+    })
+
   };
+
+  //  const handleDelete = async (id) => {
+  //   try {
+  //     await deleteDoc(doc(db, "Packages", id));
+  //    setData(data.filter((item) => item.id !== id));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+
+  // };
 
   //table action header /function
   const actionColum = [
@@ -98,6 +134,15 @@ const CoachTable = ({ id }) => {
   //   )
   // );
 
+  //all date or search by name / id
+  const filteredData = data.filter((row) =>
+    searchQuery === "" ||
+    ["id", "Categories"].some(
+      (field) =>
+        row[field] && row[field].toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+    )
+  );
+
 
 
   return (
@@ -113,7 +158,7 @@ const CoachTable = ({ id }) => {
         <div className="search_table">
           <input
             type="text"
-            placeholder="search Product.."
+            placeholder="search .."
             className="input"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -121,7 +166,7 @@ const CoachTable = ({ id }) => {
         </div>
         <DataGrid
           className="datagrid"
-          rows={data}
+          rows={filteredData.map((row, index) => ({ ...row, Row_id: index + 1 }))}
           columns={columns.concat(actionColum)}
           pageSize={10}
           rowsPerPageOptions={[10]}

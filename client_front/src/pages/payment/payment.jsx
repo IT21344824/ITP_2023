@@ -1,7 +1,9 @@
-import React from 'react'
-import { useState } from 'react';
+
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './payment.scss'
+import { collection, arrayRemove, getDoc, addDoc, serverTimestamp, query, updateDoc, onSnapshot, doc } from "firebase/firestore";
+import { db, storage } from "../../firebase";
 // import { collection, getDocs, addDoc, getDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 // import { db } from "../../../firebase"
 
@@ -66,6 +68,70 @@ const Payment = ({total}) => {
 
         return errors;
     };
+    
+
+
+    ///--------------------------------------------------------------read-----------------------------------------------------------
+    const [cartId, setCartId] = useState('');
+
+    const [cartDetails, setCartDetails] = useState([]);
+  
+  //get uid
+  const userObj = JSON.parse(localStorage.getItem('userClient'));
+  const uid = userObj ? userObj.uid : null;
+
+   //get current user cart id
+   useEffect(() => {
+
+    const userRef = doc(db, 'Users', uid);
+    const unsubscribe = onSnapshot(userRef, (doc) => {
+      const UcartId = doc.data()?.cartId;
+      setCartId(UcartId);
+    });
+
+    return () => unsubscribe();
+  }, [uid]);
+
+
+  //get current user cart details
+  useEffect(() => {
+    let unsubscribeCart;
+
+    async function getCartDetails() {
+      if (cartId) {
+        const cartRef = doc(db, 'cart', cartId);
+
+        try {
+          unsubscribeCart = onSnapshot(cartRef, async (doc) => {
+            if (doc.exists()) {
+              const data = doc.data();
+              await setCartDetails(data);
+              console.log(data);
+            } else {
+              console.log("No such document!");
+            }
+          });
+        } catch (error) {
+          console.log("Error getting document:", error);
+        }
+      }
+    }
+
+    getCartDetails();
+
+    return () => {
+      if (unsubscribeCart) {
+        unsubscribeCart();
+      }
+    };
+  }, [cartId]);
+
+
+
+
+
+
+
 
     return (
         <div className="payment">
@@ -143,6 +209,23 @@ const Payment = ({total}) => {
                                     <div className="invalid-feedback">{errors.city}</div>
                                 )}
                             </div>
+                            <div className="form-group">
+                                <label htmlFor="city">
+                                    <i className="fa fa-institution"></i> Total
+                                </label>
+                                <input
+                                    type="text"
+                                    id="Total"
+                                    name="Total"
+                                    placeholder="Kandy"
+                                    value=  {cartDetails.Total}
+                                    onChange={handleInputChange}
+                                    
+                                />
+                               
+                            </div>
+
+                          
                         </div>
 
                         <div className="col-50">
@@ -191,7 +274,7 @@ const Payment = ({total}) => {
                                         onClick={() => { setVisibleB(true); setVisibleA(false) }}
 
                                     />
-                                    DirectPay
+                                    Online Pay
                                 </label>
                                 {visibleB &&
                                     <div className='hide2'><p>Pay by Visa or MasterCard.</p></div>

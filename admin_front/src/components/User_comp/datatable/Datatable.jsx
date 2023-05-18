@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc, onSnapshot, where, query } from "firebase/firestore";
 import { db ,auth} from "../../../firebase";
-
+import { onConfirm } from 'react-confirm-pro';
 {/* This is all users table  */ }
 
 const Datatable = () => {
@@ -32,26 +32,74 @@ const Datatable = () => {
   }, []);
 
 
-  console.log(data);
+//  console.log(data);
 
-  const handleDelete = async (id) => {
-    try {
-      // Get the user from the auth service
-      const user = auth.currentUser;
-  
-      // If the user's UID matches the ID of the user being deleted, delete their authentication info
-      if (user && user.uid === id) {
-        await user.delete();
+  //---------------------------------------------------------------------------------------------
+   //table delete data function
+   const handleDelete = async (id) => {
+    const defaultOptions = {
+      title: (
+        <h3>
+          Are you sure?
+        </h3>
+      ),
+      description: (
+        <p>Do you really want to delete this records? This process cannot be undone.</p>
+      ),
+      onSubmit: async () => {
+        try {
+          // Get the user from the auth service
+          const user = auth.currentUser;
+      
+          // If the user's UID matches the ID of the user being deleted, delete their authentication info
+          if (user && user.uid === id) {
+            await user.delete();
+          }
+      
+          // Delete the user from the database
+          await deleteDoc(doc(db, "Users", id));
+          setData(data.filter((item) => item.id !== id));
+          console.log(`deleted ${id}`)
+        } catch (error) {
+          console.log(error);
+        }
+
+      },
+      onCancel: () => {
+        // alert("Cancel")
+      },
+    };
+    onConfirm({
+      ...defaultOptions,
+      type: "dark",
+      btnSubmit: "confirm ",
+      btnCancel: "Cancle ",
+      keyboardEvents: {
+        escape: true,
+        submit: true
       }
-  
-      // Delete the user from the database
-      await deleteDoc(doc(db, "Users", id));
-      setData(data.filter((item) => item.id !== id));
-      console.log(`deleted ${id}`)
-    } catch (error) {
-      console.log(error);
-    }
+    })
+
   };
+
+  // const handleDelete = async (id) => {
+  //   try {
+  //     // Get the user from the auth service
+  //     const user = auth.currentUser;
+  
+  //     // If the user's UID matches the ID of the user being deleted, delete their authentication info
+  //     if (user && user.uid === id) {
+  //       await user.delete();
+  //     }
+  
+  //     // Delete the user from the database
+  //     await deleteDoc(doc(db, "Users", id));
+  //     setData(data.filter((item) => item.id !== id));
+  //     console.log(`deleted ${id}`)
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   
 
   const actionColum = [

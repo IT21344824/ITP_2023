@@ -6,12 +6,15 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
+import { onConfirm } from 'react-confirm-pro';
+
+
 
 const PaymentList = () => {
 
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+ 
 
   //table headers
   const columns = [
@@ -57,16 +60,53 @@ const PaymentList = () => {
   }, []);
 
 
-  //table delete data function
-  const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "payment", id));
-      setData(data.filter((item) => item.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
+   //---------------------------------------------------------------------------------------------
+   //table delete data function
+   const handleDelete = async (id) => {
+    const defaultOptions = {
+      title: (
+        <h3>
+          Are you sure?
+        </h3>
+      ),
+      description: (
+        <p>Do you really want to delete this records? This process cannot be undone.</p>
+      ),
+      onSubmit: async () => {
+        try {
+          await deleteDoc(doc(db, "payment", id));
+          setData(data.filter((item) => item.id !== id));
+        } catch (error) {
+          console.log(error);
+        }
+
+      },
+      onCancel: () => {
+        // alert("Cancel")
+      },
+    };
+    onConfirm({
+      ...defaultOptions,
+      type: "dark",
+      btnSubmit: "confirm ",
+      btnCancel: "Cancle ",
+      keyboardEvents: {
+        escape: true,
+        submit: true
+      }
+    })
 
   };
+  //table delete data function
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await deleteDoc(doc(db, "payment", id));
+  //     setData(data.filter((item) => item.id !== id));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+
+  // };
 
   //table action header /function
   const actionColum = [
@@ -87,6 +127,16 @@ const PaymentList = () => {
     }
   ];
 
+   //all date or search by name / id
+   const filteredData = data.filter((row) =>
+   searchQuery === "" ||
+   ["id", "oldformData.email"].some(
+     (field) =>
+       row[field] && row[field].toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+   )
+ );
+
+
 
   return (
     <div className='Payment_list_comp'>
@@ -98,7 +148,7 @@ const PaymentList = () => {
         <div className="search_table">
           <input
             type="text"
-            placeholder="search Coach.."
+            placeholder="search .."
             className="input"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -106,7 +156,7 @@ const PaymentList = () => {
         </div>
         <DataGrid
           className="datagrid"
-          rows={data}
+          rows={filteredData.map((row, index) => ({ ...row, Row_id: index + 1 }))}
           columns={columns.concat(actionColum)}
           pageSize={10}
           rowsPerPageOptions={[10]}

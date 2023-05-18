@@ -47,9 +47,9 @@ const Apply_from = () => {
       return;
     }
 
-    if (!formData.email) {
+    if (!/^[\w.-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
       //alert("Please enter the Product_id");
-      toast.warn('Please enter the email!', {
+      toast.warn('Please enter the valid email !', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -60,6 +60,35 @@ const Apply_from = () => {
       });
       return;
     }
+
+    
+    if (!formData.chooseRole) {
+      //alert("Please enter the email");
+      toast.warn('Please select a Role!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+      });
+      return;
+  }
+
+  if (!formData.phone || isNaN(formData.phone)) {
+      //alert("Please enter the email");
+      toast.warn('Please enter a number phone!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+      });
+      return;
+  }
 
     if (!formData.message) {
       //alert("Please enter the Product_id");

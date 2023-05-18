@@ -123,18 +123,18 @@ const DirectP = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     if (validateForm()) {
       // Handle submission logic here
     }
 
     // Initialize formData.img as an empty array if it is null
     const images = formData.img ? formData.img : [];
-   
+
     try {
 
-       // Check if a product with the same Product_id already exists
-       const productsRef = collection(db, "payment");
+      // Check if a product with the same Product_id already exists
+      const productsRef = collection(db, "payment");
 
       // Upload each file in the files array
       for (const file of files) {
@@ -163,7 +163,7 @@ const DirectP = () => {
 
       // Add the package data to the database
       const newProductRef = await addDoc(collection(db, "payment"), {
-        ...formData,oldformData,
+        ...formData, oldformData,
         timeStamp: serverTimestamp(),
       });
 
@@ -179,83 +179,86 @@ const DirectP = () => {
   };
   return (
     <div className="directPay">
-      <div class="bPay-container">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="deposit-amount">Deposit Amount (Rs.):</label>
-          <input
-            type="number"
-            name="depositAmount"
-            id="deposit-amount"
-            placeholder="1500.00"
-            value={formData.depositAmount}
-            onChange={handleInputChange}
-          />
-          {formErrors.depositAmount &&
-            <span className="error">{formErrors.depositAmount}</span>}
+      <div className="formcontainer">
+        <div class="bPay-container">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="deposit-amount">Deposit Amount (Rs.):</label>
+            <input
+              type="number"
+              name="depositAmount"
+              id="deposit-amount"
+              placeholder="1500.00"
+              value={formData.depositAmount}
+              onChange={handleInputChange}
+            />
+            {formErrors.depositAmount &&
+              <span className="error">{formErrors.depositAmount}</span>}
 
-          <label htmlFor="deposit-date">Deposit Date:</label>
-          <input
-            type="date"
-            name="depositDate"
-            id="deposit-date"
-            value={formData.depositDate}
-            onChange={handleInputChange}
-          />
-          {formErrors.depositDate &&
-            <span className="error">{formErrors.depositDate}</span>}
+            <label htmlFor="deposit-date">Deposit Date:</label>
+            <input
+              type="date"
+              name="depositDate"
+              id="deposit-date"
+              value={formData.depositDate}
+              onChange={handleInputChange}
+            />
+            {formErrors.depositDate &&
+              <span className="error">{formErrors.depositDate}</span>}
 
-          <label htmlFor="bank">Bank:</label>
-          <input
-            type="text"
-            id="bank"
-            name="bank"
-            placeholder="BOC"
-            value={formData.bank}
-            onChange={handleInputChange}
-          />
-          {formErrors.bank &&
-            <span className="error">{formErrors.bank}</span>}
+            <label htmlFor="bank">Bank:</label>
+            <input
+              type="text"
+              id="bank"
+              name="bank"
+              placeholder="BOC"
+              value={formData.bank}
+              onChange={handleInputChange}
+            />
+            {formErrors.bank &&
+              <span className="error">{formErrors.bank}</span>}
 
-          <label htmlFor="branch">Branch:</label>
-          <input
-            type="text"
-            id="branch"
-            name="branch"
-            placeholder="Kandy"
-            value={formData.branch}
-            onChange={handleInputChange}
-          />
-          {formErrors.branch &&
-            <span className="error">{formErrors.branch}</span>}
+            <label htmlFor="branch">Branch:</label>
+            <input
+              type="text"
+              id="branch"
+              name="branch"
+              placeholder="Kandy"
+              value={formData.branch}
+              onChange={handleInputChange}
+            />
+            {formErrors.branch &&
+              <span className="error">{formErrors.branch}</span>}
 
-          <label htmlFor="ref-no">Ref No:</label>
-          <input
-            type="text"
-            id="ref-no"
-            name="refNo"
-            placeholder="562334"
-            value={formData.refNo}
-            onChange={handleInputChange}
-          />
-          {formErrors.refNo &&
-            <span className="error">{formErrors.refNo}</span>}
+            <label htmlFor="ref-no">Ref No:</label>
+            <input
+              type="text"
+              id="ref-no"
+              name="refNo"
+              placeholder="562334"
+              value={formData.refNo}
+              onChange={handleInputChange}
+            />
+            {formErrors.refNo &&
+              <span className="error">{formErrors.refNo}</span>}
 
-          <label htmlFor="image">Upload Image:</label>
+            <label htmlFor="image">Upload Image:</label>
 
-          <input
-            type="file"
-            id="file"
-            onChange={(e) => setFiles(Array.from(e.target.files))}
-            multiple
-           
-          />
-          {formErrors.image &&
-            <span className="error">{formErrors.image}</span>}
+            <input
+              type="file"
+              id="file"
+              onChange={(e) => setFiles(Array.from(e.target.files))}
+              multiple
 
-          <button type="submit">Submit</button>
+            />
+            {formErrors.image &&
+              <span className="error">{formErrors.image}</span>}
 
-        </form>
+            <button type="submit">Submit</button>
+
+          </form>
+        </div>
       </div>
+
     </div>
   )
 }

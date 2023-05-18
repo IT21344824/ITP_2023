@@ -28,9 +28,9 @@
             position: absolute;
             background-color: white;
             border-radius: 20px;
-            box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.52);
--webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.52);
--moz-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.52);
+            box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.52);
+            -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.52);
+            -moz-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.52);
 
         }
 
@@ -68,21 +68,21 @@
             font-size: 18px;
             font-weight: 500;
             padding-top: 1px;
-           // background-color: aqua;
+            // background-color: aqua;
 
-            &:last-child{
+            &:last-child {
                 padding-top: 0px;
                 //background-color: black;
-                font-family:serif;
+                font-family: serif;
                 font-weight: 900;
                 color: rgb(249, 6, 6);
                 font-size: 20px;
             }
-            
-           
+
+
         }
 
-       
+
     }
 }
 

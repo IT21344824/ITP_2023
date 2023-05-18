@@ -1,0 +1,177 @@
+.ApplycationsSingle{
+    display: flex;
+
+    .con{
+        flex: 6;
+
+        .P_container{
+            
+            padding: 20px;
+           // display: flex;
+            gap: 20px;
+            margin: auto;
+
+            .pDetail ,.otherDetail{
+                flex: 1;
+                box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                -webkit-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                -moz-box-shadow: 10px 11px 23px 0px rgba(0, 0, 0, 0.25);
+                padding: 50px;
+                margin-top: 30px;
+                border-radius: 10px;
+                position: relative;
+
+                .animation_p_id {
+            
+                    margin-top: 30px;
+                    position: relative;
+                    overflow: hidden;         
+                    border-radius: 22px;
+                 
+        
+                    .p_details {
+                        margin: 4px;
+                        border: 1px solid gray;
+                        padding: 40px;
+                        border-radius: 20px;
+                      //  //width: 91%;
+                        position: relative;
+                        //z-index: 2;
+                        background: #f4f4f4;
+        
+        
+                        .detail {
+                            display: flex;
+                            flex-direction: column;
+                            // gap: 30px;
+                            justify-content: space-around;
+                           
+        
+                            .update-img{
+                                display: flex;
+                                margin-left: 30px;
+                                margin-bottom: 40px;
+        
+                                label{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 10px;
+                                }
+                            }
+        
+                            .center{
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: space-around;
+                            }
+                           
+                            .p_inputbox {                     
+                                position: relative;
+                                margin: 20px;
+        
+                                .marL-10{
+                                    margin-left: 100px;
+                                }
+        
+                                textarea{
+                                    min-height: 200px;
+                                    padding: 20px 10px 12px 30px;
+                                    border: none;
+                                    width: 25vw;
+                                    background: #c7c7c7;
+                                    border: 1px solid #00dfc4;
+                                    color: #050505;
+                                    font-weight: 300;
+                                    border-radius: 25px;
+                                    font-size: 1rem;
+                                    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                        5px 5px 15px rgba(0, 0, 0, 0.35);
+                                    word-wrap: break-word;
+                                    resize: none;
+                                }
+        
+                                p ,input {
+                                    margin-bottom: 20px;
+                                    padding: 20px 10px 12px 30px;
+                                    border: none;
+                                    width: 25vw;
+                                    background: #c7c7c7;
+                                    border: 1px solid #00dfc4;
+                                    color: #050505;
+                                    font-weight: 300;
+                                    border-radius: 25px;
+                                    font-size: 1rem;
+                                    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                                        5px 5px 15px rgba(0, 0, 0, 0.35);
+                                    word-wrap: break-word;
+                                    resize: none;
+                                    /* add this property to wrap long text */
+                                }
+        
+                                .hint_Descrip{
+                                    color: #f74040;
+                                    //border: 1px solid #00dfc4;
+                                    //background: #223243a6;
+                                    font-size: 15px;
+                                    padding: 0 8px;
+                                    //border-radius: 25px;
+                                    position: absolute;
+                                    /* position the span absolutely within the inputbox */
+                                    top: 35vh;
+                                    /* move the span up by 10px from the top of the inputbox */
+                                    left: 8px;
+                                 
+                                    width: 400px;
+                                    /* move the span 25px from the left of the inputbox */
+                                    word-wrap: break-word;
+                                }
+        
+                                .hint{
+                                    color: #f74040;
+                                    //border: 1px solid #00dfc4;
+                                    //background: #223243a6;
+                                    font-size: 15px;
+                                    padding: 0 8px;
+                                    //border-radius: 25px;
+                                    position: absolute;
+                                    /* position the span absolutely within the inputbox */
+                                    top: 60px;
+                                    /* move the span up by 10px from the top of the inputbox */
+                                    left: 10px;
+                                    width: 400px;
+                                    /* move the span 25px from the left of the inputbox */
+                                    word-wrap: break-word;
+                                }
+        
+                                .span {
+                                    color: #f7e740;
+                                    border: 1px solid #00dfc4;
+                                    background: #223243a6;
+                                    font-size: 15px;
+                                    padding: 0 8px;
+                                    border-radius: 25px;
+                                    position: absolute;
+                                    /* position the span absolutely within the inputbox */
+                                    top: -7px;
+                                    /* move the span up by 10px from the top of the inputbox */
+                                    left: 25px;
+                                    /* move the span 25px from the left of the inputbox */
+                                }
+        
+        
+                            }
+        
+                          
+                        }
+        
+                     
+                    }
+        
+                }
+            }
+
+            
+        }
+    }
+}

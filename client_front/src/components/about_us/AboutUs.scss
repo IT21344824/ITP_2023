@@ -27,13 +27,15 @@
         padding: 100px 60px;
         //margin: 60px ;
         display: flex;
+        justify-content: center;
+        align-items: center;
 
         .content {
             max-width: 100%;
 
             .top {
                 display: flex;
-                gap: 30px;
+                gap: 50px;
 
                 .left {
                     flex: 2;

@@ -42,13 +42,16 @@ const FeaturedProduct = ({ type }) => {
     }, []);
 
 
-    const prevSlider = () => {
-        setCurrentSlide(currentSlide === 0 ?  newproducts.length/4 : (prev) => prev - 1);
-    };
-
     const nextSlider = () => {
-        setCurrentSlide(currentSlide ===  newproducts.length/4 ? 0 : (prev) => prev + 1);
-    };
+        const newIndex = currentSlide - 4;
+        setCurrentSlide(newIndex < 0 ? Math.ceil(newproducts.length / 4) - 1 : newIndex);
+      };
+      
+      const prevSlider  = () => {
+        const newIndex = currentSlide + 4;
+        setCurrentSlide(newIndex >= Math.ceil(newproducts.length / 4) ? 0 : newIndex);
+      };
+      
 
     //   const prevSlider = () => {
     //     setCurrentSlide(currentSlide === 0 ? newproducts.length - 1 : currentSlide - 1);

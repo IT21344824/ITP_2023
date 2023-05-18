@@ -9,15 +9,17 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: "test-96a3f.firebaseapp.com",
-  projectId: "test-96a3f",
-  storageBucket: "test-96a3f.appspot.com",
-  messagingSenderId: "944745464315",
-  appId: "1:944745464315:web:c6edf590346a5589438b5e"
-};
+// itp test
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_FIREBASE_KEY,
+//   authDomain: "test-96a3f.firebaseapp.com",
+//   projectId: "test-96a3f",
+//   storageBucket: "test-96a3f.appspot.com",
+//   messagingSenderId: "944745464315",
+//   appId: "1:944745464315:web:c6edf590346a5589438b5e"
+// };
 
+// itp 2023
 // const firebaseConfig = {
 //   apiKey: process.env.REACT_APP_FIREBASE_KEY,
 //   authDomain: "itp2023-8dc4f.firebaseapp.com",
@@ -27,6 +29,16 @@ const firebaseConfig = {
 //   appId: "1:547005262348:web:619b71eef14898cd18dc29"
 // };
 
+
+// itp 19
+const firebaseConfig = {
+  apiKey: "AIzaSyAfLVM_1pHRFcyWRAGJah6aVZ7mLyUE52A",
+  authDomain: "itp19-bb84e.firebaseapp.com",
+  projectId: "itp19-bb84e",
+  storageBucket: "itp19-bb84e.appspot.com",
+  messagingSenderId: "117947276944",
+  appId: "1:117947276944:web:5431d4df62ed02fc600215"
+};
 
 
 

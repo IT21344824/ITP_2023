@@ -4,11 +4,17 @@ import './PaySuccess.scss'
 
 const OrderBSuccess = () => {
   return (
-    <div>
-      <p style={{ color: 'red' }}>Your payment is prossesing</p>
+    <div className='sucsess'>
+      <div className='prossess'>
+      <h1 style={{ color: 'white' }}>Your payment is successfully completed</h1>
+      </div>
+      
+      <div >
       <Link to="/">
-        <button>Go to Home</button>
+        <button className='btn'>Go back to Home</button>
       </Link>
+      </div>
+      
     </div>
   );
 }

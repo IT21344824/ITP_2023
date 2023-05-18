@@ -17,6 +17,12 @@ import { Link , useNavigate} from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
+import DataSaverOnIcon from '@mui/icons-material/DataSaverOn';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 
 const Sidebar = () => {
@@ -71,7 +77,7 @@ const Sidebar = () => {
 
                     <Link to="/Additional" style={{ textDecoration: "none" }} >
                         <li onClick={() => handleClickedElement("Additional")} className={clickedElement === "Additional" ? "selected" : ""}>
-                            <GroupIcon className="iocn" />
+                            <DataSaverOnIcon className="iocn" />
                             <span> Additional </span>
                         </li>
                     </Link>
@@ -107,21 +113,21 @@ const Sidebar = () => {
 
                     <Link to="/coaches" style={{ textDecoration: "none" }} >
                         <li onClick={() => handleClickedElement("coaches")} className={clickedElement === "coaches" ? "selected" : ""}>
-                            <GroupAddIcon className="iocn" />
+                            <AccessibilityIcon className="iocn" />
                             <span> Coaches </span>
                         </li>
                     </Link>
 
                     <Link to="/packages" style={{ textDecoration: "none" }} >
                         <li onClick={() => handleClickedElement("packages")} className={clickedElement === "packages" ? "selected" : ""}>
-                            <GroupAddIcon className="iocn" />
+                            <AutoAwesomeMotionIcon className="iocn" />
                             <span> Packages </span>
                         </li>
                     </Link>
 
                     <Link to="/patment_INFO" style={{ textDecoration: "none" }} >
                         <li onClick={() => handleClickedElement("patment_INFO")} className={clickedElement === "patment_INFO" ? "selected" : ""}>
-                            <GroupAddIcon className="iocn" />
+                            <AttachMoneyIcon className="iocn" />
                             <span> Patment INFO </span>
                         </li>
                     </Link>
@@ -135,6 +141,28 @@ const Sidebar = () => {
                     {/* ----------------------------Usefull start ----------------*/}
 
 
+                    <Link to="/Contact_Us" style={{ textDecoration: "none" }} >
+                    <li onClick={() => handleClickedElement("Contact Us")} className={clickedElement === "Contact Us" ? "selected" : ""}>
+                        <ContactPhoneIcon className="iocn" />
+                        <span> Contact Us </span>
+                    </li>
+                    </Link>
+
+                    
+                    <Link to="/Applycations" style={{ textDecoration: "none" }} >
+                    <li onClick={() => handleClickedElement("Applycations")} className={clickedElement === "Applycations" ? "selected" : ""}>
+                        <AddchartIcon className="iocn" />
+                        <span> Applycations </span>
+                    </li>
+                    </Link>
+                   
+                    {/* -----------------------------Usefull end----------------------------  */}
+
+
+
+
+                    <p className="title"> SERVICE </p>
+                    {/* ------------------------------SERVICE start------------------------- */}
 
 
                     <li onClick={() => handleClickedElement("Stats")} className={clickedElement === "Stats" ? "selected" : ""}>
@@ -145,24 +173,6 @@ const Sidebar = () => {
                     <li onClick={() => handleClickedElement("Notifications")} className={clickedElement === "Notifications" ? "selected" : ""}>
                         <CircleNotificationsIcon className="iocn" />
                         <span> Notifications </span>
-                    </li>
-                    {/* -----------------------------Usefull end----------------------------  */}
-
-
-
-
-                    <p className="title"> SERVICE </p>
-                    {/* ------------------------------SERVICE start------------------------- */}
-
-
-                    <li onClick={() => handleClickedElement("Health")} className={clickedElement === "Health" ? "selected" : ""}>
-                        <FitnessCenterIcon className="iocn" />
-                        <span> System Health </span>
-                    </li>
-
-                    <li onClick={() => handleClickedElement("Logs")} className={clickedElement === "Logs" ? "selected" : ""}>
-                        <BookIcon className="iocn" />
-                        <span> Logs </span>
                     </li>
 
                     <li onClick={() => handleClickedElement("Settings")} className={clickedElement === "Settings" ? "selected" : ""}>

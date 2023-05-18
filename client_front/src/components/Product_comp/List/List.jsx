@@ -67,6 +67,7 @@ const List = ({ catId, maxPrice, sort, selectedCategories }) => {
             placeholder="search Product.."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            
           />
           <div className="s_button" id="s_button" >
             <SearchIcon className='search_icon' />

@@ -3,7 +3,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 // import { userColums, userRows } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
+import { collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp  , where , query} from "firebase/firestore";
 import { db } from "../../../firebase";
 import CatUpdate from '../category_update/CatUpdate'; // pass the page , id to update page
 //notify-
@@ -192,6 +192,23 @@ const CategorTable = ({ id , Cat_name}) => {
             return;
         }
         try {
+            const productsRef = collection(db, "Product_Category");
+            const queryRef = query(productsRef, where("Cat_name", "==", formData.Cat_name));
+
+            const querySnapshot = await getDocs(queryRef);
+            if (querySnapshot.size > 0) {
+                toast.error('Cat_name already exists in the database!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                return;
+            }
+
             // Add the product data to the database
             const newProductRef = await addDoc(collection(db, "Product_Category"), {
                 ...formData,

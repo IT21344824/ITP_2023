@@ -4,15 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs, addDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
-import { Font } from '@react-pdf/renderer';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import AllProdcuts from "./AllProdcuts";
+
 
 const ProdcutsPdf = () => {
 
@@ -72,15 +64,7 @@ const ProdcutsPdf = () => {
         fetchData();
     }, [data, itemTypeData]);
 
-    //all date or search by name / id
-    const filteredData = data.filter((row) =>
-        searchQuery === "" ||
-        ["id", "Product_id", "item_name"].some(
-            (field) =>
-                row[field] && row[field].toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-        )
-    );
-
+    
     //-------------------------------------------------------styles-------------------------------------------------------------------------------------------
 
 
@@ -131,15 +115,9 @@ const ProdcutsPdf = () => {
         <Document>
             <Page style={styles.body}>
                 <View style={styles.header} >
-                    {/* <Text className="tableCell">ROW</Text>
-              <Text className="tableCell">BID</Text>
-              <Text className="tableCell">Brand</Text>
-              <Text className="tableCell">Img & Name</Text>
-              <Text className="tableCell">Quantity</Text>
-              <Text className="tableCell">Type</Text>
-              <Text className="tableCell">Status</Text> */}
+                  
 
-                    {filteredData.map((row, index) => (
+                    {data.map((row, index) => (
                         <View key={row.id}>
                             <Text className="tableCell" style={styles.header} >{index + 1}</Text>
                             <Text className="tableCell"> BID : {row.id}</Text>
@@ -149,10 +127,10 @@ const ProdcutsPdf = () => {
 
                             <Text className="tableCell"> Quantity : {row.qty}</Text>
                             <Text className="tableCell"> Type : {itemTypeData[row.id]}</Text>
-                            <View className={`status ${row.status}`}
-                              style={styles.bot} >
+                            <View className={`status ${row.status}`} >
                                 <Text> Status : {row.status}</Text>
                             </View>
+                            <Text className="tableCell" style={styles.bot} > description : {row.description}</Text>
                         </View>
                     ))}
 

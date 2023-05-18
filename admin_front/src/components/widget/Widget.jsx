@@ -13,6 +13,8 @@ import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import PDFFileProdcuts from "../PDFFiles/ProdcutsPdf";
+import PDFFileCoach from "../PDFFiles/CoachPdf";
+
 import PreviewIcon from '@mui/icons-material/Preview';
 import { PDFDownloadLink, Document, Page, PDFViewer, toStream } from '@react-pdf/renderer';
 
@@ -179,8 +181,11 @@ const Widget = ({ type }) => {
                                 {/* Render content for USERS */}
                             </div>
                         ) : data.title === "COACHES" ? (
-                            <div className="">
-                                {/* Render content for COACH */}
+                            <div className="DUrl">
+                                <PDFDownloadLink document={<PDFFileCoach />} filename="FORMCoach">
+                                    {({ loading }) => (loading ? <button>...</button> : <button>   <DownloadForOfflineIcon /></button>)}
+                                </PDFDownloadLink>
+                                {/* <PreviewIcon/> */}
                             </div>
                         ) : data.title === "Profit" ? (
                             <div className="">
